@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\joc;
+=======
+>>>>>>> 237c08a2620b30e5f79d9506223f91091089c057
 
 class jocsController extends Controller
 {
