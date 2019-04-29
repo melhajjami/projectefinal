@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('friendship', 'friendshipController');
 Route::resource('user', 'userController');
 Route::resource('joc', 'jocsController');
+Route::resource('categoria', 'categoriasController');
