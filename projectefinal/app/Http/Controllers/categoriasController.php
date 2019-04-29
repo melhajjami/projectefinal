@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\joc;
+use App\categoria;
 
-class jocsController extends Controller
+class categoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -47,9 +47,9 @@ class jocsController extends Controller
      */
     public function show($id)
     {
-        $joc = joc::where('id', $id)->get();
+        $categoria = categoria::where('id', $id)->get();
 
-        return $joc;
+        return $categoria;
     }
 
     /**
@@ -57,7 +57,7 @@ class jocsController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function edit($id)
     {
         //
