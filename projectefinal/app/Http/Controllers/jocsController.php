@@ -46,7 +46,10 @@ class jocsController extends Controller
      */
     public function show($id)
     {
-        //
+        $joc = joc::where('id', $id)->get();
+
+        return $joc;
+
     }
 
     /**
