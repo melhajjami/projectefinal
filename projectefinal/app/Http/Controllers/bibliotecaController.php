@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\biblioteca;
 use App\joc;
 
-class jocsController extends Controller
+class bibliotecaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class jocsController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -47,9 +47,17 @@ class jocsController extends Controller
      */
     public function show($id)
     {
-        $joc = joc::where('id', $id)->get();
+        //DONADA ID DE USUARI, RETORNAR ELS JOCS QUE TÉ
+        $biblioteca = biblioteca::where('id_usuari', $id)->get();
+        
+        $arrayjocs = [];
 
-        return $joc;
+        foreach($biblioteca as $jocs){
+            $joc = joc::where('id', $jocs->id_joc)->get();
+            array_push($arrayjocs,$joc);
+        }
+
+        return $arrayjocs;
     }
 
     /**

@@ -21,3 +21,5 @@ Route::resource('friendship', 'friendshipController');
 Route::resource('user', 'userController');
 Route::resource('joc', 'jocsController');
 Route::resource('categoria', 'categoriasController');
+Route::resource('biblioteca', 'bibliotecaController');
+Route::resource('categoriajoc', 'categoriajocController');
