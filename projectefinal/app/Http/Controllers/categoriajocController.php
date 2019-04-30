@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\categoriajoc;
+use App\joc;
 
 class categoriajocController extends Controller
 {
@@ -46,8 +47,17 @@ class categoriajocController extends Controller
      */
     public function show($id)
     {
-        //DONADA ID DE JOC, RETORNA LES CATEGORIES DE AQUEST JOC 
-        return categoriajoc::where('id_joc', $id)->get();
+        //DONADA ID DE CATEGORIA, RETORNA ELS JOCS AMB AQUESTES CATEGORIES
+        $categoriajoc = categoriajoc::where('id_categoria', $id)->get();
+
+        $arrayjocs = [];
+
+        foreach($categoriajoc as $jocs){
+            $joc = joc::where('id', $jocs->id_joc)->get();
+            array_push($arrayjocs,$joc);
+        }
+
+        return $arrayjocs;
     }
 
     /**
