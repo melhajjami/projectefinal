@@ -14,7 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('tenda', 'jocsController@index')->name('jocs.index');
+
+Route::get('tenda/{joc}', 'jocsController@show')->name('jocs.show');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

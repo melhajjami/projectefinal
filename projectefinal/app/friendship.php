@@ -1,10 +1,8 @@
 <?php
 
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
-class friendship extends Model
+use Hootlex\Friendships\Traits\Friendable;
+class User extends Model
 {
-    protected $fillable = ['id'];
+    use Friendable;
+    
 }

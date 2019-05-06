@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\biblioteca;
 use App\joc;
 
+
 class bibliotecaController extends Controller
 {
     /**
@@ -57,7 +58,7 @@ class bibliotecaController extends Controller
             array_push($arrayjocs,$joc);
         }
 
-        return $arrayjocs;
+        return $arrayjocs;  
     }
 
     /**
