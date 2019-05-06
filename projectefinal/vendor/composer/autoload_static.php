@@ -99,6 +99,10 @@ class ComposerStaticInit694ce670d7ad3b82d0ece44d6f5eec09
         array (
             'Illuminate\\' => 11,
         ),
+        'H' => 
+        array (
+            'Hootlex\\Friendships\\' => 20,
+        ),
         'F' => 
         array (
             'Fideloper\\Proxy\\' => 16,
@@ -281,6 +285,10 @@ class ComposerStaticInit694ce670d7ad3b82d0ece44d6f5eec09
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Hootlex\\Friendships\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hootlex/laravel-friendships/src',
+        ),
         'Fideloper\\Proxy\\' => 
         array (
             0 => __DIR__ . '/..' . '/fideloper/proxy/src',
@@ -368,6 +376,13 @@ class ComposerStaticInit694ce670d7ad3b82d0ece44d6f5eec09
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\bibliotecaController' => __DIR__ . '/../..' . '/app/Http/Controllers/bibliotecaController.php',
+        'App\\Http\\Controllers\\categoriajocController' => __DIR__ . '/../..' . '/app/Http/Controllers/categoriajocController.php',
+        'App\\Http\\Controllers\\categoriasController' => __DIR__ . '/../..' . '/app/Http/Controllers/categoriasController.php',
+        'App\\Http\\Controllers\\friendshipController' => __DIR__ . '/../..' . '/app/Http/Controllers/friendshipController.php',
+        'App\\Http\\Controllers\\jocsController' => __DIR__ . '/../..' . '/app/Http/Controllers/jocsController.php',
+        'App\\Http\\Controllers\\userController' => __DIR__ . '/../..' . '/app/Http/Controllers/userController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -382,6 +397,11 @@ class ComposerStaticInit694ce670d7ad3b82d0ece44d6f5eec09
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\biblioteca' => __DIR__ . '/../..' . '/app/biblioteca.php',
+        'App\\categoria' => __DIR__ . '/../..' . '/app/categoria.php',
+        'App\\categoriajoc' => __DIR__ . '/../..' . '/app/categoriajoc.php',
+        'App\\friendship' => __DIR__ . '/../..' . '/app/friendship.php',
+        'App\\joc' => __DIR__ . '/../..' . '/app/joc.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
@@ -1056,6 +1076,11 @@ class ComposerStaticInit694ce670d7ad3b82d0ece44d6f5eec09
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Hootlex\\Friendships\\FriendshipsServiceProvider' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/FriendshipsServiceProvider.php',
+        'Hootlex\\Friendships\\Models\\FriendFriendshipGroups' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Models/FriendFriendshipGroups.php',
+        'Hootlex\\Friendships\\Models\\Friendship' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Models/Friendship.php',
+        'Hootlex\\Friendships\\Status' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Status.php',
+        'Hootlex\\Friendships\\Traits\\Friendable' => __DIR__ . '/..' . '/hootlex/laravel-friendships/src/Traits/Friendable.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',

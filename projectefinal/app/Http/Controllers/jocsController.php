@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\joc;
+use App\User;
 
 class jocsController extends Controller
 {
@@ -15,7 +16,8 @@ class jocsController extends Controller
      */
     public function index()
     {
-        //
+        $jocs = joc::all();
+        return view('shop')->with('jocs',$jocs);
     }
 
     /**
@@ -47,9 +49,9 @@ class jocsController extends Controller
      */
     public function show($id)
     {
-        $joc = joc::where('id', $id)->get();
+        $joc = joc::where('id', $id)->firstOrFail();
 
-        return $joc;
+        return view('product')->with('joc',$joc);
     }
 
     /**

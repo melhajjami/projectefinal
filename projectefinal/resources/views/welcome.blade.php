@@ -28,7 +28,7 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
             <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
-        
+         
             <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
               <i class="fas fa-bars"></i>
             </button>
@@ -36,9 +36,9 @@
 
     <!-- /Navbar top -->
 
-    <div class="wrapper">
+    <div class="wrapper" id="app">
 
-    <!-- Sidebar -->
+    <!-- Sidebar --> 
 
     <ul class="sidebar navbar-nav">
       <li class="nav-item active">
@@ -83,7 +83,25 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
     
+  var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+    },
+    created(){
+      
+      axios.get('/login')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);})
+    }
+  })
+    </script>
 </body>
 </html>
