@@ -2,97 +2,93 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB </title>
+  <title>SteamWeb</title>
 
-  <!-- Custom fonts for this template-->
-  <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
-  <link href="{{asset('css/all.min.css')}}" rel="stylesheet" />
+  <!-- ICONES -->
+  <!-- <link href="{{asset('icones/fontawesome-free/css/all.min.css')}}" rel="stylesheet"/> NO FUNCIONA-->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- <link href="{{asset('css/all.min.css')}}" rel="stylesheet" /> NO NECESSARI DE MOMENT -->
 
-  <!-- Custom styles for this template-->
-  <!-- <link href="css/sb-admin.css" rel="stylesheet"> -->
-  <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet" />
+  <!-- BOOTSTRAP -->
+  <!-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" /> NO FUNCIONA -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+
+  <!-- CSS DEL SIDEBAR -->
+  <link href="{{asset('css/prova.css')}}" rel="stylesheet" />
+
+  
 </head>
 
-<body id="page-top" class="sidebar-toggled">
+<body>
 
-    <!-- Navbar top -->
+<div class="nav-side-menu">
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <!-- TITOL -->
+    <div class="brand"><h3>Steam 2</h3></div>
 
-<<<<<<< HEAD
-      <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-    </nav>
-=======
-            <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
-         
-            <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-              <i class="fas fa-bars"></i>
-            </button>
-        </nav>
->>>>>>> cdfcfd3855a4eb25b3c1a3b8d59499018f615129
+    <div class="menu-list">
 
-    <!-- /Navbar top -->
+      <ul id="menu-content" class="menu-content collapse out">
 
-    <div class="wrapper" id="app">
+        <!-- SUBMENUS: -->
 
-    <!-- Sidebar --> 
+        <li>
+          <a href="#"> <i class="fa fa-list-alt fa-lg"></i> Biblioteca</a>
+        </li>
 
-    <ul class="sidebar navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Login Screens:</h6>
-          <a class="dropdown-item" href="login.html">Login</a>
-          <a class="dropdown-item" href="register.html">Register</a>
-          <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-          <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Other Pages:</h6>
-          <a class="dropdown-item" href="404.html">404 Page</a>
-          <a class="dropdown-item" href="blank.html">Blank Page</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
-    </ul>
+        <li data-toggle="collapse" data-target="#products" data-parent="menu-content" class="collapsed active">
+          <a href="#"><i class="fa fa-shopping-cart fa-lg"></i> Tenda <span class="arrow"></span></a>
+        </li>
+
+        <ul class="sub-menu collapse" id="products">
+            <li class="active"><a href="#">Novetats</a></li>
+            <li><a href="#">Accio</a></li>
+            <li><a href="#">Aventura</a></li>
+            <li><a href="#">Cotxes</a></li>
+            <li><a href="#">Terror</a></li>
+        </ul>
+
+        <li data-toggle="collapse" data-target="#usuari" data-parent="menu-content" class="collapsed">
+          <a href="#"><i class="fa fa-user fa-lg"></i> Perfil <span class="arrow"></span></a>
+        </li>
+
+        <ul class="sub-menu collapse" id="usuari">
+            <li class="active"><a href="#">Editar perfil</a></li>
+            <li><a href="#">Canviar foto</a></li>
+        </ul>
+
+        <li data-toggle="collapse" data-target="#config" data-parent="menu-content" class="collapsed">
+          <a href="#"><i class="fa fa-cogs fa-lg"></i> Configuracio <span class="arrow"></span></a>
+        </li>
+
+        <ul class="sub-menu collapse" id="config">
+            <li class="active"><a href="#">Comprar shit</a></li>
+            <li><a href="#">Tencar sessió</a></li>
+        </ul>
+
+      </ul>
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</div>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
+  <!-- Bootstrap core JavaScript-->
+  <!-- <script src="{{asset('js/jquery-3.4.0.min.js')}}"></script> NO FUNCIONA -->
+  <!-- <script src="{{asset('js/bootstrap.js')}}"></script> NO FUNCIONA -->
+
+  <!-- JavaScript del Bootstrap + JQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
