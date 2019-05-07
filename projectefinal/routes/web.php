@@ -18,6 +18,8 @@ Route::get('tenda', 'jocsController@index')->name('jocs.index');
 
 Route::get('tenda/{joc}', 'jocsController@show')->name('jocs.show');
 
+Route::get('perfil', 'userController@index')->name('user.index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
