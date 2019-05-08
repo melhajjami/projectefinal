@@ -70,6 +70,15 @@ class friendshipController extends Controller
         
     }
 
+    public function invitacions($id)
+    {
+        //get relacions de amistat que encara no estan confirmades (actiu 0)
+        $friendship = friendship::where('user1_id', $id)->orwhere('user2_id', $id)->where('actiu',0)->get();
+
+        return $friendship;
+        
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 Route::get('tenda', 'jocsController@index')->name('jocs.index');
 
+Route::get('tenda', 'jocsController@index')->name('jocs.index');
+
 Route::get('tenda/{joc}', 'jocsController@show')->name('jocs.show');
 
 Route::get('perfil', 'userController@index')->name('user.index');
