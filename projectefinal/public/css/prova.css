@@ -1,6 +1,6 @@
-html, body {
+html, body{
+  display: flex;
   height: 100%;
-  width: 100%;
 }
 .nav-side-menu {
     overflow: auto;
@@ -8,13 +8,13 @@ html, body {
     font-size: 12px;
     font-weight: 200;
     background-color: #2e353d;
-    position: relative;
+    /* position: relative; */
     top: 0px;
     width: 300px;
     height: 100%;
     color: #e1ffff;
   }
-  .brand{
+  .brand {
       padding: 10px;
   }
   .nav-side-menu .brand {
