@@ -90,8 +90,8 @@
 
 </div>
 
-<div class="container" id="contingut">
-  <p>holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+<div id="contingut">
+  @yield("contingut")
 </div>
 
   <!-- Bootstrap core JavaScript-->
