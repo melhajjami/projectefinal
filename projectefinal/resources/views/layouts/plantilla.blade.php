@@ -27,7 +27,11 @@
 </head>
 
 <body>
-
+<!-- @if(isset($jocs))
+    {{var_dump($jocs)}}
+@endif -->
+<!-- {{session(['key' => 'asdasd'])}}
+{{$value = session()->get('key')}} -->
 <div class="nav-side-menu">
 
     <!-- TITOL -->

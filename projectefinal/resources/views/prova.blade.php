@@ -53,6 +53,6 @@ body
             <p>Girls just wanna go fun.</p>
         </div>
     </div>
-
+    {{$value = session()->get('key')}}
     @endsection
 </div>

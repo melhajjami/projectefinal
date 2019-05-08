@@ -1,4 +1,5 @@
-  <!DOCTYPE html>
+@extends('layouts.plantilla')
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
