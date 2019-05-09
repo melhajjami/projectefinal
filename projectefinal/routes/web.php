@@ -15,11 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('biblioteca', function () {
-    return view('biblioteca');
-});
-
-Route::get('tenda', 'jocsController@index')->name('jocs.index');
+Route::get('biblioteca', 'bibliotecaController@index')->name('biblioteca.index');
 
 Route::get('tenda', 'jocsController@index')->name('jocs.index');
 

@@ -8,5 +8,13 @@ class biblioteca extends Model
 {
     protected $fillable = ['id_usuari','id_joc','tempsjugat'];
 
-    
+    public function usuari()
+    {
+        return $this->belongsTo('App\User','id_usuari');
+    }
+
+    public function jocs()
+    {
+        return $this->hasMany('App\joc','id_joc');
+    }
 }

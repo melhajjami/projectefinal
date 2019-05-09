@@ -2,7 +2,11 @@ html, body{
   display: flex;
   height: 100%;
 }
+#contingut{
+  background-color: #23282e;
+}
 .nav-side-menu {
+      
     overflow: auto;
     font-family: verdana;
     font-size: 12px;

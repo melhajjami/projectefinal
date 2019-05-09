@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\biblioteca;
 use App\joc;
+use App\friendship;
+use Illuminate\Support\Facades\Auth;
 
 
 class bibliotecaController extends Controller
@@ -16,12 +19,27 @@ class bibliotecaController extends Controller
      */
     public function index()
     {
-        //
-    }
+        //DONADA ID DE USUARI, RETORNAR ELS JOCS QUE TÉ
+        $user = Auth::user();
+        // $biblioteca = biblioteca::where('id_usuari', $user->id)->get();
+        $biblioteca = DB::table('bibliotecas')->select(
+            'jocs.id',
+            'jocs.nom',
+            'jocs.img',
+            'jocs.descripcio',
+            'jocs.preu',
+            'bibliotecas.tempsjugat'
+        )->join('jocs', 'jocs.id', '=', 'bibliotecas.id_joc')
+        ->where('bibliotecas.id_usuari',$user->id)
+        ->get();
 
+        return view('biblioteca')->with('biblioteca',$biblioteca);
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -48,17 +66,15 @@ class bibliotecaController extends Controller
      */
     public function show($id)
     {
-        //DONADA ID DE USUARI, RETORNAR ELS JOCS QUE TÉ
-        $biblioteca = biblioteca::where('id_usuari', $id)->get();
         
-        $arrayjocs = [];
+    }
 
-        foreach($biblioteca as $jocs){
-            $joc = joc::where('id', $jocs->id_joc)->get();
-            array_push($arrayjocs,$joc);
-        }
+    public function notificacions()
+    {
+        $user = Auth::user();
+        $pendingfriendships = friendship::where('user1_id', $user->id)->orwhere('user2_id', $user->id)->where('actiu',0)->get();
 
-        return $arrayjocs;  
+        return view('biblioteca')->with('notificacions',$pendingfriendships);
     }
 
     /**
