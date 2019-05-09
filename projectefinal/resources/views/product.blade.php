@@ -15,6 +15,9 @@ img {
   max-width: 100%; }
 
 .preview {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -173,9 +176,7 @@ img {
 		<div class="card">
 			<div class="container-fliud">
 				<div class="wrapper row">
-
-					<div class="preview">
-
+					<div class="preview ">
 						<div class="preview-pic tab-content">
 						  <div class="tab-pane active" id="pic-1"><img src="{{$joc->img}}" /></div>
 						</div>
