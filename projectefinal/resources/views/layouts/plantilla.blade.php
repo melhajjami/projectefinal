@@ -23,6 +23,7 @@
 
   <!-- CSS DEL SIDEBAR -->
   <link href="{{asset('css/prova.css')}}" rel="stylesheet" />
+  <link href="{{asset('css/prova2.css')}}" rel="stylesheet" />
 
   
 </head>
