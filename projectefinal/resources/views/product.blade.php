@@ -1,47 +1,10 @@
+@extends("layouts.plantilla")
 
-
-<!DOCTYPE html>
-<html lang="en">
   <head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>eCommerce Product Detail</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>{{$joc->nom}}</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
-
   </head>
 
-  <body>
-	
-	<div class="container">
-		<div class="card">
-			<div class="container-fliud">
-				<div class="wrapper row">
-					<div class="preview col-md-6">
-						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="{{$joc->img}}" /></div>
-						</div>
-						
-						
-					</div>
-					<div class="details col-md-6">
-						<h3 class="product-title">{{$joc->nom}}</h3>
-						<h4 class="price">PUNTUACIó: </h4>
-						<p class="product-description">{{$joc->descripcio}}</p>
-						<h4 class="price">PREU: <span>{{$joc->preu}}€</span></h4>
-						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
-							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-  </body>
   <style>
 /*****************globals*************/
 body {
@@ -52,9 +15,6 @@ img {
   max-width: 100%; }
 
 .preview {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -206,5 +166,36 @@ img {
     -webkit-transform: scale(1);
             transform: scale(1); } }
 
-/*# sourceMappingURL=style.css.map */</style>
-</html>
+  </style>
+  @section("contingut")
+
+	<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+
+					<div class="preview">
+
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src="{{$joc->img}}" /></div>
+						</div>
+						
+          </div>
+          
+					<div class="col-md-6">
+						<h3 class="product-title">{{$joc->nom}}</h3>
+						<h4 class="price">Descripció: </h4>
+            <!-- <p class="product-description">{{$joc->descripcio}}</p> -->
+            <p class="product-description">sdaewhfbWJFHwlefhbWEHFBwlefWEIFBlwehfbLWEFB
+            </p>
+						<h4 class="price">PREU: <span>{{$joc->preu}}€</span></h4>
+						<div class="action">
+							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+    @endsection
+  
