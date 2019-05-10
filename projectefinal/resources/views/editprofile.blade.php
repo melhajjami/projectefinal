@@ -2,11 +2,12 @@
 
 @section("contingut")
 
-<form method="post" action="{{route('users.update', $user)}}">
+<form method="post" action="{{route('users.update', $user->id)}}">
+
     {{ csrf_field() }}
     {{ method_field('patch') }}
 
-    <input type="text" name="name"  value="{{ $user->nom . ' ' . $user->cognom}}" />
+    <input type="text" name="name"  value="{{ $user->nom}}" />
 
     <input type="email" name="email"  value="{{ $user->email }}" />
 

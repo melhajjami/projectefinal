@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use \Illuminate\Http\Request;
 
 class profileController extends Controller
 {
@@ -19,18 +20,18 @@ class profileController extends Controller
         return view('editprofile', compact('user'));
     }
 
-    public function update(User $user)
+    public function update(Request $request, $iduser)
     { 
-        $this->validate(request(), [
+        $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed'
+            'email' => 'required|email|unique:users'
         ]);
-
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->password = bcrypt(request('password'));
-
+        
+        //$user = Auth::user();
+            $user = User::findOrFail($iduser);
+        $user->nom = $request->name;
+        $user->email = $request->email;
+        // $user->password = bcrypt($request('password'));
         $user->save();
 
         return back();
