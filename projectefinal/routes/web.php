@@ -31,3 +31,5 @@ Route::get('prova', function() {
     return view('prova');
 });
 
+Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'profileController@edit']);
+Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'profileController@update']);

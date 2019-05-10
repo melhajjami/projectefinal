@@ -95,6 +95,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
     </div>
 
 </div>
+<div id="yo"></div>
 
 <div id="contingut">
   @yield("contingut")
