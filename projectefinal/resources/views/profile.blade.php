@@ -16,20 +16,20 @@
         <div class="photo-container">
           <img src="{{$user->fotoperfil}}" alt="">
         </div>
-        <h3 class="title">{{$user->nom}}</h3>
-        <p class="category">{{$user->cognom}}</p>
+        <h3 class="title">{{$user->nickname}}</h3>
+        <p class="category">{{$user->nom}} {{$user->cognom}}</p>
         <div class="content">
           <div class="social-description">
             <h2>26</h2>
-            <p>Comments</p>
+            <p>Jocs</p>
           </div>
           <div class="social-description">
             <h2>26</h2>
-            <p>Comments</p>
+            <p>Amics</p>
           </div>
           <div class="social-description">
             <h2>48</h2>
-            <p>Bookmarks</p>
+            <p>Temps jugat</p>
           </div>
         </div>
       </div>
@@ -37,13 +37,7 @@
     <div class="section">
       <div class="container">
         <div class="button-container">
-          <a href="#button" class="btn btn-primary btn-round btn-lg">Follow</a>
-          <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Twitter">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="#button" class="btn btn-default btn-round btn-lg btn-icon" rel="tooltip" title="Follow me on Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
+          <a href="#button" class="btn btn-primary btn-round btn-lg">Enviar solucitud d'amistat</a>
         </div>
         <h3 class="title">About me</h3>
         <h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>

@@ -35,4 +35,7 @@ class profileController extends Controller
 
         return back();
     }
+    public function carregarperfil(){
+        
+    }
 }
