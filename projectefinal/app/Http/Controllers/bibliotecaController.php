@@ -28,7 +28,8 @@ class bibliotecaController extends Controller
             'jocs.img',
             'jocs.descripcio',
             'jocs.preu',
-            'bibliotecas.tempsjugat'
+            'bibliotecas.tempsjugat',
+            'bibliotecas.puntuacio'
         )->join('jocs', 'jocs.id', '=', 'bibliotecas.id_joc')
         ->where('bibliotecas.id_usuari',$user->id)
         ->get();
@@ -68,15 +69,6 @@ class bibliotecaController extends Controller
     {
         
     }
-
-    public function notificacions()
-    {
-        $user = Auth::user();
-        $pendingfriendships = friendship::where('user1_id', $user->id)->orwhere('user2_id', $user->id)->where('actiu',0)->get();
-
-        return view('biblioteca')->with('notificacions',$pendingfriendships);
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

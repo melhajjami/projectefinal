@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\friendship;
 use App\User;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class friendshipController extends Controller
 {
@@ -70,13 +71,13 @@ class friendshipController extends Controller
         
     }
 
-    public function invitacions($id)
+    public static function invitacions()
     {
+        $user = Auth::user();
         //get relacions de amistat que encara no estan confirmades (actiu 0)
-        $friendship = friendship::where('user1_id', $id)->orwhere('user2_id', $id)->where('actiu',0)->get();
+        $friendship = friendship::where('actiu',0)->where('user2_id', $user->id)->with('user')->get();
 
         return $friendship;
-        
     }
 
     /**

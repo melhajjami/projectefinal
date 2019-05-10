@@ -29,11 +29,11 @@
 </head>
 
 <body>
-<!-- @if(isset($jocs))
-    {{var_dump($jocs)}}
-@endif -->
-<!-- {{session(['key' => 'asdasd'])}}
-{{$value = session()->get('key')}} -->
+@php
+use App\Http\Controllers\friendshipController;
+session(['pendingfriendships' => friendshipController::invitacions()]);
+@endphp
+
 <div class="nav-side-menu">
 
     <!-- TITOL -->
@@ -55,12 +55,12 @@
 
         <!-- Submenu Tenda -->
 
-        <li data-toggle="collapse" data-target="#products" data-parent="menu-content" class="collapsed active">
+        <li data-toggle="collapse" data-target="#products" data-parent="menu-content" class="collapsed">
           <a href="#"><i class="fa fa-shopping-cart fa-lg"></i> Tenda <span class="arrow"></span></a>
         </li>
 
         <ul class="sub-menu collapse" id="products">
-            <li class="active"><a href="#">Novetats</a></li>
+            <li><a href="#">Novetats</a></li>
             <li><a href="#">Accio</a></li>
             <li><a href="#">Aventura</a></li>
             <li><a href="#">Cotxes</a></li>
@@ -74,24 +74,24 @@
         </li>
 
         <ul class="sub-menu collapse" id="usuari">
-            <li class="active"><a href="#">Editar perfil</a></li>
+            <li><a href="#">Editar perfil</a></li>
             <li><a href="#">Canviar foto</a></li>
         </ul>
 
-        <!--  Submenu Configuracio -->
+        <!--  Submenu Invitacions d'amistat -->
 
         <li data-toggle="collapse" data-target="#config" data-parent="menu-content" class="collapsed">
-          <a href="#"><i class="fa fa-cogs fa-lg"></i> Configuracio <span class="arrow"></span></a>
+          <a href="#"><i class="fa fa-cogs fa-lg"></i> Invitacions d'amistat <span class="arrow"></span></a>
         </li>
 
         <ul class="sub-menu collapse" id="config">
-            <li class="active"><a href="#">Comprar shit</a></li>
-            <li><a href="#">Tencar sessió</a></li>
+          @foreach(session()->get('pendingfriendships') as $usuari)
+            <li><a href="#">{{$usuari->user->nom}}</a></li>
+            @endforeach
         </ul>
 
       </ul>
       
-
     </div>
 
 </div>
