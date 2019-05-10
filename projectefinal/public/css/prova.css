@@ -127,6 +127,9 @@ html, body{
     transition: all 1s ease;
   }
   @media (max-width: 767px) {
+    #yo{
+      display:none;
+    }
     body{
       flex-direction: column;
       
