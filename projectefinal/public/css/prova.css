@@ -3,6 +3,16 @@ html, body{
   background-color:#23282e;
 }
 
+#yo{
+  overflow: auto;
+  background-color: #2e353d;
+  position: sticky;
+  width: 3px;
+  height: 100vh;
+  background-color: #d19b3d;
+  position: sticky;
+  top: 0;
+}
 .nav-side-menu {
       
     overflow: auto;
