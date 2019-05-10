@@ -14,10 +14,10 @@
       </div>
       <div class="container">
         <div class="photo-container">
-          <img src="https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/img/ryan.jpg" alt="">
+          <img src="{{$user->fotoperfil}}" alt="">
         </div>
-        <h3 class="title">Ryan Scheasdadinder</h3>
-        <p class="category">Photographer</p>
+        <h3 class="title">{{$user->nom}}</h3>
+        <p class="category">{{$user->cognom}}</p>
         <div class="content">
           <div class="social-description">
             <h2>26</h2>
