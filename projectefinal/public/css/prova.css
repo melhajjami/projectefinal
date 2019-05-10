@@ -1,5 +1,6 @@
 html, body{
   display: flex;
+  width: 100vw;
   background-color:#23282e;
 }
 
@@ -10,9 +11,16 @@ html, body{
   width: 3px;
   height: 100vh;
   background-color: #d19b3d;
+  /* background-image: linear-gradient(black, #d19b3d, black); */
+  background-image: linear-gradient(#d19b3d, black);
   position: sticky;
   top: 0;
 }
+
+#contingut{
+  flex-grow: 1;
+}
+
 .nav-side-menu {
     overflow: auto;
     font-family: verdana;
