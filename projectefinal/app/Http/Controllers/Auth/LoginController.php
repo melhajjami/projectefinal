@@ -6,6 +6,7 @@ use \Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Controllers\friendshipController;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -42,5 +43,6 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         session(['pendingfriendships' => friendshipController::invitacions()]);
+        session(['usuarilogin' => Auth::user()]);
     }
 }

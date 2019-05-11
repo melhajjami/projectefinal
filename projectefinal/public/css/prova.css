@@ -1,6 +1,5 @@
 html, body{
   display: flex;
-  width: 100vw;
   background-color:#23282e;
 }
 
@@ -11,16 +10,9 @@ html, body{
   width: 3px;
   height: 100vh;
   background-color: #d19b3d;
-  /* background-image: linear-gradient(black, #d19b3d, black); */
-  background-image: linear-gradient(#d19b3d, black);
   position: sticky;
   top: 0;
 }
-
-#contingut{
-  flex-grow: 1;
-}
-
 .nav-side-menu {
     overflow: auto;
     font-family: verdana;
@@ -126,9 +118,9 @@ html, body{
     padding-right: 20px;
   }
   .nav-side-menu li:hover {
-    border-left: 3px solid #d19b3d;
-    background-color: #4f5b69;
-    -webkit-transition: all 1s ease;
+      border-left: 3px solid #d19b3d;
+      background-color: #4f5b69;
+      -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;

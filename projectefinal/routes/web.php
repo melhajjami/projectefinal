@@ -21,7 +21,7 @@ Route::get('tenda', 'jocsController@index')->name('jocs.index');
 
 Route::get('tenda/{joc}', 'jocsController@show')->name('jocs.show');
 
-Route::get('perfil', 'userController@index')->name('user.index');
+Route::get('perfil/{id}', 'profileController@show')->name('perfil.show');
 
 Auth::routes();
 

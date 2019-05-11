@@ -15,8 +15,8 @@ class userController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('profile')->with('user',$user);
+        // $user = Auth::user();
+        // return view('profile')->with('user',$user);
     }
 
     /**
@@ -48,7 +48,8 @@ class userController extends Controller
      */
     public function show($id)
     {
-        return User::where('id', $id)->get();
+        $user = User::where('id', $id)->get();
+        return view('profile')->with('user',$user);
     }
 
     /**

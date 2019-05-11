@@ -54,28 +54,12 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
         </li>
 
         <!-- Submenu Tenda -->
-
         <li data-toggle="collapse" data-target="#products" data-parent="menu-content" class="collapsed">
           <a href="#"><i class="fa fa-shopping-cart fa-lg"></i> Tenda <span class="arrow"></span></a>
         </li>
 
         <ul class="sub-menu collapse" id="products">
-            <li><a href="#">Novetats</a></li>
-            <li><a href="#">Accio</a></li>
-            <li><a href="#">Aventura</a></li>
-            <li><a href="#">Cotxes</a></li>
-            <li><a href="#">Terror</a></li>
-        </ul>
-
-        <!-- Submenu Perfil -->
-
-        <li data-toggle="collapse" data-target="#usuari" data-parent="menu-content" class="collapsed">
-          <a href="#"><i class="fa fa-user fa-lg"></i> Perfil <span class="arrow"></span></a>
-        </li>
-
-        <ul class="sub-menu collapse" id="usuari">
-            <li><a href="#">Editar perfil</a></li>
-            <li><a href="#">Canviar foto</a></li>
+            <li><a href="{{route('jocs.index')}}">Jocs</a></li>
         </ul>
 
         <!--  Submenu Invitacions d'amistat -->
@@ -86,8 +70,19 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
 
         <ul class="sub-menu collapse" id="config">
           @foreach(session()->get('pendingfriendships') as $usuari)
-            <li><a href="#">{{$usuari->user->nom}}</a></li>
+            <li><a href="{{route('perfil.show',$usuari->id)}}">{{$usuari->user->nom}}</a></li>
             @endforeach
+        </ul>
+
+        <!-- Submenu Perfil -->
+
+        <li data-toggle="collapse" data-target="#usuari" data-parent="menu-content" class="collapsed">
+          <a href="#"><i class="fa fa-user fa-lg"></i> {{session()->get('usuarilogin')->nickname}} <span class="arrow"></span></a>
+        </li>
+
+        <ul class="sub-menu collapse" id="usuari">
+            <li><a href="{{route('perfil.show',session()->get('usuarilogin')->id)}}">Perfil</a></li>
+            <li><a href="#">Editar perfil</a></li>
         </ul>
 
       </ul>

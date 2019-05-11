@@ -36,7 +36,8 @@ class profileController extends Controller
 
         return back();
     }
-    public function carregarperfil(){
-        
+    public function show($id){
+        $user = User::where('id', $id)->firstOrFail();
+        return view('profile')->with('user',$user);
     }
 }
