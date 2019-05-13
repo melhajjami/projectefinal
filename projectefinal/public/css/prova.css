@@ -14,6 +14,11 @@ html, body{
   position: sticky;
   top: 0;
 }
+
+#contingut{
+  width: 100vw;
+  flex-grow: 1;
+}
 .nav-side-menu {
     overflow: auto;
     font-family: verdana;

@@ -126,11 +126,13 @@
 
 @section('contingut')
 
+<div class="container">
 <ul class="cards">
 
   @foreach($jocs as $joc)
 
   <li class="card">
+    
     <div class="card__inner" style="background-image: url({{$joc->img}})">
       <h2>{{$joc->nom}}</h2>
       <div class="card__buttons">
@@ -138,6 +140,7 @@
         <a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
       </div>
     </div>
+
     <h3 class="card__tagline">{{$joc->descripcio}}</h3>
     <ul class="card__icons">
       <li><i class="fa fa-coffee">Coffee</i></li>
@@ -152,5 +155,6 @@
   @endforeach
   
 </ul>
+</div>
 
 @endsection
