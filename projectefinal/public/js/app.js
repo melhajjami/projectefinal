@@ -49273,11 +49273,26 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
+ * or customizze the JavaScript scaffolding to fit your unique needs.
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    message: 'asdasdasdasdd'
+  },
+  methods: {
+    enviarsolicitud: function enviarsolicitud(id) {
+      var parametres = {
+        id: id
+      };
+      axios.post('localhost:8000/api/friendship', parametres).then(function (response) {
+        console.log("funciona");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),

@@ -29,6 +29,9 @@
 </head>
 
 <body>
+  <style>a{
+    display:block;
+  }</style>
 @php
 use App\Http\Controllers\friendshipController;
 session(['pendingfriendships' => friendshipController::invitacions()]);
@@ -50,7 +53,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
         <!-- Submenu Biblioteca -->
 
         <li>
-          <a href="#"> <i class="fa fa-list-alt fa-lg"></i> Biblioteca</a>
+          <a href="{{route('biblioteca.index')}}"> <i class="fa fa-list-alt fa-lg"></i> Biblioteca</a>
         </li>
 
         <!-- Submenu Tenda -->
@@ -58,7 +61,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
           <a href="#"><i class="fa fa-shopping-cart fa-lg"></i> Tenda <span class="arrow"></span></a>
         </li>
 
-        <ul class="sub-menu collapse" id="products">
+        <ul class=" collapse" id="products">
             <li><a href="{{route('jocs.index')}}">Jocs</a></li>
         </ul>
 
@@ -68,9 +71,9 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
           <a href="#"><i class="fa fa-cogs fa-lg"></i> Invitacions d'amistat <span class="arrow"></span></a>
         </li>
 
-        <ul class="sub-menu collapse" id="config">
+        <ul class=" collapse" id="config">
           @foreach(session()->get('pendingfriendships') as $usuari)
-            <li><a href="{{route('perfil.show',$usuari->id)}}">{{$usuari->user->nom}}</a></li>
+            <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->id))}}">{{$usuari->user->nom}}</a></li>
             @endforeach
         </ul>
 
@@ -80,8 +83,8 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
           <a href="#"><i class="fa fa-user fa-lg"></i> {{session()->get('usuarilogin')->nickname}} <span class="arrow"></span></a>
         </li>
 
-        <ul class="sub-menu collapse" id="usuari">
-            <li><a href="{{route('perfil.show',session()->get('usuarilogin')->id)}}">Perfil</a></li>
+        <ul class=" collapse" id="usuari">
+            <li><a href="{{route('perfil.show', Crypt::encrypt(session()->get('usuarilogin')->id))}}">Perfil</a></li>
             <li><a href="#">Editar perfil</a></li>
         </ul>
 
@@ -104,25 +107,6 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-    
-  var app = new Vue({
-  el: '#app',
-  data: {
-    message: 'Hello Vue!'
-    },
-    created(){
-      
-      axios.get('/login')
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);})
-    }
-  })
-    </script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

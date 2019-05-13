@@ -38,7 +38,12 @@ class friendshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //USUARI QUE ENVIA LA SOLICITUD
+        $user = Auth::user();
+        $friendship = new Friendship;
+        $friendship->user1_id = $user->id;
+        $friendship->user2_id = $request->id;
+        $friendship->save();
     }
 
     /**

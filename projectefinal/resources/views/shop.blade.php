@@ -42,13 +42,13 @@
                         <img class="pic-2" src="{{$joc->img}}">
                     </a>
                     <ul class="social">
-                        <li><a href="{{route('jocs.show',$joc->id)}}" data-tip="Veure"><i class="fa fa-search"></i></a></li>
+                        <li><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}" data-tip="Veure"><i class="fa fa-search"></i></a></li>
                         <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
                     </ul>
                 </div>
                
                 <div class="product-content">
-                    <h3 class="title"><a href="{{route('jocs.show',$joc->id)}}">{{$joc->nom}}</a></h3>
+                    <h3 class="title"><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">{{$joc->nom}}</a></h3>
                     <div class="price">{{$joc->preu}}€</div>
                     
                 </div>

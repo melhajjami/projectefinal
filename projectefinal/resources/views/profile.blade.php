@@ -4,18 +4,21 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
   
 
-
+<style>
+#image1{
+    background-image: url({{$user->fotoperfil}});
+}
+</style>
 <body class="profile-page sidebar-collapse">
-
     @section("contingut")
-  <div class="wrapper">
-    <div class="page-header clear-filter" filter-color="orange">
-      <div class="page-header-image" data-parallax="true" style="background-image:url('https://images.unsplash.com/photo-1476984251899-8d7fdfc5c92c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3700&q=80');">
+  <div class="wrapper" id="app">
+    <div class="page-header">
+    <div id="overlay" class="page-header-image">
+      </div>
+      <div id="banner" class="page-header-image" data-parallax="true" style="background-image:url('{{$user->background}})');">
       </div>
       <div class="container">
-        <div class="photo-container">
-          <img src="{{$user->fotoperfil}}" alt="">
-        </div>
+        <div id="image1" class="cropcircle photo-container"></div>
         <h3 class="title">{{$user->nickname}}</h3>
         <p class="category">{{$user->nom}} {{$user->cognom}}</p>
         <div class="content">
@@ -34,11 +37,13 @@
         </div>
       </div>
     </div>
-    <div class="section">
+    <div id="boto" class="section">
       <div class="container">
+          @if($user->id != session()->get('usuarilogin')->id)
         <div class="button-container">
-          <a href="#button" class="btn btn-primary btn-round btn-lg">Enviar solucitud d'amistat</a>
+          <a href="#button" class="btn btn-primary btn-round btn-lg"  v-on:click="enviarsolicitud({{$user->id}})">Enviar solucitud d'amistat</a>
         </div>
+        @endif
         <h3 class="title">About me</h3>
         <h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
         <div class="row">
@@ -142,6 +147,6 @@
   
   <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-   
+
 @endsection
 </body>

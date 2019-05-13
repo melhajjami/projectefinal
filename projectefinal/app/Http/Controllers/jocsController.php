@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\joc;
 use App\User;
+use \Crypt;
 
 class jocsController extends Controller
 {
@@ -16,6 +17,7 @@ class jocsController extends Controller
      */
     public function index()
     {
+        //RETORNAR TOTS ELS JOCS AMB LA VISTA DE LA TENDA
         $jocs = joc::all();
         return view('shop')->with('jocs',$jocs);
     }
@@ -49,6 +51,8 @@ class jocsController extends Controller
      */
     public function show($id)
     {
+        //DONADA ID JOC, RETORNAR VISTA AMB EL JOC PER COMPRAR
+        $id = Crypt::decrypt($id);
         $joc = joc::where('id', $id)->firstOrFail();
 
         return view('product')->with('joc',$joc);

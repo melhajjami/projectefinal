@@ -3,12 +3,6 @@
     #contingut{
         color: white;
     }
-    img{
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-    
-    }
 </style>
 <!-- pending friendships == session()->get('pendingfriendships'); //  -->
 @section('contingut')
@@ -17,7 +11,7 @@
 @foreach($biblioteca as $joc)
           <div class="d-flex justify-content-around">
                     <div class="col">
-                        <img class="media-object img-rounded img-responsive"  src="{{$joc->img}}" alt="placehold.it/350x250" >
+                        <img src="{{$joc->img}}" alt="placehold.it/350x250" >
                     </div>
                     <div class="col">
                         <h4 class="list-group-item-heading"> {{$joc->nom}} </h4>

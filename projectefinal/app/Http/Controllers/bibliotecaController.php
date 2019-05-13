@@ -19,7 +19,7 @@ class bibliotecaController extends Controller
      */
     public function index()
     {
-        //DONADA ID DE USUARI, RETORNAR ELS JOCS QUE TÉ
+        //DONADA ID DE USUARI, RETORNAR ELS JOCS QUE TÉ + TEMPS JUGAT I PUNTUACIO QUE ESTAN EN LA TAULA BIBLIOTECA
         $user = Auth::user();
         // $biblioteca = biblioteca::where('id_usuari', $user->id)->get();
         $biblioteca = DB::table('bibliotecas')->select(

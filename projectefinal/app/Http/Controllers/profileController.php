@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use \Illuminate\Http\Request;
+use \Crypt;
 
 class profileController extends Controller
 {
@@ -37,6 +38,8 @@ class profileController extends Controller
         return back();
     }
     public function show($id){
+        //DONADA ID (encriptada per que usuari no pugui modificar url) D'USUARI RETORNA VISTA DE PERFIL AMB INFO DE L'USUARI
+        $id = Crypt::decrypt($id);
         $user = User::where('id', $id)->firstOrFail();
         return view('profile')->with('user',$user);
     }

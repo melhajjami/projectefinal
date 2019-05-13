@@ -1,6 +1,6 @@
 html, body{
   display: flex;
-  background-color:#23282e;
+  background-color:#1A1A1A;
 }
 
 #yo{
@@ -10,6 +10,7 @@ html, body{
   width: 3px;
   height: 100vh;
   background-color: #d19b3d;
+  background-image: linear-gradient(#d19b3d,#1A1A1A);
   position: sticky;
   top: 0;
 }
@@ -18,7 +19,7 @@ html, body{
     font-family: verdana;
     font-size: 12px;
     font-weight: 200;
-    background-color: #2e353d;
+    background-color: #1A1A1A;
     position: sticky;
     top: 0;
     width: 300px;
@@ -29,7 +30,7 @@ html, body{
       padding: 10px;
   }
   .nav-side-menu .brand {
-    background-color: #23282e;
+    background-color: #1A1A1A;
     line-height: 50px;
     display: block;
     text-align: center;
@@ -87,7 +88,7 @@ html, body{
     background-color: #181c20;
     border: none;
     line-height: 28px;
-    border-bottom: 1px solid #23282e;
+    border-bottom: 1px solid #1A1A1A;
     margin-left: 0px;
   }
   .nav-side-menu ul .sub-menu li:hover,
@@ -105,8 +106,8 @@ html, body{
   }
   .nav-side-menu li {
     padding-left: 0px;
-    border-left: 3px solid #2e353d;
-    border-bottom: 1px solid #23282e;
+    border-left: 3px solid #1A1A1A;
+    border-bottom: 1px solid #1A1A1A;
   }
   .nav-side-menu li a {
     text-decoration: none;
@@ -119,7 +120,7 @@ html, body{
   }
   .nav-side-menu li:hover {
       border-left: 3px solid #d19b3d;
-      background-color: #4f5b69;
+      background-color: #292929;
       -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;

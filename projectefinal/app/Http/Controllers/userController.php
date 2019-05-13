@@ -48,8 +48,8 @@ class userController extends Controller
      */
     public function show($id)
     {
-        $user = User::where('id', $id)->get();
-        return view('profile')->with('user',$user);
+        // $user = User::where('id', $id)->get();
+        // return view('profile')->with('user',$user);
     }
 
     /**

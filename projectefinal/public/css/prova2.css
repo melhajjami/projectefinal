@@ -12,7 +12,29 @@
     background-color: #888888;
     color: #FFFFFF;
 }
+.cropcircle{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    background: #eee no-repeat center;
+    background-size: cover;
+}
 
+
+#banner{
+    z-index:0;
+    background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#overlay{
+    background-color:rgba(0,0,0,0.5);
+    z-index:1;
+}
+#boto{
+   z-index:2;
+}
 .btn:hover,
 .btn:focus,
 .btn:not(:disabled):not(.disabled):active,
