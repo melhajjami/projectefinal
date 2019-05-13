@@ -40,7 +40,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
 <div class="nav-side-menu">
 
     <!-- TITOL -->
-    <div class="brand"><h3>Steam 2</h3></div>
+    <div class="brand"><h3>hehehe</h3></div>
 
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   
