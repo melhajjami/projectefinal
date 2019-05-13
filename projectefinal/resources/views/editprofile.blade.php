@@ -26,4 +26,4 @@
     <button type="submit">Send</button>
 </form>
 
-@endesection
+@endsection

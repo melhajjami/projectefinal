@@ -1,6 +1,4 @@
 @extends('layouts.plantilla')
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
 
@@ -21,7 +19,7 @@
   <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet" />
 
 </head>
-
+@section('contingut')
 <body id="page-top" class="sidebar-toggled">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -96,4 +94,4 @@ h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
 
 
 </style>
-</html>
+@endsection

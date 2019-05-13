@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use \Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use \Crypt;
 
 class profileController extends Controller
@@ -25,13 +26,13 @@ class profileController extends Controller
     { 
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users'
+            'email' => 'required|email|unique:users,email,'.$iduser
         ]);
         
-        //$user = Auth::user();
+            // $user = Auth::user();
             $user = User::findOrFail($iduser);
-        $user->nom = $request->name;
-        $user->email = $request->email;
+            $user->nom = $request->name;
+            $user->email = $request->email;
         // $user->password = bcrypt($request('password'));
         $user->save();
 
