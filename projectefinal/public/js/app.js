@@ -49286,7 +49286,7 @@ var app = new Vue({
       var parametres = {
         id: id
       };
-      axios.post('localhost:8000/api/friendship', parametres).then(function (response) {
+      axios.post('http://localhost:8000/api/friendship', parametres).then(function (response) {
         console.log("funciona");
       })["catch"](function (error) {
         console.log(error);

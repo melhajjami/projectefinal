@@ -1,99 +1,156 @@
 @extends('layouts.plantilla')
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>SB </title>
-
-  <!-- Custom fonts for this template-->
-  <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
-  <link href="{{asset('css/all.min.css')}}" rel="stylesheet" />
-
-  <!-- Custom styles for this template-->
-  <!-- <link href="css/sb-admin.css" rel="stylesheet"> -->
-  <link href="{{asset('css/sb-admin.css')}}" rel="stylesheet" />
-
-</head>
-
-<body id="page-top" class="sidebar-toggled">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-<div class="container">
-    <h3 class="h3">TENDA</h3>
-    <div class="row">
-        @foreach($jocs as $joc)
-        <div class="col-md-3 col-sm-6">
-            <div class="product-grid">
-                <div class="product-image">
-                    <a href="#">
-                        <img class="pic-1" src="{{$joc->img}}">
-                        <img class="pic-2" src="{{$joc->img}}">
-                    </a>
-                    <ul class="social">
-                        <li><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}" data-tip="Veure"><i class="fa fa-search"></i></a></li>
-                        <li><a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-               
-                <div class="product-content">
-                    <h3 class="title"><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">{{$joc->nom}}</a></h3>
-                    <div class="price">{{$joc->preu}}€</div>
-                    
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div>
-
-</body>
 <style>
-h3.h3{text-align:center;margin:1em;text-transform:capitalize;font-size:1.7em;}
-
-/********************* shopping Demo-1 **********************/
-.product-grid{font-family:Raleway,sans-serif;text-align:center;padding:0 0 72px;border:1px solid rgba(0,0,0,.1);overflow:hidden;position:relative;z-index:1}
-.product-grid .product-image{position:relative;transition:all .3s ease 0s}
-.product-grid .product-image a{display:block}
-.product-grid .product-image img{width:100%;height:auto}
-.product-grid .pic-1{opacity:1;transition:all .3s ease-out 0s}
-.product-grid:hover .pic-1{opacity:1}
-.product-grid .pic-2{opacity:0;position:absolute;top:0;left:0;transition:all .3s ease-out 0s}
-.product-grid:hover .pic-2{opacity:1}
-.product-grid .social{width:150px;padding:0;margin:0;list-style:none;opacity:0;transform:translateY(-50%) translateX(-50%);position:absolute;top:60%;left:50%;z-index:1;transition:all .3s ease 0s}
-.product-grid:hover .social{opacity:1;top:50%}
-.product-grid .social li{display:inline-block}
-.product-grid .social li a{color:#fff;background-color:#333;font-size:16px;line-height:40px;text-align:center;height:40px;width:40px;margin:0 2px;display:block;position:relative;transition:all .3s ease-in-out}
-.product-grid .social li a:hover{color:#fff;background-color:#ef5777}
-.product-grid .social li a:after,.product-grid .social li a:before{content:attr(data-tip);color:#fff;background-color:#000;font-size:12px;letter-spacing:1px;line-height:20px;padding:1px 5px;white-space:nowrap;opacity:0;transform:translateX(-50%);position:absolute;left:50%;top:-30px}
-.product-grid .social li a:after{content:'';height:15px;width:15px;border-radius:0;transform:translateX(-50%) rotate(45deg);top:-20px;z-index:-1}
-.product-grid .social li a:hover:after,.product-grid .social li a:hover:before{opacity:1}
-.product-grid .product-discount-label,.product-grid .product-new-label{color:#fff;background-color:#ef5777;font-size:12px;text-transform:uppercase;padding:2px 7px;display:block;position:absolute;top:10px;left:0}
-.product-grid .product-discount-label{background-color:#333;left:auto;right:0}
-.product-grid .rating{color:#FFD200;font-size:12px;padding:12px 0 0;margin:0;list-style:none;position:relative;z-index:-1}
-.product-grid .rating li.disable{color:rgba(0,0,0,.2)}
-.product-grid .product-content{background-color:#fff;text-align:center;padding:12px 0;margin:0 auto;position:absolute;left:0;right:0;bottom:-27px;z-index:1;transition:all .3s}
-.product-grid:hover .product-content{bottom:0}
-.product-grid .title{font-size:13px;font-weight:400;letter-spacing:.5px;text-transform:capitalize;margin:0 0 10px;transition:all .3s ease 0s}
-.product-grid .title a{color:#828282}
-.product-grid .title a:hover,.product-grid:hover .title a{color:#ef5777}
-.product-grid .price{color:#333;font-size:17px;font-family:Montserrat,sans-serif;font-weight:700;letter-spacing:.6px;margin-bottom:8px;text-align:center;transition:all .3s}
-.product-grid .price span{color:#999;font-size:13px;font-weight:400;text-decoration:line-through;margin-left:3px;display:inline-block}
-.product-grid .add-to-cart{color:#000;font-size:13px;font-weight:600}
-@media only screen and (max-width:990px){.product-grid{margin-bottom:30px}
+* {
+  box-sizing: border-box;
 }
 
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+@media (max-width: 550px) {
+  .cards {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    }
+}
 
+.card {
+  position: relative;
+  width: 300px;
+  margin: 1%;
+  background: whiteSmoke;
+}
+@media (max-width: 815px) {
+  .card {
+    width: 300px;
+  }
+}
+@media (max-width: 550px) {
+  .card {
+    width: 100%;
+  }
+}
+.card__inner{
+  position: relative;
+  background-size: cover;
+  overflow: hidden;
+}
+.card__inner h2 {
+  color: white;
+  margin: 0;
+  padding: 30% 0;
+  text-shadow: 1px 1px 3px #000;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+.card__inner h2 small {
+  font-style: italic;
+  display: inherit;
+}
+.card__buttons {
+  position: absolute;
+  width: 100%;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  transition: transform .5s ease, -webkit-transform .5s ease;
+}
+.card__buttons a {
+  position: relative;
+  float: left;
+  width: 50%;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.card__buttons a:first-child {
+  background: #fff;
+  border-right: 1px solid #ccc;
+}
+.card__buttons a:last-child {
+  background: #ffde00;
+}
+.card__buttons a:hover {
+  color: #ffde00;
+  background: #000;
+}
+.card:hover .card__buttons {
+  -webkit-transform: translateY(-38px);
+          transform: translateY(-35px);
+}
+.card__tagline {
+  font-size: 1rem;
+  font-weight: 100;
+}
+.card__icons {
+  margin: 0 0 50px;
+  padding: 0;
+  list-style: none;
+}
+.card__icons li {
+  display: inline-block;
+  padding: 0 10px 10px;
+}
+.card__icons .fa {
+  font-size: .8rem;
+}
+.card__icons .fa:before {
+  font-size: 1.2rem;
+  display: block;
+  padding-bottom: 5px;
+}
+.card p {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+}
 </style>
-</html>
+
+@section('contingut')
+
+<ul class="cards">
+
+  @foreach($jocs as $joc)
+
+  <li class="card">
+    <div class="card__inner" style="background-image: url({{$joc->img}})">
+      <h2>{{$joc->nom}}</h2>
+      <div class="card__buttons">
+        <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}" data-tip="Veure"><i class="fa fa-search"></i></a>
+        <a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+      </div>
+    </div>
+    <h3 class="card__tagline">{{$joc->descripcio}}</h3>
+    <ul class="card__icons">
+      <li><i class="fa fa-coffee">Coffee</i></li>
+      <li><i class="fa fa-bolt">Bolt</i></li>
+      <li><i class="fa fa-bomb">Bomb</i></li>
+      <li><i class="fa fa-cutlery">Cutlery</i></li>
+      <li><i class="fa fa-bolt">Bolt</i></li>
+    </ul>
+    <p>{{$joc->preu}}€</p>
+  </li>
+
+  @endforeach
+  
+</ul>
+
+@endsection
