@@ -37,12 +37,20 @@
         </div>
       </div>
     </div>
-    <div id="boto" class="section">
+    <div id="botozindex" class="section">
       <div class="container">
           @if($user->id != session()->get('usuarilogin')->id)
-        <div class="button-container">
-          <a href="#button" class="btn btn-primary btn-round btn-lg"  v-on:click="enviarsolicitud({{$user->id}})">Enviar solucitud d'amistat</a>
-        </div>
+            <div class="button-container">
+                @if($friendship != null)
+                    @if($friendship->actiu == 0)
+                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg disabled" disabled>Solicitud Enviada</a>
+                    @elseif($friendship->actiu == 1)
+                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Deixar de ser amics</a>
+                    @endif
+                @elseif($friendship == null)
+                    <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg"  v-on:click="enviarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Enviar solucitud d'amistat</a>
+                </div>
+                @endif
         @endif
         <h3 class="title">About me</h3>
         <h5 class="description">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</h5>
@@ -117,32 +125,7 @@
         </div>
       </div>
     </div>
-    <footer class="footer footer-default">
-      <div class="container">
-        <nav>
-          <ul>
-            <li>
-              <a href="https://www.creative-tim.com">
-                Creative Tim
-              </a>
-            </li>
-            <li>
-              <a href="http://presentation.creative-tim.com">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="http://blog.creative-tim.com">
-                Blog
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="copyright" id="copyright">
-            <p>Made with <a href="https://demos.creative-tim.com/now-ui-kit/index.html" target="_blank">Now UI Kit</a> by Creative Tim</p>
-        </div>
-      </div>
-    </footer>
+    
   </div>
   
   <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>

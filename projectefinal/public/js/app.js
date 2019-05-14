@@ -49282,14 +49282,15 @@ var app = new Vue({
     message: 'asdasdasdasdd'
   },
   methods: {
-    enviarsolicitud: function enviarsolicitud(id) {
+    enviarsolicitud: function enviarsolicitud(receptor, sender) {
       var parametres = {
-        id: id
+        sender: sender,
+        receptor: receptor
       };
       axios.post('http://localhost:8000/api/friendship', parametres).then(function (response) {
-        console.log("funciona");
+        console.log(response);
       })["catch"](function (error) {
-        console.log(error);
+        console.log(error.response);
       });
     }
   }

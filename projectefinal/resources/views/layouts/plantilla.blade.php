@@ -73,7 +73,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
 
         <ul class=" collapse" id="config">
           @foreach(session()->get('pendingfriendships') as $usuari)
-            <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->id))}}">{{$usuari->user->nom}}</a></li>
+            <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">{{$usuari->user->nickname}}</a></li>
           @endforeach
         </ul>
 
