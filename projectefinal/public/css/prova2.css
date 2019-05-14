@@ -19,8 +19,9 @@
     background: #eee no-repeat center;
     background-size: cover;
 }
-
-
+a.disabled {
+    pointer-events: none;
+}
 #banner{
     z-index:0;
     background-attachment: fixed;
@@ -32,9 +33,15 @@
     background-color:rgba(0,0,0,0.5);
     z-index:1;
 }
-#boto{
+#botozindex{
    z-index:2;
+   background-color:#1A1A1A;
+   color:white;
 }
+#boto{
+    background-color:#d19b3d;
+}
+
 .btn:hover,
 .btn:focus,
 .btn:not(:disabled):not(.disabled):active,
