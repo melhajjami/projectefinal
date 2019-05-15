@@ -8,6 +8,7 @@
 #image1{
     background-image: url({{$user->fotoperfil}});
 }
+
 </style>
 <body class="profile-page sidebar-collapse">
     @section("contingut")
@@ -46,7 +47,8 @@
                         @if($friendship->user1_id == session()->get('usuarilogin')->id)
                         <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg disabled" disabled>Solicitud enviada</a>
                         @else
-                        "acceptar o cancerlar"
+                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Acceptar</a>
+                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Cancelar</a>
                         @endif
                     @elseif($friendship->actiu == 1)
                         <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Deixar de ser amics</a>
