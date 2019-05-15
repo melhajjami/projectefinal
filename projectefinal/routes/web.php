@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'bibliotecaController@index')->name('biblioteca.index')->middleware('auth');
 
 Route::get('biblioteca', 'bibliotecaController@index')->name('biblioteca.index');
 
@@ -35,3 +34,4 @@ Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'profileController@
 
 Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'profileController@update']);
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
