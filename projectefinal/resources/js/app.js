@@ -42,6 +42,8 @@ const app = new Vue({
                 }
                 axios.post('http://localhost:8000/api/friendship',parametres).then(function(response) {
                     console.log(response);
+                    document.getElementById("boto").classList.add('disabled');
+                    document.getElementById("boto").innerHTML='Solicitud enviada';
                 }).catch(function (error) {
                     console.log(error.response);
                 });

@@ -23,7 +23,7 @@
 
   <!-- CSS DEL SIDEBAR -->
   <link href="{{asset('css/prova.css')}}" rel="stylesheet" />
-  <link href="{{asset('css/prova2.css')}}" rel="stylesheet" />
+
 
   
 </head>
@@ -31,7 +31,27 @@
 <body>
   <style>a{
     display:block;
-  }</style>
+  }
+  #fotousuarilogin{
+    width: 25px;
+    height: 25px;
+    display:inline-block;
+    border-radius: 100%;
+    background: #eee no-repeat center;
+    background-size: cover;
+    margin-right:10x;
+    background-image: url({{session()->get('usuarilogin')->fotoperfil}});
+  }
+  #fotousuaris{
+    width: 25px;
+    height: 25px;
+    display:inline-block;
+    border-radius: 100%;
+    background: #eee no-repeat center;
+    background-size: cover;
+    margin-right:10px;
+  }
+  </style>
 @php
 use App\Http\Controllers\friendshipController;
 session(['pendingfriendships' => friendshipController::invitacions()]);
@@ -73,14 +93,14 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
 
         <ul class=" collapse" id="config">
           @foreach(session()->get('pendingfriendships') as $usuari)
-            <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">{{$usuari->user->nickname}}</a></li>
+            <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}"><div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}});"></div>{{$usuari->user->nickname}}</a></li>
           @endforeach
         </ul>
 
         <!-- Submenu Perfil -->
 
         <li data-toggle="collapse" data-target="#usuari" data-parent="menu-content" class="collapsed">
-          <a href="#"><i class="fa fa-user fa-lg"></i> {{session()->get('usuarilogin')->nickname}} <span class="arrow"></span></a>
+        <a href="#"><div id="fotousuarilogin" ></div> {{session()->get('usuarilogin')->nickname}} <span class="arrow"></span></a>
         </li>
 
         <ul class=" collapse" id="usuari">
@@ -91,6 +111,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
       </ul>
       
     </div>
+    <a href="{{ url('/logout') }}"> logout </a>
 
 </div>
 <div id="yo"></div>
