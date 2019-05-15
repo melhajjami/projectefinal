@@ -70,6 +70,18 @@ input:checked + .slider:before {
 
 @section("contingut")
 
+@if(count($errors)>0)
+
+    <ul>
+        @foreach($errors->all() as $error)
+
+            <div class="alert alert-danger col-sm-11">{{$error}}</div>
+
+        @endforeach
+    </ul>
+
+@endif
+
 <form method="post" action="{{route('users.update', $user->id)}}">
 
     {{ csrf_field() }}
@@ -80,14 +92,14 @@ input:checked + .slider:before {
     <div class="form-group">
         <label class="col-sm-2 control-label">Nom</label>
         <div class="col-sm-11">
-            <input type="text" class="form-control" value="{{ $user->nom }}">
+            <input type="text" name="name" class="form-control" value="{{ $user->nom }}">
         </div>
     </div>
     
     <div class="form-group">
         <label class="col-sm-2 control-label">Cognom</label>
         <div class="col-sm-11">
-            <input type="text" class="form-control" value="{{ $user->cognom }}">
+            <input type="text" name="surname" class="form-control" value="{{ $user->cognom }}">
         </div>
     </div>
 
@@ -97,42 +109,42 @@ input:checked + .slider:before {
             <div class="input-group-prepend">
                 <div class="input-group-text">@</div>
             </div>
-            <input type="text" class="form-control" id="nickname" placeholder="Nickname" value="{{ $user->nickname }}">
+            <input type="text" name="nickname" class="form-control" id="nickname" placeholder="Nickname" value="{{ $user->nickname }}">
         </div>
     </div>
 
     <div class="form-group">
-        <label class="col-sm-2 control-label">URL foto perfil</label>
+        <label class="col-sm-2 control-label">URL avatar</label>
         <div class="col-sm-11">
-            <input type="text" class="form-control" placeholder="http://exemple.com/foto.png" value="{{ $user->fotoperfil }}">
+            <input type="text" name="avatar" class="form-control" placeholder="http://exemple.com/foto.png" value="{{ $user->fotoperfil }}">
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">URL fons perfil</label>
         <div class="col-sm-11">
-            <input type="text" class="form-control" placeholder="http://exemple.com/foto.png" value="{{ $user->background }}">
+            <input type="text" name="background" class="form-control" placeholder="http://exemple.com/foto.png" value="{{ $user->background }}">
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">Contrasenya atual</label>
         <div class="col-sm-11">
-            <input type="password" class="form-control">
+            <input type="password" name="oldpassword" class="form-control">
         </div>
     </div>
     
     <div class="form-group">
         <label class="col-sm-2 control-label">Nova contrasenya</label>
         <div class="col-sm-11">
-            <input type="password" class="form-control" name="password" id="password2" onkeyup="checkPass();">
+            <input type="password" name="newpassword" class="form-control" name="password" id="password2" onkeyup="checkPass();">
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">Confirmar contrasenya</label>
         <div class="col-sm-11">
-            <input type="password" class="form-control" name="confirm" id="confirm2" onkeyup="checkPass();">
+            <input type="password" name="confirmpassword" class="form-control" name="confirm" id="confirm2" onkeyup="checkPass();">
             <span id="confirm-message2" class="confirm-message"></span>
         </div>
     </div>
