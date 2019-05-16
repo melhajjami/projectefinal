@@ -12,7 +12,7 @@
 </style>
 <body class="profile-page sidebar-collapse">
     @section("contingut")
-  <div class="wrapper" id="app">
+  <div class="wrapper" >
     <div class="page-header">
     <div id="overlay" class="page-header-image">
       </div>
@@ -31,9 +31,9 @@
             <h2>26</h2>
             <p>Amics</p>
           </div>
-          <div class="social-description">
+          <div class="social-description" id="app">
             <h2>48</h2>
-            <p>Temps jugat</p>
+            <p> @{{message}}</p>
           </div>
         </div>
       </div>
@@ -47,8 +47,8 @@
                         @if($friendship->user1_id == session()->get('usuarilogin')->id)
                         <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg disabled" disabled>Solicitud enviada</a>
                         @else
-                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Acceptar</a>
-                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Cancelar</a>
+                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="acceptarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Acceptar</a>
+                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="declinarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Cancelar</a>
                         @endif
                     @elseif($friendship->actiu == 1)
                         <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Deixar de ser amics</a>
