@@ -32,6 +32,7 @@ const app = new Vue({
     el: '#app',
     data: {
         message: 'asdasdasdasdd',
+        contador: 0,
         },
         
         methods: {
@@ -53,6 +54,37 @@ const app = new Vue({
             },
             declinarsolicitud(usuari,usuarilogin){
                 console.log(usuari,usuarilogin,"Esborrar la relacio de la base de dades");
+            },
+            secondsToTime(secs){
+                var hours = Math.floor(secs / (60 * 60));
+
+                var divisor_for_minutes = secs % (60 * 60);
+                var minutes = Math.floor(divisor_for_minutes / 60);
+
+                var divisor_for_seconds = divisor_for_minutes % 60;
+                var seconds = Math.ceil(divisor_for_seconds);
+
+                var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
+    
+                return string;
+            },
+            obrirjoc(idjoc) {
+                console.log("hola")
+                var url = "http://localhost:8000/public/jocs/" + idjoc + "/index.html"
+                var child = window.open(url);
+                // var child = window.open('http://google.com','','toolbar=0,status=0,width=626,height=436');
+                var timer = setInterval(checkChild, 1000);
+                
+                function checkChild() {
+                    if (child.closed) {
+                        alert("Good game nigger");   
+                        clearInterval(timer);
+                        document.getElementById("yo").innerHTML = secondsToTime(contador);;
+                    }
+                    else{
+                        contador = contador + 1;
+                    }
+                }
             }
         }
 });
