@@ -108,12 +108,12 @@ LoginController::usuarilogin();
         <ul class=" collapse" id="usuari">
             <li><a href="{{route('perfil.show', Crypt::encrypt(session()->get('usuarilogin')->id))}}">Perfil</a></li>
             <li><a href="{{route('users.edit', session()->get('usuarilogin')->id)}}">Editar perfil</a></li>
+            <li><a href="{{ url('/logout') }}"> logout </a></li>
         </ul>
 
       </ul>
       
     </div>
-    <a href="{{ url('/logout') }}"> logout </a>
 
 </div>
 <div id="yo"></div>
