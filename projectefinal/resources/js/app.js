@@ -86,7 +86,23 @@ const app = new Vue({
                     }
                 }
             }
-        }
+           
+    }
 });
 
-    
+const plantilla = new Vue({
+    el: '#plantilla',
+    data: {
+        message: 'asdasdasdasdd',
+    },
+
+    methods: {
+        acceptarsolicitud(usuari, usuarilogin) {
+            console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+        },
+        declinarsolicitud(usuari, usuarilogin) {
+            console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
+        }
+    }
+});
+

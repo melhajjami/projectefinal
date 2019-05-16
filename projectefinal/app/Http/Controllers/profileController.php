@@ -67,7 +67,8 @@ class profileController extends Controller
             $user->background = $request->background;
 
             $user->save();
-            return redirect('perfil/hola');
+            
+            return redirect()->route('perfil.show',['id'=>Crypt::encrypt($iduser)]);
          }
 
     }

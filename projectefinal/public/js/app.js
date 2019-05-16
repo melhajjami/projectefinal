@@ -49279,7 +49279,8 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'asdasdasdasdd'
+    message: 'asdasdasdasdd',
+    contador: 0
   },
   methods: {
     enviarsolicitud: function enviarsolicitud(receptor, sender) {
@@ -49295,6 +49296,47 @@ var app = new Vue({
         console.log(error.response);
       });
     },
+    acceptarsolicitud: function acceptarsolicitud(usuari, usuarilogin) {
+      console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+    },
+    declinarsolicitud: function declinarsolicitud(usuari, usuarilogin) {
+      console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
+    },
+    secondsToTime: function secondsToTime(secs) {
+      var hours = Math.floor(secs / (60 * 60));
+      var divisor_for_minutes = secs % (60 * 60);
+      var minutes = Math.floor(divisor_for_minutes / 60);
+      var divisor_for_seconds = divisor_for_minutes % 60;
+      var seconds = Math.ceil(divisor_for_seconds);
+      var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
+      return string;
+    },
+    obrirjoc: function obrirjoc(idjoc) {
+      console.log("hola");
+      var url = "http://localhost:8000/public/jocs/" + idjoc + "/index.html";
+      var child = window.open(url); // var child = window.open('http://google.com','','toolbar=0,status=0,width=626,height=436');
+
+      var timer = setInterval(checkChild, 1000);
+
+      function checkChild() {
+        if (child.closed) {
+          alert("Good game nigger");
+          clearInterval(timer);
+          document.getElementById("you").innerHTML = secondsToTime(contador);
+          ;
+        } else {
+          contador = contador + 1;
+        }
+      }
+    }
+  }
+});
+var plantilla = new Vue({
+  el: '#plantilla',
+  data: {
+    message: 'asdasdasdasdd'
+  },
+  methods: {
     acceptarsolicitud: function acceptarsolicitud(usuari, usuarilogin) {
       console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
     },

@@ -33,7 +33,7 @@
             <h2>26</h2>
             <p>Amics</p>
           </div>
-          <div class="social-description" id="app">
+          <div class="social-description" id="profile">
             <h2>48</h2>
             <p> Temps jugat</p>
           </div>

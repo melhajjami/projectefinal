@@ -59,7 +59,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
 LoginController::usuarilogin();
 @endphp
 
-<div class="nav-side-menu" id="app">
+<div class="nav-side-menu" id="plantilla">
 
     <!-- TITOL -->
     <div class="brand"><h3>hehehe</h3></div>
