@@ -79,7 +79,7 @@ const app = new Vue({
                     if (child.closed) {
                         alert("Good game nigger");   
                         clearInterval(timer);
-                        document.getElementById("yo").innerHTML = secondsToTime(contador);;
+                        document.getElementById("you").innerHTML = secondsToTime(contador);;
                     }
                     else{
                         contador = contador + 1;
