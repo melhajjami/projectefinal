@@ -36,6 +36,9 @@ const app = new Vue({
         },
         
         methods: {
+            hola(){
+                console.log("hola");
+            },
             enviarsolicitud(receptor,sender){
                 var parametres={
                     sender:sender,
@@ -86,14 +89,7 @@ const app = new Vue({
                     }
                 }
             }
-            axios.post('http://localhost:8000/api/friendship', parametres).then(function (response) {
-                console.log(response);
-                document.getElementById("boto").classList.add('disabled');
-                document.getElementById("boto").innerHTML = 'Solicitud enviada';
-            }).catch(function (error) {
-                console.log(error.response);
-            });
-        }
+           
     }
 });
 
@@ -119,6 +115,7 @@ const plantilla = new Vue({
         }
     }
 });
+
 
 const profile = new Vue({
     el: '#profile',
