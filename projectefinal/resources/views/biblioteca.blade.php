@@ -1,8 +1,5 @@
 @extends("layouts.plantilla")
 <style>
-    /* #contingut{
-        color: white;
-    } */
     #Aman{
         border: 1px solid white;
         border-radius: 5px;
@@ -59,7 +56,7 @@
                                 <span class="fa fa-star-o"></span>
                                 <span class="fa fa-star-o"></span>
                                 <span class="separator">|</span>
-                                <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Juga Nigg</button>
+                                <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Juga Nigger</button>
                             </div>
                         </div>
                     </div>
