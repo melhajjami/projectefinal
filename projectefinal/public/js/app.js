@@ -49312,7 +49312,6 @@ var app = new Vue({
       return string;
     },
     obrirjoc: function obrirjoc(idjoc) {
-      console.log("hola");
       var url = "http://localhost:8000/public/jocs/" + idjoc + "/index.html";
       var child = window.open(url); // var child = window.open('http://google.com','','toolbar=0,status=0,width=626,height=436');
 
