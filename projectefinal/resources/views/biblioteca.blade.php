@@ -1,31 +1,73 @@
-@extends('layouts.plantilla')
+@extends("layouts.plantilla")
 <style>
-    #contingut{
+    /* #contingut{
+        color: white;
+    } */
+    #Aman{
+        border: 1px solid white;
+        border-radius: 5px;
+        height: 250px;
+        border-width: 2px;
+        border-color: #d19b3d;
+        background-color: #1A1A1A;
         color: white;
     }
+    .section-box h2 {
+        margin-top:0px;
+    }
+    .section-box h2 a { 
+        font-size:15px; 
+    }
+    .separator { 
+        padding-right:5px;
+        padding-left:5px; 
+    }
+    .rating-desc{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+    .container{
+        padding-top: 5px;
+    }
+    img{
+        margin-top: 10px;
+    }
 </style>
-<!-- pending friendships == session()->get('pendingfriendships'); //  -->
-@section('contingut')
+@section("contingut")
 <div class="container">
-<h2>Biblioteca</h2>
-@foreach($biblioteca as $joc)
-          <div class="d-flex justify-content-around">
-                    <div class="col">
-                        <img src="{{$joc->img}}" width="200" height="250">
+    <div class="container" id="prova">
+    <div class="row">
+    @foreach($biblioteca as $joc)
+        <div class="col-md-6">
+            <div class="well well-sm">
+                <div class="row" id="Aman">
+                    
+                    <div class="col-xs-3 col-md-3 text-center">
+                        <img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" width="114" height="114" />
                     </div>
-                    <div class="col">
-                        <h4 class="list-group-item-heading"> {{$joc->nom}} </h4>
-                        <p class="list-group-item-text">{{$joc->descripcio}}</p>
-                        <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Jugar</button>
-                    </div>
-                    <p class="list-group-item-text">{{$joc->puntuacio}}</p> 
-                    <div class="col">
-                        <h2 id="yo">{{$joc->tempsjugat}}h</h2>
+                    <div class="col-xs-9 col-md-9 section-box">
+                        <h2>{{$joc->nom}} <a href="#"></a></h2>
+                        <p>{{$joc->descripcio}}Call of Duty es una serie de videojuegos de disparos en primera persona, de estilo bélico, creada por Ben Chichoski</p>
+                        
+                        <div class="row rating-desc">
+                        <hr id="holaaa" />
+                            <div class="col-md-12">
+                                <span class="fa fa-star-o"></span>
+                                <span class="fa fa-star-o"></span>
+                                <span class="fa fa-star-o"></span>
+                                <span class="fa fa-star-o"></span>
+                                <span class="fa fa-star-o"></span>
+                                <span class="separator">|</span>
+                                <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Juga Nigg</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            
-          @endforeach
-          </div>
+            </div>
         </div>
+    @endforeach
+    </div>
+    </div>
+</div>
 @endsection
-
