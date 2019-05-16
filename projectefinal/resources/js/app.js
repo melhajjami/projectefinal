@@ -32,29 +32,76 @@ const app = new Vue({
     el: '#app',
     data: {
         message: 'asdasdasdasdd',
-        },
-        
-        methods: {
-            enviarsolicitud(receptor,sender){
-                var parametres={
-                    sender:sender,
-                    receptor:receptor
-                }
-                axios.post('http://localhost:8000/api/friendship',parametres).then(function(response) {
-                    console.log(response);
-                    document.getElementById("boto").classList.add('disabled');
-                    document.getElementById("boto").innerHTML='Solicitud enviada';
-                }).catch(function (error) {
-                    console.log(error.response);
-                });
-            },
-            acceptarsolicitud(usuari,usuarilogin){
-                console.log(usuari,usuarilogin,"eliminar element a traves de $event de onclick, posar actiu = 1");
-            },
-            declinarsolicitud(usuari,usuarilogin){
-                console.log(usuari,usuarilogin,"Esborrar la relacio de la base de dades");
+    },
+
+    methods: {
+        enviarsolicitud(receptor, sender) {
+            var parametres = {
+                sender: sender,
+                receptor: receptor
             }
+            axios.post('http://localhost:8000/api/friendship', parametres).then(function (response) {
+                console.log(response);
+                document.getElementById("boto").classList.add('disabled');
+                document.getElementById("boto").innerHTML = 'Solicitud enviada';
+            }).catch(function (error) {
+                console.log(error.response);
+            });
         }
+    }
 });
 
-    
+const plantilla = new Vue({
+    el: '#plantilla',
+    data: {
+        message: 'asdasdasdasdd',
+    },
+
+    methods: {
+        enviarsolicitud(receptor, sender) {
+            var parametres = {
+                sender: sender,
+                receptor: receptor
+            }
+            axios.post('http://localhost:8000/api/friendship', parametres).then(function (response) {
+                console.log(response);
+                document.getElementById("boto").classList.add('disabled');
+                document.getElementById("boto").innerHTML = 'Solicitud enviada';
+            }).catch(function (error) {
+                console.log(error.response);
+            });
+        }
+    }
+});
+
+const profile = new Vue({
+    el: '#profile',
+    data: {
+        message: 'asdasdasdasdd',
+    },
+
+    methods: {
+        acceptarsolicitud(usuari, usuarilogin) {
+            console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+        },
+        declinarsolicitud(usuari, usuarilogin) {
+            console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
+        }
+    }
+});
+
+const biblioteca = new Vue({
+    el: '#biblioteca',
+    data: {
+        message: 'asdasdasdasdd',
+    },
+
+    methods: {
+        acceptarsolicitud(usuari, usuarilogin) {
+            console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+        },
+        declinarsolicitud(usuari, usuarilogin) {
+            console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
+        }
+    }
+});
