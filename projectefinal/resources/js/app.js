@@ -36,9 +36,6 @@ const app = new Vue({
         },
         
         methods: {
-            hola(){
-                console.log("hola");
-            },
             enviarsolicitud(receptor,sender){
                 var parametres={
                     sender:sender,
@@ -100,30 +97,6 @@ const plantilla = new Vue({
     },
 
     methods: {
-        enviarsolicitud(receptor, sender) {
-            var parametres = {
-                sender: sender,
-                receptor: receptor
-            }
-            axios.post('http://localhost:8000/api/friendship', parametres).then(function (response) {
-                console.log(response);
-                document.getElementById("boto").classList.add('disabled');
-                document.getElementById("boto").innerHTML = 'Solicitud enviada';
-            }).catch(function (error) {
-                console.log(error.response);
-            });
-        }
-    }
-});
-
-
-const profile = new Vue({
-    el: '#profile',
-    data: {
-        message: 'asdasdasdasdd',
-    },
-
-    methods: {
         acceptarsolicitud(usuari, usuarilogin) {
             console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
         },
@@ -133,18 +106,3 @@ const profile = new Vue({
     }
 });
 
-const biblioteca = new Vue({
-    el: '#biblioteca',
-    data: {
-        message: 'asdasdasdasdd',
-    },
-
-    methods: {
-        acceptarsolicitud(usuari, usuarilogin) {
-            console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
-        },
-        declinarsolicitud(usuari, usuarilogin) {
-            console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
-        }
-    }
-});

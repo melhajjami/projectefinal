@@ -3,7 +3,7 @@
     /* #contingut{
         color: white;
     } */
-    #Aman{
+    #fila{
         border: 1px solid white;
         border-radius: 5px;
         height: 250px;
@@ -36,12 +36,12 @@
 </style>
 @section("contingut")
 <div class="container">
-    <div class="container" id="prova">
+    <div class="container" id="app">
     <div class="row">
     @foreach($biblioteca as $joc)
         <div class="col-md-6">
             <div class="well well-sm">
-                <div class="row" id="Aman">
+                <div class="row" id="fila">
                     
                     <div class="col-xs-3 col-md-3 text-center">
                         <img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" width="114" height="114" />

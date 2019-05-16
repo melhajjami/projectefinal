@@ -137,7 +137,7 @@
       <h2>{{$joc->nom}}</h2>
       <div class="card__buttons">
         <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}" data-tip="Veure"><i class="fa fa-search"></i></a>
-        <a href="" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+        <a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
       </div>
     </div>
 
