@@ -42,6 +42,10 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        return $this->usuarilogin();
+    }
+    
+    static function usuarilogin(){
         //AL FER LOGIN CREA VARIABLE GLOBAL AMB INVITACIONS D'AMISTAT PENDENTS
         session(['pendingfriendships' => friendshipController::invitacions()]);
         //AL FER LOGIN CREA VARIABLE GLOBAL AMB USUARI AMB EL QUE HAS FET LOGIN

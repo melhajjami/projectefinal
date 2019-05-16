@@ -32,8 +32,8 @@ class profileController extends Controller
             'surname' => 'required|min:3|max:50',
             'oldpassword' => 'sometimes|max:50',
             'newpassword' => 'required_with:oldpassword|confirmed',
-            'avatar' => 'max:100',
-            'background' => 'max:100'
+            'avatar' => 'max:255',
+            'background' => 'max:255'
         ],[
             'name.required' => 'Necessites un nom',
             'name.min' => 'El nom ha de tenir un mínim de 3 caràcters!',
@@ -67,7 +67,7 @@ class profileController extends Controller
             $user->background = $request->background;
 
             $user->save();
-            return back();
+            return redirect('perfil/hola');
          }
 
     }
@@ -85,6 +85,7 @@ class profileController extends Controller
             $query->where('user1_id', $id)
                 ->where('user2_id', $usuarilogin->id);	
         })->first();
+         session(['usuarilogin' => Auth::user()]);
         return view('profile',array('user'=>$user,'friendship'=>$friendship));
     }
 }

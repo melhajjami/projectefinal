@@ -54,10 +54,12 @@
   </style>
 @php
 use App\Http\Controllers\friendshipController;
+use App\Http\Controllers\Auth\LoginController;
 session(['pendingfriendships' => friendshipController::invitacions()]);
+LoginController::usuarilogin();
 @endphp
 
-<div class="nav-side-menu">
+<div class="nav-side-menu" id="app">
 
     <!-- TITOL -->
     <div class="brand"><h3>hehehe</h3></div>
@@ -93,7 +95,7 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
 
         <ul class=" collapse" id="config">
           @foreach(session()->get('pendingfriendships') as $usuari)
-            <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}"><div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}});"></div>{{$usuari->user->nickname}}</a></li>
+            <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}"><div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}});"></div>{{$usuari->user->nickname}}</a><a id="boto" href="#button" class="btn btn-primary" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">Acceptar</a><a id="boto" href="#button" class="btn btn-primary" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">Declinar</a></li>
           @endforeach
         </ul>
 
@@ -129,5 +131,6 @@ session(['pendingfriendships' => friendshipController::invitacions()]);
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <script src="{{asset('js/app.js')}}"></script>
+
 </body>
 </html>

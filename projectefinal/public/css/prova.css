@@ -1,6 +1,6 @@
 html, body{
   display: flex;
-  background-color:#1A1A1A;
+
 }
 
 #yo{
@@ -18,6 +18,11 @@ html, body{
 #contingut{
   width: 100vw;
   flex-grow: 1;
+  
+    background-image: url(https://www.ps4wallpapers.com/wp-content/uploads/2017/03/PS4Wallpapers.com_call-of-duty-blackops3-3840-2160.jpg);
+  background-repeat:no-repeat;
+  background-size: 100%;
+
 }
 .nav-side-menu {
     overflow: auto;
@@ -176,4 +181,5 @@ html, body{
     margin: 0px;
     padding: 0px;
   }
+  
   

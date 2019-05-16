@@ -49294,6 +49294,12 @@ var app = new Vue({
       })["catch"](function (error) {
         console.log(error.response);
       });
+    },
+    acceptarsolicitud: function acceptarsolicitud(usuari, usuarilogin) {
+      console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+    },
+    declinarsolicitud: function declinarsolicitud(usuari, usuarilogin) {
+      console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
     }
   }
 });
