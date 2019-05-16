@@ -9,6 +9,7 @@ use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use \Crypt;
 use Illuminate\Database\Eloquent\Model;
+use Hash;
 
 class profileController extends Controller
 {
@@ -27,18 +28,48 @@ class profileController extends Controller
     public function update(Request $request, $iduser)
     { 
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$iduser
+            'name' => 'required|min:3|max:50',
+            'surname' => 'required|min:3|max:50',
+            'oldpassword' => 'sometimes|max:50',
+            'newpassword' => 'required_with:oldpassword|confirmed',
+            'avatar' => 'max:100',
+            'background' => 'max:100'
+        ],[
+            'name.required' => 'Necessites un nom',
+            'name.min' => 'El nom ha de tenir un mínim de 3 caràcters!',
+            'name.max' => 'El nom ha de tenir un maxim de 50 caràcters!',
+            'surname.required' => 'Necessites un cognom',
+            'surname.min' => 'El cognom ha de tenir un mínim de 3 caràcters!',
+            'surname.max' => 'El cognom ha de tenir un maxim de 50 caràcters!',
+            'newpassword.confirmed' => 'Les contrasenyes no coincideixen!',
+            'newpassword.required_with' => 'No vols una nova contrassenya?'
         ]);
-        
-            // $user = Auth::user();
-            $user = User::findOrFail($iduser);
-            $user->nom = $request->name;
-            $user->email = $request->email;
-        // $user->password = bcrypt($request('password'));
-        $user->save();
 
-        return back();
+        $user = User::findOrFail($iduser);
+
+        if (Hash::check($request->oldpassword, $user->password)) {
+
+            $user->nom = $request->name;
+
+            $user->fill([
+             'password' => Hash::make($request->newpassword)
+             ])->save();
+            
+            $user->save();
+            $request->session()->flash('success', 'Password changed');
+            return redirect()->route('jocs.index');
+ 
+         } else {
+            
+            $user->nom = $request->name;
+            $user->cognom = $request->surname;
+            $user->fotoperfil = $request->avatar;
+            $user->background = $request->background;
+
+            $user->save();
+            return back();
+         }
+
     }
     public function show($id){
         $usuarilogin = Auth::user();
