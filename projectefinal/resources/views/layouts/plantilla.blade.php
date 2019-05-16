@@ -54,7 +54,9 @@
   </style>
 @php
 use App\Http\Controllers\friendshipController;
+use App\Http\Controllers\Auth\LoginController;
 session(['pendingfriendships' => friendshipController::invitacions()]);
+LoginController::usuarilogin();
 @endphp
 
 <div class="nav-side-menu" id="app">

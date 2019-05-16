@@ -8,7 +8,9 @@
 #image1{
     background-image: url({{$user->fotoperfil}});
 }
-
+#banner{
+    background-image:url({{$user->background}});
+}
 </style>
 <body class="profile-page sidebar-collapse">
     @section("contingut")
@@ -16,7 +18,7 @@
     <div class="page-header">
     <div id="overlay" class="page-header-image">
       </div>
-      <div id="banner" class="page-header-image" data-parallax="true" style="background-image:url('{{$user->background}})');">
+      <div id="banner" class="page-header-image" data-parallax="true">
       </div>
       <div class="container">
         <div id="image1" class="cropcircle photo-container"></div>
@@ -33,7 +35,7 @@
           </div>
           <div class="social-description" id="app">
             <h2>48</h2>
-            <p> @{{message}}</p>
+            <p> Temps jugat</p>
           </div>
         </div>
       </div>
