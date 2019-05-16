@@ -49313,14 +49313,14 @@ var app = new Vue({
     },
     obrirjoc: function obrirjoc(idjoc) {
       console.log("hola");
-      var url = "http://localhost:8000/public/jocs/" + idjoc + "/index.html";
+      var url = "http://localhost:8000/jocs/" + idjoc + "/index.html";
       var child = window.open(url); // var child = window.open('http://google.com','','toolbar=0,status=0,width=626,height=436');
 
       var timer = setInterval(checkChild, 1000);
 
       function checkChild() {
         if (child.closed) {
-          alert("Good game nigger");
+          alert("Joc tencat");
           clearInterval(timer);
           document.getElementById("you").innerHTML = secondsToTime(contador);
           ;
@@ -49493,8 +49493,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Pc\Documents\projectefinal\projectefinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Pc\Documents\projectefinal\projectefinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Bosc\Documents\projectefinal\projectefinal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Bosc\Documents\projectefinal\projectefinal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
