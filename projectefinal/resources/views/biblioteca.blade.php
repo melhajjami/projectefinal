@@ -49,7 +49,7 @@
                     <div class="col-xs-9 col-md-9 section-box">
                         <h2>{{$joc->nom}} <a href="#"></a></h2>
                         <p>{{$joc->descripcio}}Call of Duty es una serie de videojuegos de disparos en primera persona, de estilo bélico, creada por Ben Chichoski</p>
-                        
+                        <p id="mostrartemps">TEMPS JUGAT: </p>
                         <div class="row rating-desc">
                         <hr id="holaaa" />
                             <div class="col-md-12">
@@ -60,7 +60,7 @@
                                 <span class="fa fa-star-o"></span>
                                 <span class="separator">|</span>
                                 
-                                <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Juga Nigger</button>
+                                <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}}, {{session()->get('usuarilogin')->id}})">Juga Nigger</button>
                             </div>
                         </div>
                     </div>

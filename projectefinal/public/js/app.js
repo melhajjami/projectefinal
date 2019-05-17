@@ -49311,23 +49311,34 @@ var app = new Vue({
       var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
       return string;
     },
-    obrirjoc: function obrirjoc(idjoc) {
+    obrirjoc: function obrirjoc(idjoc, idusuari) {
       console.log("hola");
       var url = "http://localhost:8000/jocs/" + idjoc + "/index.html";
-      var child = window.open(url); // var child = window.open('http://google.com','','toolbar=0,status=0,width=626,height=436');
-
-      var timer = setInterval(checkChild, 1000);
+      var child = window.open(url);
+      var timer = setInterval(checkChild(), 1000);
 
       function checkChild() {
+        console.log("adeu");
+
         if (child.closed) {
           alert("Joc tencat");
-          clearInterval(timer);
-          document.getElementById("you").innerHTML = secondsToTime(contador);
-          ;
+          clearInterval(timer); // canviartemps(idjoc, idusuari, contador);
         } else {
           contador = contador + 1;
         }
       }
+    },
+    canviartemps: function canviartemps(idjoc, idusuari, tempsjugat) {
+      var parametres = {
+        idusuari: idusuari,
+        idjoc: idjoc,
+        tempsjugat: tempsjugat
+      };
+      axios.post('http://localhost:8000/api/biblioteca', parametres).then(function (response) {
+        document.getElementById("mostrartemps").innerHTML = "TEMPS JUGAT: " + secondsToTime(tempsjugat); //Falta fer secondstotime
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     }
   }
 });
