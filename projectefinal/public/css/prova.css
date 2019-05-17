@@ -2,6 +2,29 @@ html, body{
   display: flex;
   width: 100vw;
 }
+#fotousuaris{
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  display:inline-block;
+  border-radius: 50%;
+  background: no-repeat center;
+  background-size: cover;
+  margin-right: 3px;
+}
+#boto{
+  border-radius:50%;
+  display:inline-block;
+  background-color: #d19b3d;
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  text-align:center;
+  position: relative;
+  right:0;
+}
 
 #yo{
   overflow: auto;
@@ -14,11 +37,12 @@ html, body{
   position: sticky;
   top: 0;
 }
-
+a{
+  display:inline-block;
+}
 #contingut{
   width: 100vw;
   flex-grow: 1;
-  
   background-image: url(https://www.ps4wallpapers.com/wp-content/uploads/2017/03/PS4Wallpapers.com_call-of-duty-blackops3-3840-2160.jpg);
   background-repeat:no-repeat;
   background-size: 100%;

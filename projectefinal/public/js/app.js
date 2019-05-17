@@ -49311,11 +49311,19 @@ var app = new Vue({
       var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
       return string;
     },
+<<<<<<< HEAD
     obrirjoc: function obrirjoc(idjoc, idusuari) {
       console.log("hola");
       var url = "http://localhost:8000/jocs/" + idjoc + "/index.html";
       var child = window.open(url);
       var timer = setInterval(checkChild(), 1000);
+=======
+    obrirjoc: function obrirjoc(idjoc) {
+      var url = "http://localhost:8000/jocs/" + idjoc + "/index.html";
+      var child = window.open(url); // var child = window.open('http://google.com','','toolbar=0,status=0,width=626,height=436');
+
+      var timer = setInterval(checkChild, 1000);
+>>>>>>> f866a7d3b57e200e5818c68a72cf4ed70504d066
 
       function checkChild() {
         console.log("adeu");

@@ -43,7 +43,7 @@ class friendshipController extends Controller
         $friendship->user1_id = $request->sender;
         $friendship->user2_id = $request->receptor;
         $friendship->save();
-        // return "asd";
+        
     }
 
     /**

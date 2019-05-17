@@ -68,8 +68,13 @@ const app = new Vue({
     
                 return string;
             },
+<<<<<<< HEAD
             obrirjoc(idjoc, idusuari) {
                 console.log("hola")
+=======
+            obrirjoc(idjoc) {
+                
+>>>>>>> f866a7d3b57e200e5818c68a72cf4ed70504d066
                 var url = "http://localhost:8000/jocs/" + idjoc + "/index.html"
                 var child = window.open(url);
                 var timer = setInterval(checkChild(), 1000);
