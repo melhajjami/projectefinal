@@ -33,6 +33,7 @@ const app = new Vue({
     data: {
         message: 'asdasdasdasdd',
         contador: 0,
+        jugant:false
         },
         
         methods: {
@@ -55,55 +56,80 @@ const app = new Vue({
             declinarsolicitud(usuari,usuarilogin){
                 console.log(usuari,usuarilogin,"Esborrar la relacio de la base de dades");
             },
-            secondsToTime(secs){
-                var hours = Math.floor(secs / (60 * 60));
+            // secondsToTime(secs){
+            //     var hours = Math.floor(secs / (60 * 60));
 
-                var divisor_for_minutes = secs % (60 * 60);
-                var minutes = Math.floor(divisor_for_minutes / 60);
+            //     var divisor_for_minutes = secs % (60 * 60);
+            //     var minutes = Math.floor(divisor_for_minutes / 60);
 
-                var divisor_for_seconds = divisor_for_minutes % 60;
-                var seconds = Math.ceil(divisor_for_seconds);
+            //     var divisor_for_seconds = divisor_for_minutes % 60;
+            //     var seconds = Math.ceil(divisor_for_seconds);
 
-                var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
+            //     var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
     
-                return string;
-            },
-<<<<<<< HEAD
+            //     return string;
+            // },
             obrirjoc(idjoc, idusuari) {
-                console.log("hola")
-=======
-            obrirjoc(idjoc) {
-                
->>>>>>> f866a7d3b57e200e5818c68a72cf4ed70504d066
+                this.jugant=true;
+                console.log(this.jugant);
+                var contador = 0;
+                console.log(contador)
                 var url = "http://localhost:8000/jocs/" + idjoc + "/index.html"
                 var child = window.open(url);
-                var timer = setInterval(checkChild(), 1000);
+                var timer = setInterval(checkChild, 1000, idjoc, idusuari);
+                vm = this;
                 
-                function checkChild() {
-                    console.log("adeu")
+                function checkChild(idjoc, idusuari) {
+                    
                     if (child.closed) {
-                        alert("Joc tencat");  
+                        vm.jugant=false;
+                        // alert("Joc tencat");  
                         clearInterval(timer);
                         // canviartemps(idjoc, idusuari, contador);
+
+                        var parametres = {
+                            idusuari: idusuari,
+                            idjoc: idjoc,
+                            tempsjugat: contador
+                        }
+                        axios.post('http://localhost:8000/api/biblioteca',parametres).then(function(response) {
+                            document.getElementById("mostrartempsjoc"+idjoc).innerHTML = "TEMPS JUGAT: " + secondsToTime(contador);;
+                        }).catch(function (error) {
+                            console.log(error.response);
+                        });
                     }
                     else{
                         contador = contador + 1;
+                        console.log(contador);
                     }
                 }
-            },
-            canviartemps(idjoc, idusuari, tempsjugat){
-                var parametres = {
-                    idusuari: idusuari,
-                    idjoc: idjoc,
-                    tempsjugat: tempsjugat
+
+                function secondsToTime(secs){
+                    var hours = Math.floor(secs / (60 * 60));
+    
+                    var divisor_for_minutes = secs % (60 * 60);
+                    var minutes = Math.floor(divisor_for_minutes / 60);
+    
+                    var divisor_for_seconds = divisor_for_minutes % 60;
+                    var seconds = Math.ceil(divisor_for_seconds);
+    
+                    var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
+        
+                    return string;
                 }
-                axios.post('http://localhost:8000/api/biblioteca',parametres).then(function(response) {
-                    document.getElementById("mostrartemps").innerHTML = "TEMPS JUGAT: " + secondsToTime(tempsjugat); //Falta fer secondstotime
-                }).catch(function (error) {
-                    console.log(error.response);
-                });
-            }
-           
+            },
+            // canviartemps(idjoc, idusuari, tempsjugat){
+            //     var parametres = {
+            //         idusuari: idusuari,
+            //         idjoc: idjoc,
+            //         tempsjugat: tempsjugat
+            //     }
+            //     axios.post('http://localhost:8000/api/biblioteca',parametres).then(function(response) {
+            //         document.getElementById("mostrartemps").innerHTML = "TEMPS JUGAT: " + secondsToTime(tempsjugat); //Falta fer secondstotime
+            //     }).catch(function (error) {
+            //         console.log(error.response);
+            //     });
+            // }
     }
 });
 
