@@ -49333,11 +49333,16 @@ var app = new Vue({
 var plantilla = new Vue({
   el: '#plantilla',
   data: {
-    message: 'asdasdasdasdd'
+    message: 'asdasdasdasdd',
+    numeronotificacions: ''
+  },
+  created: function created() {
+    this.numeronotificacions = document.getElementById("numeronotificacions").innerHTML;
   },
   methods: {
     acceptarsolicitud: function acceptarsolicitud(usuari, usuarilogin) {
-      console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+      this.numeronotificacions--;
+      console.log(document.getElementById("usuari").innerHTML), console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
     },
     declinarsolicitud: function declinarsolicitud(usuari, usuarilogin) {
       console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");

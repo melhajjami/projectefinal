@@ -14,13 +14,13 @@
 
 Route::get('/', 'bibliotecaController@index')->name('biblioteca.index')->middleware('auth');
 
-Route::get('biblioteca', 'bibliotecaController@index')->name('biblioteca.index');
+Route::get('biblioteca', 'bibliotecaController@index')->name('biblioteca.index')->middleware('auth');
 
-Route::get('tenda', 'jocsController@index')->name('jocs.index');
+Route::get('tenda', 'jocsController@index')->name('jocs.index')->middleware('auth');
 
-Route::get('tenda/{joc}', 'jocsController@show')->name('jocs.show');
+Route::get('tenda/{joc}', 'jocsController@show')->name('jocs.show')->middleware('auth');
 
-Route::get('perfil/{id}', 'profileController@show')->name('perfil.show');
+Route::get('perfil/{id}', 'profileController@show')->name('perfil.show')->middleware('auth');
 
 Auth::routes();
 

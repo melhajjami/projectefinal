@@ -11,6 +11,12 @@
         border-color: #d19b3d;
         background-color: #1A1A1A;
         color: white;
+        display:inline-block;
+        margin:1em;
+    }
+    #fotobiblioteca{
+        float:left;
+        margin: 10px;
     }
     .section-box h2 {
         margin-top:0px;
@@ -41,17 +47,13 @@
     @foreach($biblioteca as $joc)
         <div class="col-md-6">
             <div class="well well-sm">
-                <div class="row" id="fila">
-                    
+                <div id="fila">
                     <div class="col-xs-3 col-md-3 text-center">
-                        <img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" width="114" height="114" />
+                        <img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" id="fotobiblioteca" width="114" height="114" />
                     </div>
-                    <div class="col-xs-9 col-md-9 section-box">
+                    <div>
                         <h2>{{$joc->nom}} <a href="#"></a></h2>
                         <p>{{$joc->descripcio}}Call of Duty es una serie de videojuegos de disparos en primera persona, de estilo bélico, creada por Ben Chichoski</p>
-                        
-                        <div class="row rating-desc">
-                        <hr id="holaaa" />
                             <div class="col-md-12">
                                 <span class="fa fa-star-o"></span>
                                 <span class="fa fa-star-o"></span>
@@ -59,9 +61,8 @@
                                 <span class="fa fa-star-o"></span>
                                 <span class="fa fa-star-o"></span>
                                 <span class="separator">|</span>
-                                <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Juga Nigger</button>
+                                <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Jugar</button>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

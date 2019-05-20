@@ -33,7 +33,7 @@
             <h2>26</h2>
             <p>Amics</p>
           </div>
-          <div class="social-description" id="profile">
+          <div class="social-description">
             <h2>48</h2>
             <p> Temps jugat</p>
           </div>
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div id="botozindex" class="section">
-      <div class="container">
+      <div class="container" id="app">
           @if($user->id != session()->get('usuarilogin')->id)
             <div class="button-container">
                 @if($friendship != null)
@@ -49,8 +49,8 @@
                         @if($friendship->user1_id == session()->get('usuarilogin')->id)
                         <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg disabled" disabled>Solicitud enviada</a>
                         @else
-                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="acceptarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Acceptar</a>
-                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="declinarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Cancelar</a>
+                        <a id="botoprofile" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="acceptarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Acceptar</a>
+                        <a id="botoprofile" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="declinarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Cancelar</a>
                         @endif
                     @elseif($friendship->actiu == 1)
                         <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Deixar de ser amics</a>

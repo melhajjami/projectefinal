@@ -69,16 +69,21 @@ LoginController::usuarilogin();
         <!--  Submenu Invitacions d'amistat -->
 
         <li data-toggle="collapse" data-target="#config" data-parent="menu-content" class="collapsed">
-          <a href="#"><i class="fa fa-cogs fa-lg"></i> Invitacions d'amistat <span class="arrow"></span></a>
+          <a href="#"><i class="fa fa-cogs fa-lg"></i> Invitacions d'amistat <span class="arrow"></span>@if(count(session()->get('pendingfriendships')) > 0)<span class="badge badge-pill badge-danger" id="numeronotificacions">{{count(session()->get('pendingfriendships'))}}</span>@endif</a>
         </li>
 
         <ul class="collapse" id="config">
-          @foreach(session()->get('pendingfriendships') as $usuari)
-          <li><a href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">
-              <div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}})">&nbsp</div>{{$usuari->user->nickname}}
-              <a id="boto" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})"></a>
-              <a id="boto" href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})"></a></a></li>
-          @endforeach
+          @if(count(session()->get('pendingfriendships')) < 1)
+          <li><p class="empty">No tens cap sol·licitud d'amistat</p></li>
+          @else
+            @foreach(session()->get('pendingfriendships') as $usuari)
+            <li><a class="user" href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">
+                <div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}})">&nbsp</div>{{$usuari->user->nickname}}
+                <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
+                <a class="boto"id="{{$usuari->user->id}}"  href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a></a>
+            </li>
+            @endforeach
+          @endif
         </ul>
 
         <!-- Submenu Perfil -->

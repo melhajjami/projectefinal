@@ -94,10 +94,15 @@ const plantilla = new Vue({
     el: '#plantilla',
     data: {
         message: 'asdasdasdasdd',
+        numeronotificacions: ''
     },
-
+    created(){
+        this.numeronotificacions = document.getElementById("numeronotificacions").innerHTML;
+    },
     methods: {
         acceptarsolicitud(usuari, usuarilogin) {
+            this.numeronotificacions--;
+            console.log(document.getElementById("usuari").innerHTML),
             console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
         },
         declinarsolicitud(usuari, usuarilogin) {

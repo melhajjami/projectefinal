@@ -2,6 +2,10 @@ html, body{
   display: flex;
   width: 100vw;
 }
+/* .notificaciousuaris{
+  display: flex;
+  justify-content: space-between;
+} */
 #fotousuaris{
   width: 30px;
   height: 30px;
@@ -13,7 +17,11 @@ html, body{
   background-size: cover;
   margin-right: 3px;
 }
-#boto{
+.user{
+  width: 50%;
+  display: inline-block;
+}
+.boto{
   border-radius:50%;
   display:inline-block;
   background-color: #d19b3d;
@@ -24,8 +32,12 @@ html, body{
   text-align:center;
   position: relative;
   right:0;
+  background-size: cover;
 }
-
+.empty{
+  display: inline;
+  font-size: 10px;
+}
 #yo{
   overflow: auto;
   background-color: #2e353d;
@@ -38,8 +50,9 @@ html, body{
   top: 0;
 }
 a{
-  display:inline-block;
+  display:block;
 }
+
 #contingut{
   width: 100vw;
   flex-grow: 1;
@@ -47,6 +60,9 @@ a{
   background-repeat:no-repeat;
   background-size: 100%;
 
+}
+li{
+  position: relative;                                 
 }
 .nav-side-menu {
     overflow: auto;
