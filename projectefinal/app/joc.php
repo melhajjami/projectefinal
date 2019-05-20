@@ -10,4 +10,10 @@ class joc extends Model
     {
         return $this->belongsTo('App\biblioteca');
     }
+
+    public function comentari()
+    {
+        return $this->hasMany('App\comentari');
+    }
+
 }
