@@ -56,7 +56,11 @@ class bibliotecaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $biblioteca = biblioteca::where('id_usuari', $request->idusuari)->where('id_joc', $request->idjoc)->first();
+
+        $biblioteca->tempsjugat = $request->tempsjugat;
+
+        $biblioteca->save();
     }
 
     /**
