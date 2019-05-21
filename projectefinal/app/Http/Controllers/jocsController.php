@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\joc;
 use App\User;
+use App\comentari;
 use \Crypt;
 
 class jocsController extends Controller
@@ -54,8 +55,11 @@ class jocsController extends Controller
         //DONADA ID JOC, RETORNAR VISTA AMB EL JOC PER COMPRAR
         $id = Crypt::decrypt($id);
         $joc = joc::where('id', $id)->firstOrFail();
+        //GET TOTS ELS COMENTARIS + USUARI DONADA ID DE JOC 
+        $comentaris = comentari::where('joc_id', $id)->with('user')->get();
+        
 
-        return view('product')->with('joc',$joc);
+        return view('product',['joc'=> $joc,'comentaris'=>$comentaris]);
     }
 
     /**

@@ -35,3 +35,5 @@ Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'profileController@
 Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'profileController@update']);
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::post('comentaris/{id}', 'comentarisController@store')->name('comentaris.store');

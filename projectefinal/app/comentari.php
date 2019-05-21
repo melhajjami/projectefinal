@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class comentari extends Model
 {
-    use DatePresenter;
+    // use DatePresenter;
     
     // fields can be filled
-    protected $fillable = ['body', 'user_id', 'post_id'];
+    protected $fillable = ['comentari', 'user_id', 'post_id'];
     
-    public function post()
+    public function joc()
     {
-        return $this->belongsTo('App\joc');
+        return $this->belongsTo('App\joc','joc_id');
     }
     
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User','user_id');
     }
 }

@@ -194,6 +194,22 @@ img {
 							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
+            <h3>Comments</h3>
+            
+            <form method="post" action="{{route('comentaris.store', $joc->id)}}">
+            @csrf 
+              <textarea name="comentari" id="comentari"></textarea>
+              <input type="hidden" id="joc_id" name="joc_id" value="{{$joc->id}}">
+              <input type="submit" value="Submit">
+            </form>
+            @forelse ($comentaris as $comentari)
+              <p>{{$comentari->created_at}}</p>
+              <h1>{{$comentari->user->nickname}}</h1>
+              <p>{{ $comentari->comentari }}</p>
+              <hr>
+            @empty
+              <p>This post has no comments</p>
+            @endforelse
 					</div>
 				</div>
 			</div>
