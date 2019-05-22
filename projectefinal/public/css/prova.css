@@ -6,6 +6,7 @@ html, body{
   display: flex;
   justify-content: space-between;
 } */
+
 #fotousuaris{
   width: 30px;
   height: 30px;
@@ -17,6 +18,7 @@ html, body{
   background-size: cover;
   margin-right: 3px;
 }
+
 .user{
   width: 50%;
   display: inline-block;
@@ -222,4 +224,3 @@ li{
     padding: 0px;
   }
   
-    
