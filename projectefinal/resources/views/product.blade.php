@@ -208,7 +208,7 @@ img {
               <p>{{ $comentari->comentari }}</p>
               <hr>
             @empty
-              <p>This post has no comments</p>
+              <p>Aquest joc no te comentaris</p>
             @endforelse
 					</div>
 				</div>
