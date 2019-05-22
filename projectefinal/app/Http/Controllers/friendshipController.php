@@ -93,7 +93,7 @@ class friendshipController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -105,7 +105,11 @@ class friendshipController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //SOLICITUD ACCEPTADA, LA RELACIO PASSA A ESTAR ACTIVA (ACTIU = 1)
+        $friendship = friendship::where('user1_id',$id)->where('user2_id',$request->usuarilogin)->first();
+
+        $friendship->actiu = 1;
+        $friendship->save();
     }
 
     /**
@@ -114,8 +118,11 @@ class friendshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        //SOLICITUD DECLINADA, S'ESBORRA LA RELACIO
+        $friendship = friendship::where('user1_id',$id)->where('user2_id',$request->usuarilogin)->first();
+
+        return $id;
     }
 }

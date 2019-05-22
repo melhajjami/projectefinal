@@ -15,6 +15,6 @@ class biblioteca extends Model
 
     public function jocs()
     {
-        return $this->hasMany('App\joc','id_joc');
+        return $this->hasMany('App\joc','id');
     }
 }

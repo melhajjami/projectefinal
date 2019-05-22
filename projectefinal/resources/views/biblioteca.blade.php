@@ -13,7 +13,7 @@
         color: white;
         display:inline-block;
         margin:1em;
-    }
+    }   
     #fotobiblioteca{
         float:left;
         margin: 10px;
@@ -39,6 +39,13 @@
     img{
         margin-top: 10px;
     }
+    a:link{
+        text-decoration:none!important; 
+        color:white!important;
+    }
+    a{
+        color:white!important;
+    }
 </style>
 @section("contingut")
 <div class="container">
@@ -49,10 +56,10 @@
             <div class="well well-sm">
                 <div id="fila">
                     <div class="col-xs-3 col-md-3 text-center">
-                        <img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" id="fotobiblioteca" width="114" height="114" />
+                        <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" id="fotobiblioteca" width="114" height="114" /></a>
                     </div>
                     <div>
-                        <h2>{{$joc->nom}} <a href="#"></a></h2>
+                        <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><h2>{{$joc->nom}} </h2></a>
                         <p>{{$joc->descripcio}}Call of Duty es una serie de videojuegos de disparos en primera persona, de estilo bélico, creada por Ben Chichoski</p>
                             <div class="col-md-12">
                                 <span class="fa fa-star-o"></span>

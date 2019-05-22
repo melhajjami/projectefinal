@@ -35,7 +35,7 @@
           </div>
           <div class="social-description">
             <h2>48</h2>
-            <p> Temps jugat</p>
+            <p> @foreach($biblioteca as $biblioteca) {{$biblioteca->jocs}} @endforeach</p>
           </div>
         </div>
       </div>

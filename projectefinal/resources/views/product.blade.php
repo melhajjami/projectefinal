@@ -169,9 +169,38 @@ img {
     -webkit-transform: scale(1);
             transform: scale(1); } }
 
+#fotousuaris{
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  display:inline-block;
+  border-radius: 50%;
+  background: no-repeat center;
+  background-size: cover;
+  margin-right: 3px;
+}
+.data{
+  color:gray;
+  display:inline;
+  float:right;
+}
+.dades{
+  display:inline;
+}
   </style>
   @section("contingut")
+  @if(count($errors)>0)
 
+    <ul>
+        @foreach($errors->all() as $error)
+
+            <div class="alert alert-danger col-sm-11">{{$error}}</div>
+
+        @endforeach
+    </ul>
+
+@endif
 	<div class="container">
 		<div class="card">
 			<div class="container-fliud">
@@ -194,25 +223,29 @@ img {
 							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
-            <h3>Comments</h3>
-            
-            <form method="post" action="{{route('comentaris.store', $joc->id)}}">
-            @csrf 
-              <textarea name="comentari" id="comentari"></textarea>
-              <input type="hidden" id="joc_id" name="joc_id" value="{{$joc->id}}">
-              <input type="submit" value="Submit">
-            </form>
-            @forelse ($comentaris as $comentari)
-              <p>{{$comentari->created_at}}</p>
-              <h1>{{$comentari->user->nickname}}</h1>
-              <p>{{ $comentari->comentari }}</p>
-              <hr>
-            @empty
-              <p>This post has no comments</p>
-            @endforelse
 					</div>
 				</div>
 			</div>
     </div>
+    <div class="card">
+    <h3>Comenta:</h3>
+            
+            <form method="post" action="{{route('comentaris.store', $joc->id)}}">
+            @csrf 
+              <textarea name="comentari" class="form-control"></textarea>
+              <input type="hidden" name="joc_id" value="{{$joc->id}}">
+              <input class="btn btn-primary" type="submit" value="Publica">
+            </form>
+      <div class="card-body">
+    @forelse ($comentaris as $comentari)
+              <a class="dades" href="{{route('perfil.show',Crypt::encrypt($comentari->user->id))}}"><div id="fotousuaris" style="background-image: url({{$comentari->user->fotoperfil}})">&nbsp</div></a><a class="dades" href="{{route('perfil.show',Crypt::encrypt($comentari->user->id))}}">{{$comentari->user->nickname}}</a>
+              <p class="data">{{$comentari->created_at}}</p>
+              <p>{{ $comentari->comentari }}</p>
+              <hr>
+            @empty
+              <p>Encara no hi ha comentaris per aquest joc</p>
+            @endforelse
+    </div>
+  </div>
     @endsection
   

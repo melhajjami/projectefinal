@@ -46,15 +46,30 @@ const app = new Vue({
                     console.log(response);
                     document.getElementById("boto").classList.add('disabled');
                     document.getElementById("boto").innerHTML='Solicitud enviada';
+                    document.getElementById("boto").disabled = true; 
                 }).catch(function (error) {
                     console.log(error.response);
                 });
             },
             acceptarsolicitud(usuari,usuarilogin){
-                console.log(usuari,usuarilogin,"eliminar element a traves de $event de onclick, posar actiu = 1");
+                var parametres={
+                    usuarilogin:usuarilogin,
+                }
+                axios.put('http://localhost:8000/api/friendship/'+usuari,parametres).then(function(response) {
+                    location.reload();
+                }).catch(function (error) {
+                    console.log(error.response);
+                });
             },
             declinarsolicitud(usuari,usuarilogin){
-                console.log(usuari,usuarilogin,"Esborrar la relacio de la base de dades");
+                var parametres={
+                    usuarilogin:usuarilogin,
+                }
+                axios.delete('http://localhost:8000/api/friendship/'+usuari,parametres).then(function(response) {
+                   console.log(response)
+                }).catch(function (error) {
+                    console.log(error.response);
+                });
             },
             // secondsToTime(secs){
             //     var hours = Math.floor(secs / (60 * 60));
@@ -145,12 +160,15 @@ const plantilla = new Vue({
     methods: {
         acceptarsolicitud(usuari, usuarilogin) {
             this.numeronotificacions--;
-            console.log(document.getElementById("usuari").innerHTML),
+            
             console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+            
         },
         declinarsolicitud(usuari, usuarilogin) {
             console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
-        }
+            
+        },
+        
     }
 });
 

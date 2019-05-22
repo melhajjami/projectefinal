@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\biblioteca;
 use App\friendship;
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -86,7 +87,9 @@ class profileController extends Controller
             $query->where('user1_id', $id)
                 ->where('user2_id', $usuarilogin->id);	
         })->first();
-         session(['usuarilogin' => Auth::user()]);
-        return view('profile',array('user'=>$user,'friendship'=>$friendship));
+        session(['usuarilogin' => Auth::user()]);
+        //biblioteca de l'usuari amb la info dels jocs
+        $biblioteca = biblioteca::where('id_usuari',$id)->with('jocs')->get();
+        return view('profile',array('user'=>$user,'friendship'=>$friendship,'biblioteca'=>$biblioteca));
     }
 }

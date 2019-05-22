@@ -122,6 +122,9 @@
   text-align: center;
   width: 100%;
 }
+a:link{
+  text-decoration:none!important;
+}
 </style>
 
 @section('contingut')
@@ -133,14 +136,13 @@
 
   <li class="card">
     
-    <div class="card__inner" style="background-image: url({{$joc->img}})">
+    <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><div class="card__inner" style="background-image: url({{$joc->img}})">
       <h2>{{$joc->nom}}</h2>
       <div class="card__buttons">
-        <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}" data-tip="Veure"><i class="fa fa-search"></i></a>
-        <a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a>
+        <a href="#" ><i class="fa fa-shopping-cart"></i></a>
       </div>
     </div>
-
+  </a>
     <h3 class="card__tagline">{{$joc->descripcio}}</h3>
     <ul class="card__icons">
       <li><i class="fa fa-coffee">Coffee</i></li>

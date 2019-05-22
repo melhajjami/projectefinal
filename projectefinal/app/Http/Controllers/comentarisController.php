@@ -17,6 +17,13 @@ class comentarisController extends Controller
  
     public function store(Request $request,$id)
     {
+        $request->validate([
+            'comentari' => 'required|max:255'
+        ],[
+            'comentari.required' => 'El comentari no pot estar buit',
+            'comentari.max' => 'El comentari no pot tenir més de 255 caràcters'
+        ]);
+
         $user = Auth::user();
 
         $comentari = new comentari;
