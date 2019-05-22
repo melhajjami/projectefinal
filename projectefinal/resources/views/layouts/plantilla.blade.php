@@ -98,6 +98,20 @@ LoginController::usuarilogin();
           <li><a href="{{ url('/logout') }}"> logout </a></li>
         </ul>
 
+        <li>
+          <form action="/search" method="POST" role="search">
+          {{ csrf_field() }}
+          <div class="input-group">
+              <input type="text" class="form-control" name="q"
+                  placeholder="nickname o joc..."> <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default">
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>
+              </span>
+          </div>
+          </form>
+        </li> 
+
       </ul>
 
     </div>
