@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class joc extends Model
 {
+    protected $fillable = [
+        'nom','img','descripcio','preu','puntuacio'
+    ];
     public function biblioteca()
     {
         return $this->belongsTo('App\biblioteca');

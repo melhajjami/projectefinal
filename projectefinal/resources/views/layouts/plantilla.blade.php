@@ -34,7 +34,6 @@ LoginController::usuarilogin();
 </head>
 
 <body>
-  
   <div class="nav-side-menu" id="plantilla">
 
     <!-- TITOL -->

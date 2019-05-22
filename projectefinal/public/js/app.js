@@ -49309,11 +49309,12 @@ var app = new Vue({
       });
     },
     declinarsolicitud: function declinarsolicitud(usuari, usuarilogin) {
-      var parametres = {
-        usuarilogin: usuarilogin
-      };
-      axios["delete"]('http://localhost:8000/api/friendship/' + usuari, parametres).then(function (response) {
-        console.log(response);
+      axios["delete"]('http://localhost:8000/api/friendship/' + usuari, {
+        params: {
+          id: usuarilogin
+        }
+      }).then(function (response) {
+        location.reload();
       })["catch"](function (error) {
         console.log(error.response);
       });
@@ -49383,11 +49384,25 @@ var plantilla = new Vue({
   },
   methods: {
     acceptarsolicitud: function acceptarsolicitud(usuari, usuarilogin) {
-      this.numeronotificacions--;
-      console.log(usuari, usuarilogin, "eliminar element a traves de $event de onclick, posar actiu = 1");
+      var parametres = {
+        usuarilogin: usuarilogin
+      };
+      axios.put('http://localhost:8000/api/friendship/' + usuari, parametres).then(function (response) {
+        location.reload();
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     },
     declinarsolicitud: function declinarsolicitud(usuari, usuarilogin) {
-      console.log(usuari, usuarilogin, "Esborrar la relacio de la base de dades");
+      axios["delete"]('http://localhost:8000/api/friendship/' + usuari, {
+        params: {
+          id: usuarilogin
+        }
+      }).then(function (response) {
+        location.reload();
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
     }
   }
 });

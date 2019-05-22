@@ -35,7 +35,7 @@
           </div>
           <div class="social-description">
             <h2>48</h2>
-            <p> @foreach($biblioteca as $biblioteca) {{$biblioteca->jocs}} @endforeach</p>
+            <p> @foreach($biblioteca as $biblioteca) {{$biblioteca}} @endforeach</p>
           </div>
         </div>
       </div>
@@ -50,10 +50,10 @@
                         <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg disabled" disabled>Solicitud enviada</a>
                         @else
                         <a id="botoprofile" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="acceptarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Acceptar</a>
-                        <a id="botoprofile" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="declinarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Cancelar</a>
+                        <a id="botoprofile" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="declinarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Declinar</a>
                         @endif
                     @elseif($friendship->actiu == 1)
-                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg">Deixar de ser amics</a>
+                        <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg" v-on:click="declinarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Deixar de ser amics</a>
                     @endif
                 @elseif($friendship == null)
                     <a id="boto" href="#button" class="btn btn-primary btn-round btn-lg"  v-on:click="enviarsolicitud({{$user->id}},{{session()->get('usuarilogin')->id}})">Enviar solucitud d'amistat</a>

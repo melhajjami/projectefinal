@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class friendshipController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -120,9 +121,10 @@ class friendshipController extends Controller
      */
     public function destroy(Request $request,$id)
     {
+        $user = Auth::user();
         //SOLICITUD DECLINADA, S'ESBORRA LA RELACIO
-        $friendship = friendship::where('user1_id',$id)->where('user2_id',$request->usuarilogin)->first();
+        $friendship = friendship::where('user1_id',$id)->where('user2_id',$request->id)->first();
 
-        return $id;
+        $friendship->delete();
     }
 }
