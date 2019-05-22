@@ -1,162 +1,73 @@
-@extends('layouts.plantilla')
-
+@extends("layouts.plantilla")
 <style>
-* {
-  box-sizing: border-box;
+.card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 220px;
+    text-align: center;
+}
+.card-product .img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+.card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+.card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee;
 }
 
-.cards {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-@media (max-width: 550px) {
-  .cards {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    }
+.label-rating { margin-right:10px;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.card {
-  position: relative;
-  width: 300px;
-  margin: 1%;
-  background: whiteSmoke;
-}
-@media (max-width: 815px) {
-  .card {
-    width: 300px;
-  }
-}
-@media (max-width: 550px) {
-  .card {
-    width: 100%;
-  }
-}
-.card__inner{
-  position: relative;
-  background-size: cover;
-  overflow: hidden;
-}
-.card__inner h2 {
-  color: white;
-  margin: 0;
-  padding: 30% 0;
-  text-shadow: 1px 1px 3px #000;
-  line-height: 18px;
-  text-transform: uppercase;
-}
-.card__inner h2 small {
-  font-style: italic;
-  display: inherit;
-}
-.card__buttons {
-  position: absolute;
-  width: 100%;
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-  -webkit-transition: -webkit-transform .5s ease;
-  transition: -webkit-transform .5s ease;
-  transition: transform .5s ease;
-  transition: transform .5s ease, -webkit-transform .5s ease;
-}
-.card__buttons a {
-  position: relative;
-  float: left;
-  width: 50%;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-}
-.card__buttons a:first-child {
-  background: #fff;
-  border-right: 1px solid #ccc;
-}
-.card__buttons a:last-child {
-  background: #ffde00;
-}
-.card__buttons a:hover {
-  color: #ffde00;
-  background: #000;
-}
-.card:hover .card__buttons {
-  -webkit-transform: translateY(-38px);
-          transform: translateY(-35px);
-}
-.card__tagline {
-  font-size: 1rem;
-  font-weight: 100;
-}
-.card__icons {
-  margin: 0 0 50px;
-  padding: 0;
-  list-style: none;
-}
-.card__icons li {
-  display: inline-block;
-  padding: 0 10px 10px;
-}
-.card__icons .fa {
-  font-size: .8rem;
-}
-.card__icons .fa:before {
-  font-size: 1.2rem;
-  display: block;
-  padding-bottom: 5px;
-}
-.card p {
-  position: absolute;
-  bottom: 0;
-  text-align: center;
-  width: 100%;
-}
-a:link{
-  text-decoration:none!important;
+.card-product .price-old {
+    color: #999;
 }
 </style>
 
-@section('contingut')
-
+@section("contingut")
 <div class="container">
-<ul class="cards">
+<h1>TENDA</h1>
+<hr>
 
-  @foreach($jocs as $joc)
+<div class="row">
 
-  <li class="card">
-    
-    <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><div class="card__inner" style="background-image: url({{$joc->img}})">
-      <h2>{{$joc->nom}}</h2>
-      <div class="card__buttons">
-        <a href="#" ><i class="fa fa-shopping-cart"></i></a>
-      </div>
-    </div>
-  </a>
-    <h3 class="card__tagline">{{$joc->descripcio}}</h3>
-    <ul class="card__icons">
-      <li><i class="fa fa-coffee">Coffee</i></li>
-      <li><i class="fa fa-bolt">Bolt</i></li>
-      <li><i class="fa fa-bomb">Bomb</i></li>
-      <li><i class="fa fa-cutlery">Cutlery</i></li>
-      <li><i class="fa fa-bolt">Bolt</i></li>
-    </ul>
-    <p>{{$joc->preu}}€</p>
-  </li>
+@foreach($jocs as $joc)
 
-  @endforeach
-  
-</ul>
-</div>
+<div class="col-md-4">
+	<figure class="card card-product">
+		<div class="img-wrap"><img src="{{ asset($joc->img) }}"></div>
+		<figcaption class="info-wrap">
+				<h4 class="title">{{$joc->nom}}</h4>
+				<p class="desc">{{$joc->descripcio}}</p>
+				<div class="rating-wrap">
+					<div class="label-rating">10 Comentaris</div>
+					<div class="label-rating">Puntuacio: 4</div>
+				</div> <!-- rating-wrap.// -->
+		</figcaption>
+		<div class="bottom-wrap">
+			<a href="" class="btn btn-sm btn-primary float-right">Comprar</a>	
+			<div class="price-wrap h5">
+				<span class="price-new">{{ $joc->preu }}€</span> <del class="price-old">{{ $joc->preu }}€</del>
+			</div> <!-- price-wrap.// -->
+		</div> <!-- bottom-wrap.// -->
+	</figure>
+</div> <!-- col // -->
+
+
+@endforeach
+
+</div> <!-- row.// -->
+
+
+</div> 
 
 @endsection

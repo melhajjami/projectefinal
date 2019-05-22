@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\User;
+use Illuminate\Support\Facades\Input;
 
 Route::get('/', 'bibliotecaController@index')->name('biblioteca.index')->middleware('auth');
 
@@ -37,3 +38,12 @@ Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'profile
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::post('comentaris/{id}', 'comentarisController@store')->name('comentaris.store');
+
+Route::any( '/search', function () {
+    $q = Input::get('q');
+    $user = User::where( 'nickname', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $user ) > 0)
+        return view ( 'search' )->withDetails( $user )->withQuery ( $q );
+    else
+        return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
+} );
