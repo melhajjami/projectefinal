@@ -188,6 +188,10 @@ img {
 .dades{
   display:inline;
 }
+.dades:link{
+  text-decoration:none!important;
+  color:black!important;
+}
   </style>
   @section("contingut")
   @if(count($errors)>0)

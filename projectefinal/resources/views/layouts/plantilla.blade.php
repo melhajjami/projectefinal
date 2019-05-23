@@ -3,8 +3,10 @@
 @php
 use App\Http\Controllers\friendshipController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\userController;
 session(['pendingfriendships' => friendshipController::invitacions()]);
 LoginController::usuarilogin();
+$amics = friendshipController::show(session()->get('usuarilogin')->id);
 @endphp
 
 <head>
@@ -78,12 +80,27 @@ LoginController::usuarilogin();
             <li><a class="user" href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">
                 <div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}})">&nbsp</div>{{$usuari->user->nickname}}
                 <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
-                <a class="boto"id="{{$usuari->user->id}}"  href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a></a>
+                <a class="boto"id="{{$usuari->user->id}}"  href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
+              </a>
             </li>
             @endforeach
           @endif
         </ul>
 
+        <!-- Amics -->
+        <li data-toggle="collapse" data-target="#amics" data-parent="menu-content" class="collapsed">
+          <a href="#"><i class="fa fa-user"></i> Amics <span class="arrow"></span></a>
+        </li>
+        
+        <ul class="collapse" id="amics">
+          @foreach($amics as $amic)
+             @if($amic->user1_id!=session()->get('usuarilogin')->id) @php $user = usercontroller::show($amic->user1_id) @endphp @elseif($amic->user2_id!=session()->get('usuarilogin')->id) @php $user = userController::show($amic->user2_id) @endphp @endif 
+            <li><a class="user" href="#">
+            <div id="fotousuaris" >&nbsp</div>{{$user->nickname}}
+            </a></li>
+          @endforeach
+        </ul>
+        
         <!-- Submenu Perfil -->
 
         <li data-toggle="collapse" data-target="#usuari" data-parent="menu-content" class="collapsed">
@@ -95,7 +112,7 @@ LoginController::usuarilogin();
         <ul class=" collapse" id="usuari">
           <li><a href="{{route('perfil.show', Crypt::encrypt(session()->get('usuarilogin')->id))}}">Perfil</a></li>
           <li><a href="{{route('users.edit', session()->get('usuarilogin')->id)}}">Editar perfil</a></li>
-          <li><a href="{{ url('/logout') }}"> logout </a></li>
+          <li><a href="{{ url('/logout') }}"> Logout </a></li>
         </ul>
 
         <li>
