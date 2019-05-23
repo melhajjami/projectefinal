@@ -42,6 +42,8 @@ Route::post('comentaris/{id}', 'comentarisController@store')->name('comentaris.s
 Route::any( '/search', function () {
     $q = Input::get('q');
     $user = User::where( 'nickname', 'LIKE', '%' . $q . '%' )->get ();
+    $joc = joc::where( 'nom'. 'LIKE', '%', $q . '%')->get();
+    
     if (count ( $user ) > 0)
         return view ( 'search' )->withDetails( $user )->withQuery ( $q );
     else
