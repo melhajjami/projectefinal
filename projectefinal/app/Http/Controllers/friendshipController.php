@@ -109,8 +109,12 @@ class friendshipController extends Controller
     {
         $user = Auth::user();
         //SOLICITUD DECLINADA, S'ESBORRA LA RELACIO
-        $friendship = friendship::where('user1_id',$id)->where('user2_id',$request->id)->first();
-
+        $friendship = friendship::where(function ($query) use ($request,$id) {
+            $query->where('user1_id', $id)->where('user2_id',$request->id);
+        })->orWhere(function($query) use ($request,$id) {
+            $query->where('user2_id', $id)->where('user1_id',$request->id);	
+        })->first();
+        
         $friendship->delete();
     }
 }

@@ -73,34 +73,48 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
         </li>
 
         <ul class="collapse" id="config">
-          @if(count(session()->get('pendingfriendships')) < 1)
-          <li><p class="empty">No tens cap sol·licitud d'amistat</p></li>
-          @else
-            @foreach(session()->get('pendingfriendships') as $usuari)
+            @forelse(session()->get('pendingfriendships') as $usuari)
             <li><a class="user" href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">
                 <div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}})">&nbsp</div>{{$usuari->user->nickname}}
                 <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
-                <a class="boto"id="{{$usuari->user->id}}"  href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
+                <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
               </a>
             </li>
-            @endforeach
-          @endif
+            @empty
+            <li>
+            <p class="empty">No tens cap sol·licitud d'amistat</p>
+            </li>
+            @endforelse
         </ul>
 
         <!-- Amics -->
         <li data-toggle="collapse" data-target="#amics" data-parent="menu-content" class="collapsed">
           <a href="#"><i class="fa fa-user"></i> Amics <span class="arrow"></span></a>
         </li>
-        
+
         <ul class="collapse" id="amics">
-          @foreach($amics as $amic)
-             @if($amic->user1_id!=session()->get('usuarilogin')->id) @php $user = usercontroller::show($amic->user1_id) @endphp @elseif($amic->user2_id!=session()->get('usuarilogin')->id) @php $user = userController::show($amic->user2_id) @endphp @endif 
-            <li><a class="user" href="#">
-            <div id="fotousuaris" >&nbsp</div>{{$user->nickname}}
-            </a></li>
-          @endforeach
+          @forelse($amics as $amic)
+            @if($amic->user1_id!=session()->get('usuarilogin')->id) 
+              @php 
+                $user = usercontroller::show($amic->user1_id) 
+              @endphp 
+            @elseif($amic->user2_id!=session()->get('usuarilogin')->id) 
+              @php 
+                $user = userController::show($amic->user2_id) 
+              @endphp 
+            @endif
+            <li>
+              <a class="user" href="{{route('perfil.show',Crypt::encrypt($user->id))}}">
+                <div id="fotousuaris" style="background-image:url({{$user->fotoperfil}})">&nbsp</div>{{$user->nickname}}
+              </a>
+            </li>
+          @empty
+            <li>
+            <p class="empty">No tens cap amic :(</p>
+            </li>
+          @endforelse
         </ul>
-        
+
         <!-- Submenu Perfil -->
 
         <li data-toggle="collapse" data-target="#usuari" data-parent="menu-content" class="collapsed">
@@ -117,17 +131,16 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
 
         <li>
           <form action="/search" method="POST" role="search">
-          {{ csrf_field() }}
-          <div class="input-group">
-              <input type="text" class="form-control" name="q"
-                  placeholder="nickname o joc..."> <span class="input-group-btn">
-                  <button type="submit" class="btn btn-default">
-                      <span class="glyphicon glyphicon-search"></span>
-                  </button>
+            {{ csrf_field() }}
+            <div class="input-group">
+              <input type="text" class="form-control" name="q" placeholder="nickname o joc..."> <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
               </span>
-          </div>
+            </div>
           </form>
-        </li> 
+        </li>
 
       </ul>
 
