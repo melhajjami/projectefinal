@@ -13,6 +13,7 @@
         color: white;
         display:inline-block;
         margin:1em;
+        width:100%;
     }   
     #fotobiblioteca{
         float:left;
@@ -52,6 +53,7 @@
     <div class="container" id="app">
     <div class="row">
     @foreach($biblioteca as $joc)
+    @foreach($joc->jocs as $joc)
         <div class="col-md-6">
             <div class="well well-sm">
                 <div id="fila">
@@ -59,21 +61,16 @@
                         <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" id="fotobiblioteca" width="114" height="114" /></a>
                     </div>
                     <div>
-                        <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><h2>{{$joc->nom}} </h2></a>
-                        <p>{{$joc->descripcio}}Call of Duty es una serie de videojuegos de disparos en primera persona, de estilo bélico, creada por Ben Chichoski</p>
+                        <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><h2>{{$joc->nom}}</h2></a>
+                        <p>{{$joc->descripcio}}</p>
                             <div class="col-md-12">
-                                <span class="fa fa-star-o"></span>
-                                <span class="fa fa-star-o"></span>
-                                <span class="fa fa-star-o"></span>
-                                <span class="fa fa-star-o"></span>
-                                <span class="fa fa-star-o"></span>
-                                <span class="separator">|</span>
                                 <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Jugar</button>
                             </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endforeach
     @endforeach
     </div>
     </div>

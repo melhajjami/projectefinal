@@ -41,6 +41,53 @@ a.disabled {
 
    color:white;
 }
+#fila{
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 250px;
+    border-width: 2px;
+    border-color: #d19b3d;
+    background-color: #1A1A1A;
+    color: white;
+    display:inline-block;
+    margin:1em;
+    width:100%;
+    height: 5%;
+}   
+#fotobiblioteca{
+    float:left;
+    margin: 10px;
+    height: 20px;
+    width:20px;
+}
+.section-box h2 {
+    margin-top:0px;
+}
+.section-box h2 a { 
+    font-size:15px; 
+}
+.separator { 
+    padding-right:5px;
+    padding-left:5px; 
+}
+.rating-desc{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.container{
+    padding-top: 5px;
+}
+img{
+    margin-top: 10px;
+}
+a:link{
+    text-decoration:none!important; 
+    color:white!important;
+}
+a{
+    color:white!important;
+}   
 #botoprofile{
     background-color:#d19b3d;
 }
