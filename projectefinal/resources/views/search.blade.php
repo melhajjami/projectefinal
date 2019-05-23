@@ -117,10 +117,11 @@
 @section("contingut")
 <h1></h1>
 <div class="container">
-@if(isset($details))
+@if(isset($details) || isset($joc))
 <div id="fancy-list-group">
     <div class="row">
     @foreach($details as $user)
+    @foreach($joc as $game)
     <div class="list-group">
 
         <div class="col-lg-12">
@@ -129,8 +130,8 @@
                     <div style="background-image: url({{$user->fotoperfil}})"></div>
                 </div>
                 <div class="list-group-item-content">
-                <h4 class="list-group-item-heading">{{$user->nom}}</h4>
-                <p class="list-group-item-text">How much wood could a wood chuck chuck if a wood chuck could chuck wood?</p>
+                <h4 class="list-group-item-heading">{{$user->nickname}}</h4>
+                <p class="list-group-item-text">{{ $game->nom }}</p>
                 </div>
                 <div class="list-group-item-controls">
                 <span class="label">Controls</span>
@@ -144,6 +145,7 @@
         </div>
         
     </div>
+    @endforeach
     @endforeach
 </div>
 @endif

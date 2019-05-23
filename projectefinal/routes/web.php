@@ -11,6 +11,7 @@
 |
 */
 use App\User;
+use App\joc;
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', 'bibliotecaController@index')->name('biblioteca.index')->middleware('auth');
@@ -42,10 +43,10 @@ Route::post('comentaris/{id}', 'comentarisController@store')->name('comentaris.s
 Route::any( '/search', function () {
     $q = Input::get('q');
     $user = User::where( 'nickname', 'LIKE', '%' . $q . '%' )->get ();
-    $joc = joc::where( 'nom'. 'LIKE', '%', $q . '%')->get();
-    
-    if (count ( $user ) > 0)
-        return view ( 'search' )->withDetails( $user )->withQuery ( $q );
+    $jocs = joc::where( 'nom', 'LIKE', '%' . $q . '%' )->get ();
+
+    if (count ( $user ) > 0 || count ( $jocs ) > 0)
+        return view ( 'search' )->withDetails( $user )->withJoc( $jocs )->withQuery ( $q );
     else
         return view ( 'search' )->withMessage ( 'No Details found. Try to search again !' );
 } );
