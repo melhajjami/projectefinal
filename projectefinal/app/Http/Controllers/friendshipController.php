@@ -53,27 +53,13 @@ class friendshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public static function show($id)
     {
         //array amb friendship on participa usuari indicat
-        $friendship = friendship::where('user1_id', $id)->orwhere('user2_id', $id)->get();
+        $friendship = friendship::where('actiu',1)->where('user1_id',$id)->orwhere('user2_id',$id)->get();
 
-        //array per posar els amics de l'usuari indicat 
-        $userarray=[];
-
-        //per a cada friendship trobar amic de l'usuari indicat 
-        foreach($friendship as $user){
-            if($user->user1_id==$id){
-                $usuari = User::where('id', $user->user2_id)->get();
-                array_push($userarray,$usuari);
-            } else if($user->user1_id!=$id) {
-                $usuari = User::where('id', $user->user1_id)->get();
-                array_push($userarray,$usuari);
-            }
-        }
-
-        //finalment retorna array amb amics de l'usuari indicat
-        return $userarray;
+        
+        return $friendship;
         
     }
 

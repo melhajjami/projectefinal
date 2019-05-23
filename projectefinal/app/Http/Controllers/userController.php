@@ -46,10 +46,10 @@ class userController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public static function show($id)
     {
-        // $user = User::where('id', $id)->get();
-        // return view('profile')->with('user',$user);
+        $user = User::where('id', $id)->first();
+        return $user;
     }
 
     /**
