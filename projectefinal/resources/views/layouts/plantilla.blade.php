@@ -69,7 +69,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
         <!--  Submenu Invitacions d'amistat -->
 
         <li data-toggle="collapse" data-target="#config" data-parent="menu-content" class="collapsed">
-          <a href="#"><i class="fa fa-cogs fa-lg"></i> Invitacions d'amistat <span class="arrow"></span>@if(count(session()->get('pendingfriendships')) > 0)<span class="badge badge-pill badge-danger" id="numeronotificacions">{{count(session()->get('pendingfriendships'))}}</span>@endif</a>
+          <a href="#"><i class="fa fa-bell fa-lg"></i> Invitacions d'amistat <span class="arrow"></span>@if(count(session()->get('pendingfriendships')) > 0)<span class="badge badge-pill badge-danger" id="numeronotificacions">{{count(session()->get('pendingfriendships'))}}</span>@endif</a>
         </li>
 
         <ul class="collapse" id="config">
@@ -89,7 +89,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
 
         <!-- Amics -->
         <li data-toggle="collapse" data-target="#amics" data-parent="menu-content" class="collapsed">
-          <a href="#"><i class="fa fa-user"></i> Amics <span class="arrow"></span></a>
+          <a href="#"><i class="fa fa-users"></i> Amics <span class="arrow"></span></a>
         </li>
 
         <ul class="collapse" id="amics">

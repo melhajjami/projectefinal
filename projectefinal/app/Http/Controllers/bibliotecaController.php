@@ -22,19 +22,25 @@ class bibliotecaController extends Controller
         //DONADA ID DE USUARI, RETORNAR ELS JOCS QUE TÉ + TEMPS JUGAT I PUNTUACIO QUE ESTAN EN LA TAULA BIBLIOTECA
         $user = Auth::user();
         // $biblioteca = biblioteca::where('id_usuari', $user->id)->get();
-        $biblioteca = DB::table('bibliotecas')->select(
-            'jocs.id',
-            'jocs.nom',
-            'jocs.img',
-            'jocs.descripcio',
-            'jocs.preu',
-            'bibliotecas.tempsjugat',
-            'bibliotecas.puntuacio'
-        )->join('jocs', 'jocs.id', '=', 'bibliotecas.id_joc')
-        ->where('bibliotecas.id_usuari',$user->id)
-        ->get();
+        // $biblioteca = DB::table('bibliotecas')->select(
+        //     'jocs.id',
+        //     'jocs.nom',
+        //     'jocs.img',
+        //     'jocs.descripcio',
+        //     'jocs.preu',
+        //     'bibliotecas.tempsjugat',
+        //     'bibliotecas.puntuacio'
+        // )->join('jocs', 'jocs.id', '=', 'bibliotecas.id_joc')
+        // ->where('bibliotecas.id_usuari',$user->id)
+        // ->get();
+        $biblioteca = biblioteca::where('id_usuari',$user->id)->with('jocs')->get();
+        $friendship = app('App\Http\Controllers\friendshipController')->show($user->id);
+            
+        
+            //ACABAR DE FER... SABER USUARIS QUE SON AMICS I QUE TENEN EL MATEIX JOC
 
-        return view('biblioteca')->with('biblioteca',$biblioteca);
+
+        return view('biblioteca',array('biblioteca'=>$biblioteca,'friendship'=>$friendship));
     }
     
     /**
