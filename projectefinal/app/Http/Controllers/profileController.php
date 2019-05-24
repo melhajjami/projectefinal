@@ -86,7 +86,7 @@ class profileController extends Controller
                 ->where('user2_id', $id);
         })->orWhere(function($query) use ($usuarilogin,$id) {
             $query->where('user1_id', $id)
-                ->where('user2_id', $usuarilogin->id);	
+                ->where('user2_id', $usuarilogin->id);
         })->first();
         $amics = app('App\Http\Controllers\friendshipController')->show($id);
 

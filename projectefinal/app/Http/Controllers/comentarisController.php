@@ -8,7 +8,8 @@ use App\comentari;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
- 
+use App\biblioteca;
+
 class comentarisController extends Controller
 {
     public function __construct() { 
@@ -37,5 +38,18 @@ class comentarisController extends Controller
         $id = Crypt::encrypt($id);
         
         return redirect()->route('jocs.show', ['joc' => $id]);        
+    }
+
+    public function puntuar(Request $request, $idjoc){
+        $user = Auth::user();
+
+        $biblio = biblioteca::where('id_usuari', $user->id)->where('id_joc', $idjoc);
+
+        $biblio->puntuacio = $request->puntuacio;
+        
+
+        $user = User::where('nickname', 'LIKE', '%' . $q . '%')->get();
+
+        
     }
 }

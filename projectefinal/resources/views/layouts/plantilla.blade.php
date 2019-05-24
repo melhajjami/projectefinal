@@ -130,7 +130,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
         </ul>
 <p>saldo: {{session()->get('usuarilogin')->saldo}}</p>
         <li>
-          <form action="/search" method="POST" role="search">
+          <form action="{{action('searchController@show')}}">
             {{ csrf_field() }}
             <div class="input-group">
               <input type="text" class="form-control" name="q" placeholder="nickname o joc..."> <span class="input-group-btn">
