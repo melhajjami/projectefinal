@@ -128,7 +128,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
           <li><a href="{{route('users.edit', session()->get('usuarilogin')->id)}}">Editar perfil</a></li>
           <li><a href="{{ url('/logout') }}"> Logout </a></li>
         </ul>
-
+<p>saldo: {{session()->get('usuarilogin')->saldo}}</p>
         <li>
           <form action="{{action('searchController@show')}}">
             {{ csrf_field() }}

@@ -31,6 +31,13 @@
 .card-product .price-old {
     color: #999;
 }
+.title:link{
+    text-decoration: none;
+    color: black;
+}
+.title{
+    font-size: 30px;
+}
 </style>
 
 @section("contingut")
@@ -44,9 +51,9 @@
 
 <div class="col-md-4">
 	<figure class="card card-product">
-		<div class="img-wrap"><img src="{{ asset($joc->img) }}"></div>
+		<div class="img-wrap"><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img src="{{ asset($joc->img) }}"></a></div>
 		<figcaption class="info-wrap">
-				<h4 class="title">{{$joc->nom}}</h4>
+				<a class="title" href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">{{$joc->nom}}</a>
 				<p class="desc">{{$joc->descripcio}}</p>
 				<div class="rating-wrap">
 					<div class="label-rating">10 Comentaris</div>
