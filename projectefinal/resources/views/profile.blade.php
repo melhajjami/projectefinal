@@ -11,6 +11,66 @@
 #banner{
     background-image:url({{$user->background}});
 }
+/* 
+// Listrap v1.0, by Gustavo Gondim (http://github.com/ggondim)
+// Licenced under MIT License
+// For updates, improvements and issues, see https://github.com/inosoftbr/listrap
+*/
+
+.listrap {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            cursor: default;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .listrap li {
+            margin: 0;
+            padding: 10px;
+        }
+
+        .listrap li.active, .listrap li:hover {
+            background-color: #d9edf7;
+        }
+
+        .listrap strong {
+            margin-left: 10px;
+        }
+
+        .listrap .listrap-toggle {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+        }
+
+        .listrap .listrap-toggle span {
+            background-color: #428bca;
+            opacity: 0.8;
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            display: none;
+            position: absolute;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            vertical-align: middle;
+            color: #ffffff;
+        }
+
+        .listrap .listrap-toggle span:before {
+            font-family: 'Glyphicons Halflings';
+            content: "\e013";
+        }
+
+        .listrap li.active .listrap-toggle span {
+            display: block;
+        }
 </style>
 <body class="profile-page sidebar-collapse">
     @section("contingut")
@@ -27,7 +87,7 @@
         <div class="content">
           <div class="social-description">
             <h2>{{count($biblioteca)}}</h2>
-            <p>{{$biblioteca}}</p>
+            <p>Jocs</p>
           </div>
           <div class="social-description">
             <h2>{{count($amics)}}</h2>
@@ -57,15 +117,25 @@
                 @endif
         @endif
         <h3 class="title">Jocs</h3>
-        @forelse($biblioteca as $hola)
         
         
-        $jocs
-      
-    @empty
-    <p>Aquest usuari enara no té cap joc </p>     
-    @endforelse
-  </div>
+        @forelse($jocs as $joc)
+        @foreach($joc as $joc)
+
+            <ul class="listrap">
+              <li>
+                  <div class="listrap-toggle">
+                      <span></span>
+                      <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img src="{{$joc->img}}" alt="yy" class="img-rounded img-responsive" id="fotobiblioteca" width="114" height="114" /></a>
+                  </div>
+                  <strong><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><h2>{{$joc->nom}}</h2></a></strong>
+              </li>
+            </ul>
+          
+          @endforeach
+        @empty
+          <p>Aquest usuari enara no té cap joc </p>     
+        @endforelse
   
   <link href="{{asset('css/prova2.css')}}" rel="stylesheet" />
 @endsection

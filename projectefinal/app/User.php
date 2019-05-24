@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function biblioteca()
     {
-        return $this->hasOne('App\biblioteca');
+        return $this->hasOne('App\biblioteca','id_usuari');
     }
 
     public function friendship()

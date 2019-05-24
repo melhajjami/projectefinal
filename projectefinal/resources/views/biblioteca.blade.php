@@ -3,6 +3,9 @@
     /* #contingut{
         color: white;
     } */
+    .container{
+        color:white;
+    }
     #fila{
         border: 1px solid white;
         border-radius: 5px;
@@ -47,13 +50,17 @@
     a{
         color:white!important;
     }
+    #tenda{
+        display:inline;
+    }
 </style>
 @section("contingut")
 <div class="container">
     <div class="container" id="app">
+        @foreach($bibliotecaamics as $bib)<h1> {{$bib}}  </h1>@endforeach
     <div class="row">
-    @foreach($biblioteca as $joc)
-    @foreach($joc->jocs as $joc)
+    @forelse($biblioteca as $joc)
+    
         <div class="col-md-6">
             <div class="well well-sm">
                 <div id="fila">
@@ -70,8 +77,9 @@
                 </div>
             </div>
         </div>
-        @endforeach
-    @endforeach
+        @empty
+        <h1>Encara no tens cap joc, compra el primer <a id="tenda" href="{{route('jocs.index')}}">aqui!</a></h1>
+    @endforelse
     </div>
     </div>
 </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\biblioteca;
 use App\joc;
 use App\friendship;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -21,26 +22,37 @@ class bibliotecaController extends Controller
     {
         //DONADA ID DE USUARI, RETORNAR ELS JOCS QUE TÉ + TEMPS JUGAT I PUNTUACIO QUE ESTAN EN LA TAULA BIBLIOTECA
         $user = Auth::user();
-        // $biblioteca = biblioteca::where('id_usuari', $user->id)->get();
-        // $biblioteca = DB::table('bibliotecas')->select(
-        //     'jocs.id',
-        //     'jocs.nom',
-        //     'jocs.img',
-        //     'jocs.descripcio',
-        //     'jocs.preu',
-        //     'bibliotecas.tempsjugat',
-        //     'bibliotecas.puntuacio'
-        // )->join('jocs', 'jocs.id', '=', 'bibliotecas.id_joc')
-        // ->where('bibliotecas.id_usuari',$user->id)
-        // ->get();
-        $biblioteca = biblioteca::where('id_usuari',$user->id)->with('jocs')->get();
-        $friendship = app('App\Http\Controllers\friendshipController')->show($user->id);
-            
-        
-            //ACABAR DE FER... SABER USUARIS QUE SON AMICS I QUE TENEN EL MATEIX JOC
+        $biblioteca = biblioteca::where('id_usuari', $user->id)->get();
+        $biblioteca = DB::table('bibliotecas')->select(
+            'jocs.id',
+            'jocs.nom',
+            'jocs.img',
+            'jocs.descripcio',
+            'jocs.preu',
+            'bibliotecas.tempsjugat',
+            'bibliotecas.puntuacio'
+        )->join('jocs', 'jocs.id', '=', 'bibliotecas.id_joc')
+        ->where('bibliotecas.id_usuari',$user->id)
+        ->get();
+        $amics = app('App\Http\Controllers\friendshipController')->show($user->id);
 
+        $usuarisamics=[];
 
-        return view('biblioteca',array('biblioteca'=>$biblioteca,'friendship'=>$friendship));
+        foreach($amics as $amic){
+            if($amic->user1_id == $user->id){
+                array_push($usuarisamics,User::where('id',$amic->user2_id)->with('biblioteca')->first());
+            } elseif($amic->user2_id == $user->id){
+                array_push($usuarisamics,User::where('id',$amic->user1_id)->with('biblioteca')->first());
+            }
+        }
+        // $bibliotecaamics = [];
+
+        // foreach($usuarisamics as $amic){
+        //     $bibliotecaamic = $this->show($amic->id);
+        //     array_push($bibliotecaamics,$bibliotecaamic);
+        // }
+
+        return view('biblioteca',array('biblioteca'=>$biblioteca,'bibliotecaamics'=>$usuarisamics));
     }
     
     /**
@@ -77,8 +89,11 @@ class bibliotecaController extends Controller
      */
     public function show($id)
     {
-        
+        $biblioteca = biblioteca::where('id_usuari',$id)->get();
+    
+        return $biblioteca;
     }
+
     /**
      * Show the form for editing the specified resource.
      *
