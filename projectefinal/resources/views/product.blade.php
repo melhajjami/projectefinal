@@ -231,6 +231,22 @@ img {
 				</div>
 			</div>
     </div>
+
+    <form method="post" action="{{route('comentaris.store', $joc->id)}}">
+      @csrf 
+    <div class="card">
+      <h3>Pun fking tua!</h3>
+      <select class="form-control" id="puntuacio">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+      <input class="btn btn-primary" type="submit" value="Publica">
+    </div>
+    </form>
+
     <div class="card">
     <h3>Comenta:</h3>
             
