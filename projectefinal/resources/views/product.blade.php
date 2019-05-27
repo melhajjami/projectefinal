@@ -37,7 +37,46 @@
             <!-- <p class="product-description">{{$joc->descripcio}}</p> -->
             <p class="product-description">{{$joc->descripcio}}
             </p>
-						<h4 class="price">PREU: <span>{{$joc->preu}}€</span></h4>
+            <h4>PUNTUACIO:</h4>
+              <p>{{ceil($joc->puntuacio*2)/2}}</p>
+              @if($joc->puntuacio == 1)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+              @elseif($joc->puntuacio == 2)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+              @elseif($joc->puntuacio == 2)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+              @elseif($joc->puntuacio == 3)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+              @elseif($joc->puntuacio == 4)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+              @else
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              @endif
+            <h4 class="price">PREU: <span>{{$joc->preu}}€</span></h4>
 						<div id="posicioboto" class="action">
               @if($tejoc == null)
 							<a id="{{$joc->id}}" class="add-to-cart btn btn-default" v-on:click="comprarJoc({{session()->get('usuarilogin')->id}},{{$joc->id}},{{$joc->preu}})">Comprar</a>
@@ -50,8 +89,25 @@
 			</div>
     </div>
     <div class="card">
+      <h3>Puntua:</h3>
+      <form method="post" action="{{route('comentaris.puntuar', $joc->id)}}">
+      @csrf
+      <div class="form-group">
+        <label for="sel1">Nota:</label>
+        <select class="form-control" name="puntuacio">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option selected="selected">5</option>
+        </select>
+        <input type="hidden" name="joc_id" value="{{$joc->id}}">
+        <input class="btn btn-primary" type="submit" value="Publica">
+      </div>
+      </form>
+    </div>
+    <div class="card">
     <h3>Comenta:</h3>
-            
             <form method="post" action="{{route('comentaris.store', $joc->id)}}">
             @csrf 
               <textarea name="comentari" class="form-control"></textarea>

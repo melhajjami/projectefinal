@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
 use App\biblioteca;
+use Illuminate\Support\Facades\DB;
 
 class comentarisController extends Controller
 {
@@ -41,15 +42,28 @@ class comentarisController extends Controller
     }
 
     public function puntuar(Request $request, $idjoc){
+
+        // Canviar la puntuacio //
+
         $user = Auth::user();
-
-        $biblio = biblioteca::where('id_usuari', $user->id)->where('id_joc', $idjoc);
-
+        
+        $biblio = biblioteca::where('id_usuari', $user->id)->where('id_joc', $idjoc)->first();
         $biblio->puntuacio = $request->puntuacio;
         
+        $biblio->save();
 
-        $user = User::where('nickname', 'LIKE', '%' . $q . '%')->get();
+        // Canviar la puntuacio //
 
+        // Guardar la puntuacio total a la base de dades //
+
+        $puntuacio = biblioteca::where('id_joc', $idjoc)->where('puntuacio', '>', '0')->groupBy('id_joc')->avg('puntuacio');
+
+        $joc = joc::where('id', $idjoc)->first();
+        $joc->puntuacio = $puntuacio;
+
+        $joc->save();
+
+        return redirect()->route('jocs.index');
         
     }
 }

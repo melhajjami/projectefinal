@@ -34,3 +34,5 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->midd
 Route::post('comentaris/{id}', 'comentarisController@store')->name('comentaris.store')->middleware('auth');
 
 Route::post('/search', 'searchController@show')->name('search.show')->middleware('auth');
+
+Route::post('puntuacio/{id}', 'comentarisController@puntuar')->name('comentaris.puntuar')->middleware('auth');
