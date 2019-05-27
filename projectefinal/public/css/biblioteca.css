@@ -8,19 +8,10 @@
   #fila {
       border: 1px solid white;
       border-radius: 5px;
-      height: 250px;
       border-width: 2px;
       border-color: #d19b3d;
       background-color: #1A1A1A;
       color: white;
-      display: inline-block;
-      margin: 1em;
-      width: 100%;
-  }
-
-  #fotobiblioteca {
-      float: left;
-      margin: 10px;
   }
 
   .section-box h2 {

@@ -36,3 +36,11 @@
 .title{
   font-size: 30px;
 }
+#fila {
+  border: 1px solid white;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: #d19b3d;
+  background-color: #1A1A1A;
+  color: white;
+}
