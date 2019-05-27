@@ -1,88 +1,19 @@
 @extends("layouts.plantilla")
-<style>
-    /* #contingut{
-        color: white;
-    } */
-    .container {
-        color: white;
-    }
-
-    #fila {
-        border: 1px solid white;
-        border-radius: 5px;
-        height: 250px;
-        border-width: 2px;
-        border-color: #d19b3d;
-        background-color: #1A1A1A;
-        color: white;
-        display: inline-block;
-        margin: 1em;
-        width: 100%;
-    }
-
-    #fotobiblioteca {
-        float: left;
-        margin: 10px;
-    }
-
-    .section-box h2 {
-        margin-top: 0px;
-    }
-
-    .section-box h2 a {
-        font-size: 15px;
-    }
-
-    .separator {
-        padding-right: 5px;
-        padding-left: 5px;
-    }
-
-    .rating-desc {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-    }
-
-    .container {
-        padding-top: 5px;
-    }
-
-    img {
-        margin-top: 10px;
-    }
-
-    a:link {
-        text-decoration: none !important;
-        color: white !important;
-    }
-
-    a {
-        color: white !important;
-    }
-
-    #tenda {
-        display: inline;
-    }
-    .amics{
-        display: none;
-    }
-    .amicslink:hover + .amics{
-        display:inline;
-    }
-    .amicslink{
-        display:inline;
-    }
-</style>
+@push('styles')
+    <link href="{{ asset('css/biblioteca.css') }}" rel="stylesheet">
+@endpush
 @section("contingut")
+<!-- al registrar.. mirar RegistersUsers.php -->
+@if ($message = Session::get('success'))
+<h1>gola</h1>
+@endif
+<!-- a -->
 <div class="container">
     <div class="container" id="app">
         <h1>Biblioteca</h1>
         <div class="row">
-
+    
             @forelse($biblioteca as $joc)
-            @php $count=0; @endphp
-
             <div class="col-md-6">
                 <div class="well well-sm">
                     <div id="fila">
@@ -94,13 +25,17 @@
                                 <h2>{{$joc->nom}}</h2>
                             </a>
                             <p>{{$joc->descripcio}}</p>
+                            <p>Temps jugat:</p>
+                            <p>{{$joc->tempsjugat}} minuts</p>
                             <div class="col-md-12">
                                 <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Jugar</button>
                             </div>
                             @foreach($bibliotecaamics as $bib)
-            @if($count == 0 && $bib->biblioteca->id_joc == $joc->id)
-            <a class="amicslink" href="{{route('perfil.show',Crypt::encrypt($bib->id))}}"><div id="fotousuaris" style="background-image: url({{$bib->fotoperfil}})">&nbsp</div></a><p class="amics">{{$bib->nickname}}</p>
+                            @foreach($bib as $bib)
+            @if($bib->id_joc == $joc->id)
+            <a class="amicslink" href="{{route('perfil.show',Crypt::encrypt(App\Http\Controllers\userController::show($bib->id_usuari)->id))}}"><div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($bib->id_usuari)->fotoperfil}})">&nbsp</div></a><p class="amics">{{App\Http\Controllers\userController::show($bib->id_usuari)->nickname}}</p>
             @endif
+            @endforeach
             @endforeach
                         </div>
                     </div>

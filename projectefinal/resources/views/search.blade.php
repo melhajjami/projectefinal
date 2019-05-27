@@ -8,7 +8,13 @@
 <div class="container">
 <div id="fancy-list-group">
     <div class="row">
+    @if(count($user) == 0 && count($joc) == 0) 
+    <h1 style="color:white;">Cap resultat que contingui {{$busqueda}}</h1> 
+    @else
+    <h1 style ="color:white;">Usuaris que contenen {{$busqueda}}...</h1>
     @foreach ($user as $usuari)
+        
+
     <div class="list-group">
 
         <div class="col-lg-12">
@@ -17,8 +23,7 @@
                     <div style="background-image: url({{$usuari->fotoperfil}})"></div>
                 </div>
                 <div class="list-group-item-content">
-                <h4 class="list-group-item-heading">{{$usuari->nickname}}</h4>
-                <p class="list-group-item-text">{{ $usuari->nom }}</p>
+                <a href="{{route('perfil.show',Crypt::encrypt($usuari->id))}}"><h4 class="list-group-item-heading">{{$usuari->nickname}}</h4></a>
                 </div>
                 <div class="list-group-item-controls">  
                 <div class="btn-group">
@@ -32,19 +37,19 @@
         
     </div>
     @endforeach
+    <h1 style ="color:white;">Jocs que contenen {{$busqueda}}...</h1>
 
-    @foreach ($joc as $yoc)
-    
+    @foreach ($joc as $joc)
     <div class="list-group">
 
     <div class="col-lg-12">
         <li class="list-group-item list-group-item-success">
             <div class="list-group-item-addon">
-                <div style="background-image: url({{$yoc->img}})"></div>
+                <div style="background-image: url({{$joc->img}})"></div>
             </div>
             <div class="list-group-item-content">
-            <h4 class="list-group-item-heading">{{$yoc->nom}}</h4>
-            <p class="list-group-item-text">{{ $yoc->descripcio }}</p>
+            <h4 class="list-group-item-heading">{{$joc->nom}}</h4>
+            <p class="list-group-item-text">{{ $joc->descripcio }}</p>
             </div>
             <div class="list-group-item-controls">
             <span class="label">Controls</span>
@@ -58,9 +63,8 @@
     </div>
 
     </div>
-
     @endforeach
-
+    @endif
 </div>
 </div>
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\joc;
 use App\User;
+use App\biblioteca;
+use Illuminate\Support\Facades\Auth;
 use App\comentari;
 use \Crypt;
 
@@ -52,14 +54,22 @@ class jocsController extends Controller
      */
     public function show($id)
     {
+        $usuarilogin = Auth::user();
+
         //DONADA ID JOC, RETORNAR VISTA AMB EL JOC PER COMPRAR
         $id = Crypt::decrypt($id);
         $joc = joc::where('id', $id)->firstOrFail();
         //GET TOTS ELS COMENTARIS + USUARI DONADA ID DE JOC 
         $comentaris = comentari::where('joc_id', $id)->with('user')->get();
-        
-
-        return view('product',['joc'=> $joc,'comentaris'=>$comentaris]);
+        //obtenim la biblioteca de l'usuari per a saber quins jocs te
+        $biblioteca = biblioteca::where('id_usuari',$usuarilogin->id)->get();
+        $tejoc = null;
+        foreach($biblioteca as $jocbib){
+            if($jocbib->id_joc == $joc->id){
+                $tejoc = $jocbib;
+            }
+        }
+        return view('product',['joc'=> $joc,'comentaris'=>$comentaris,'tejoc'=>$tejoc]);
     }
 
     /**

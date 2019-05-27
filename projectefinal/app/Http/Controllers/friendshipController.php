@@ -57,11 +57,11 @@ class friendshipController extends Controller
     {
         //array amb friendship on participa usuari indicat
         // $friendship = friendship::where('actiu',1)->where('user1_id',$id)->orwhere('user2_id',$id)->get();
-        $friendship = friendship::where(function ($query) use ($id) {
+        $friendship = friendship::where('actiu',1)->where(function ($query) use ($id) {
             $query->where('user1_id', $id);
         })->orWhere(function($query) use ($id) {
             $query->where('user2_id', $id);
-        })->where('actiu',1)->get();
+        })->get();
         
         return $friendship;
         

@@ -11,7 +11,7 @@ class joc extends Model
     ];
     public function biblioteca()
     {
-        return $this->belonghassTo('App\biblioteca');
+        return $this->belongsTo('App\biblioteca');
     }
 
     public function comentari()

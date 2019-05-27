@@ -49319,6 +49319,30 @@ var app = new Vue({
         console.log(error.response);
       });
     },
+    comprarJoc: function comprarJoc(usuari, joc, preu) {
+      if (confirm("Vols comprar aquest joc per " + preu)) {
+        var parametres = {
+          usuari: usuari,
+          joc: joc
+        };
+        axios.post('http://localhost:8000/api/biblioteca/', parametres).then(function (response) {
+          //comprovar si te diners o no
+          if (response.data < 0) {
+            alert("No tens prous monedes");
+          } else {
+            plantilla.canviarsaldo(response.data);
+            document.getElementById("posicioboto").innerHTML = "<a href=\"http://localhost:8000/biblioteca\" class=\"add-to-cart btn btn-default\">JUGAR</a>";
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function () {
+              x.className = x.className.replace("show", "");
+            }, 5000);
+          }
+        })["catch"](function (error) {
+          console.log(error.response);
+        });
+      }
+    },
     // secondsToTime(secs){
     //     var hours = Math.floor(secs / (60 * 60));
     //     var divisor_for_minutes = secs % (60 * 60);
@@ -49377,12 +49401,17 @@ var plantilla = new Vue({
   el: '#plantilla',
   data: {
     message: 'asdasdasdasdd',
-    numeronotificacions: ''
+    numeronotificacions: null
   },
   created: function created() {
-    this.numeronotificacions = document.getElementById("numeronotificacions").innerHTML;
+    if (this.numeronotificacions != null) {
+      this.numeronotificacions = document.getElementById("numeronotificacions").innerHTML;
+    }
   },
   methods: {
+    canviarsaldo: function canviarsaldo(saldo) {
+      document.getElementById("saldo").innerHTML = "Monedes: " + saldo;
+    },
     acceptarsolicitud: function acceptarsolicitud(usuari, usuarilogin) {
       var parametres = {
         usuarilogin: usuarilogin

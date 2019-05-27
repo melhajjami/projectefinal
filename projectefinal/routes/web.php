@@ -25,16 +25,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('prova', function() {
-    return view('prova');
-});
-
-Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'profileController@edit']);
+Route::get('users/{user}',  ['as' => 'users.edit', 'uses' => 'profileController@edit'])->middleware('auth');
 
 Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'profileController@update']);
 
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->middleware('auth');
 
-Route::post('comentaris/{id}', 'comentarisController@store')->name('comentaris.store');
+Route::post('comentaris/{id}', 'comentarisController@store')->name('comentaris.store')->middleware('auth');
 
-Route::get('/search', 'searchController@show')->name('search.show');
+Route::post('/search', 'searchController@show')->name('search.show')->middleware('auth');

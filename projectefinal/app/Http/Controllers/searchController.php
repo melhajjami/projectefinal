@@ -52,10 +52,7 @@ class searchController extends Controller
         $user = User::where( 'nickname', 'LIKE', '%' . $q . '%' )->get ();
         $jocs = joc::where( 'nom', 'LIKE', '%' . $q . '%' )->get ();
 
-        if (count ( $user ) > 0 || count ( $jocs ) > 0)
-            return view('search', array('user'=>$user,'joc'=>$jocs));
-        else
-            return view('profile', array('user'=>$user,'joc'=>$jocs));
+        return view('search', array('user'=>$user,'joc'=>$jocs,'busqueda'=>$request->q));
     }
 
     /**

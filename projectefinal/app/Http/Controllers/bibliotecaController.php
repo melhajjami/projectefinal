@@ -45,14 +45,14 @@ class bibliotecaController extends Controller
                 array_push($usuarisamics,User::where('id',$amic->user1_id)->with('biblioteca')->first());
             }
         }
-        // $bibliotecaamics = [];
+        $bibliotecaamics = [];
 
-        // foreach($usuarisamics as $amic){
-        //     $bibliotecaamic = $this->show($amic->id);
-        //     array_push($bibliotecaamics,$bibliotecaamic);
-        // }
+        foreach($usuarisamics as $amic){
+            $bibliotecaamic = $this->show($amic->id);
+            array_push($bibliotecaamics,$bibliotecaamic);
+        }
 
-        return view('biblioteca',array('biblioteca'=>$biblioteca,'bibliotecaamics'=>$usuarisamics));
+        return view('biblioteca',array('biblioteca'=>$biblioteca,'bibliotecaamics'=>$bibliotecaamics));
     }
     
     /**
@@ -74,11 +74,20 @@ class bibliotecaController extends Controller
      */
     public function store(Request $request)
     {
-        $biblioteca = biblioteca::where('id_usuari', $request->idusuari)->where('id_joc', $request->idjoc)->first();
+        //COMPRAR JOCS
 
-        $biblioteca->tempsjugat = $request->tempsjugat;
+        //obtenim id usuari login
+        $usuarilogin = User::where('id',$request->usuari)->first();
 
-        $biblioteca->save();
+        //obtenim id del joc que vol comprar
+        $joc = joc::where('id',$request->joc)->first();
+        //comprovem si te suficient saldo, sino retorna boolea error
+        if($usuarilogin->saldo < $joc->preu){
+            return -1;
+        } else {
+            $usuarilogin->saldo = $usuarilogin->saldo - $joc->preu;
+            return $usuarilogin->saldo;
+        }
     }
 
     /**
@@ -114,7 +123,12 @@ class bibliotecaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // MODIFICAR TEMPS JUGAT BIBLIOTECA
+        $biblioteca = biblioteca::where('id_usuari', $request->idusuari)->where('id_joc', $request->idjoc)->first();
+
+        $biblioteca->tempsjugat = $request->tempsjugat;
+
+        $biblioteca->save();
     }
 
     /**

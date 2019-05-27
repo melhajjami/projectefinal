@@ -30,8 +30,8 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
 
 
   <!-- CSS DEL SIDEBAR -->
-  <link href="{{asset('css/prova.css')}}" rel="stylesheet" />
-
+  <link href="{{asset('css/plantilla.css')}}" rel="stylesheet" />
+  @stack('styles')
 
 </head>
 
@@ -57,13 +57,13 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
           <a href="{{route('biblioteca.index')}}"> <i class="fa fa-list-alt fa-lg"></i> Biblioteca</a>
         </li>
 
-        <!-- Submenu Tenda -->
+        <!-- Submenu Botiga -->
         <li data-toggle="collapse" data-target="#products" data-parent="menu-content" class="collapsed">
-          <a href="#"><i class="fa fa-shopping-cart fa-lg"></i> Tenda <span class="arrow"></span></a>
+          <a href="#"><i class="fa fa-shopping-cart fa-lg"></i> Botiga <span class="arrow"></span></a>
         </li>
 
         <ul class=" collapse" id="products">
-          <li><a href="{{route('jocs.index')}}">Jocs</a></li>
+          <li><a href="{{route('jocs.index')}}"> <i class="fa fa-gamepad"></i> Jocs</a></li>
         </ul>
 
         <!--  Submenu Invitacions d'amistat -->
@@ -124,13 +124,15 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
         </li>
 
         <ul class=" collapse" id="usuari">
-          <li><a href="{{route('perfil.show', Crypt::encrypt(session()->get('usuarilogin')->id))}}">Perfil</a></li>
-          <li><a href="{{route('users.edit', session()->get('usuarilogin')->id)}}">Editar perfil</a></li>
-          <li><a href="{{ url('/logout') }}"> Logout </a></li>
+          <li><a href="{{route('perfil.show', Crypt::encrypt(session()->get('usuarilogin')->id))}}"> <i class=" 	fa fa-user"></i> Perfil</a></li>
+          <li><a href="{{route('users.edit', session()->get('usuarilogin')->id)}}"> <i class="fa fa-edit"></i> Editar perfil</a></li>
+          <li><a href="{{ url('/logout') }}"> <i class="fa fa-power-off"></i> Tanca la sessió </a></li>
         </ul>
-<p>saldo: {{session()->get('usuarilogin')->saldo}}</p>
-        <li>
-          <form action="{{action('searchController@show')}}">
+<p id="saldo">Monedes: {{session()->get('usuarilogin')->saldo}}</p>
+
+      </ul>
+      <li id="buscar">
+          <form action="/search" method="POST" role="search">
             {{ csrf_field() }}
             <div class="input-group">
               <input type="text" class="form-control" name="q" placeholder="nickname o joc..."> <span class="input-group-btn">
@@ -141,9 +143,6 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
             </div>
           </form>
         </li>
-
-      </ul>
-
     </div>
 
   </div>
@@ -152,7 +151,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
   <div id="contingut">
     @yield("contingut")
   </div>
-
+</div>
   <!-- Bootstrap core JavaScript-->
   <!-- <script src="{{asset('js/jquery-3.4.0.min.js')}}"></script> NO FUNCIONA -->
   <!-- <script src="{{asset('js/bootstrap.js')}}"></script> NO FUNCIONA -->
