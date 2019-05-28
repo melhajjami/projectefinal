@@ -1,8 +1,5 @@
 @extends("layouts.plantilla")
 
-<style>
-</style>
-
 @section("contingut")
 <h1></h1>
 <div class="container">
@@ -13,57 +10,44 @@
         <p>No hi ha cap joc ni usuari que contingui {{$busqueda}}.</p>
     </div>
     @else
-    <h1 style ="color:white;">Usuaris que contenen {{$busqueda}}...</h1>
+    <h3 style ="color:white;">Usuaris que contenen {{$busqueda}}...</h3>
+    <div class="row">
     @foreach ($user as $usuari)
     <div class="list-group">
 
-        <a href=""></a>
-        
         <div class="col-lg-12">
-            <li class="list-group-item list-group-item-success">
-            <img src="{{$usuari->fotoperfil}}" width="50px" height="50px">
+            <li class="list-group-item list-group-item" style="background-color: #2e353d; border-left: 1px solid #d19b3d;">
+                <img src="{{$usuari->fotoperfil}}" width="50px" height="50px" style="border-radius: 50%;">
                 <div class="list-group-item-content">
                 <a href="{{route('perfil.show',Crypt::encrypt($usuari->id))}}"><h4 class="list-group-item-heading">{{$usuari->nickname}}</h4></a>
-                </div>
-                <div class="list-group-item-controls">  
-                <div class="btn-group">
-                <i class="fa fa-user-plus"></i>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="View"><span class="glyphicon glyphicon-eye-open"></span></a>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="Settings"><span class="glyphicon glyphicon-cog"></span></a>
-                </div>
                 </div>
             </li>
         </div>
         
     </div>
     @endforeach
-    <h1 style ="color:white;">Jocs que contenen {{$busqueda}}...</h1>
+    </div>
+    <br>
+    <h3 style ="color:white;">Jocs que contenen {{$busqueda}}...</h3>
 
+    <div class="row">
     @foreach ($joc as $joc)
     <div class="list-group">
 
-    <div class="col-lg-12">
-        <li class="list-group-item list-group-item-success">
-            <div class="list-group-item-addon">
-                <div style="background-image: url({{$joc->img}})"></div>
-            </div>
-            <div class="list-group-item-content">
-            <h4 class="list-group-item-heading">{{$joc->nom}}</h4>
-            <p class="list-group-item-text">{{ $joc->descripcio }}</p>
-            </div>
-            <div class="list-group-item-controls">
-            <span class="label">Controls</span>
-            <div class="btn-group">
-                <a href="#" data-toggle="tooltip" data-placement="top" title="Add"><span class="fa fa-user-plus"></span></a>
-                <a href="#" data-toggle="tooltip" data-placement="top" title="View"><span class="glyphicon glyphicon-eye-open"></span></a>
-                <a href="#" data-toggle="tooltip" data-placement="top" title="Settings"><span class="glyphicon glyphicon-cog"></span></a>
-            </div>
-            </div>
-        </li>
+        <div class="col-lg-12">
+            <li class="list-group-item list-group-item" style="background-color: #2e353d; border-left: 1px solid #d19b3d;">
+                <img src="{{$joc->img}}" width="50px" height="50px">
+                <div class="list-group-item-content">
+                <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">{{$joc->nom}}</a>
+                <p>PosarDesc fins un punt</p>
+                </div>
+            </li>
+        </div>
+        
     </div>
 
-    </div>
     @endforeach
+    </div>
     @endif
 </div>
 
