@@ -41,12 +41,12 @@
 @endforeach
 
 <div class="col-auto text-light position-fixed" style="right:5%">
-<div class="card card-product text-dark">RANKING JOCS</div>
+
 <div class="list-group">
-	
+	RANKING JOCS
 @foreach($ranking as $rank)
   	<a href="{{route('jocs.show',Crypt::encrypt($rank->id))}}" class="list-group-item list-group-item-action">
-		{{$loop->iteration}} &ensp;<img src="{{$rank->img}}" width="30px" height="30px" style="border-radius: 50%">&ensp;{{$rank->nom}}
+		{{$loop->iteration}} &ensp;<img src="{{$rank->img}}" width="30px" height="30px" >&ensp;{{$rank->nom}}
 		&ensp;&ensp;{{$rank->puntuacio}} <i class="fa fa-star"></i>
 		@if($loop->iteration == 1)
 		<i class="fa fa-trophy"></i>
@@ -59,7 +59,7 @@
 @endforeach
 
 </div>
-</div>
+</div>  
 
 </div> <!-- row.// -->
 

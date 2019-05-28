@@ -5,7 +5,15 @@
 @section("contingut")
 <!-- al registrar.. mirar RegistersUsers.php -->
 @if ($message = Session::get('success'))
-<h1>gola</h1>
+<!-- The Modal -->
+<div id="registre" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+<span class="close">&times;</span>
+  <p>TENS 10 MONEDES ETC ETC </p>
+</div>
+</div>
 @endif
 <!-- a -->
 <div class="container" id="app">
