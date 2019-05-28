@@ -35,11 +35,9 @@ a.disabled {
 }
 #botozindex{
    z-index:2;
-    background-image: url(https://www.ps4wallpapers.com/wp-content/uploads/2017/03/PS4Wallpapers.com_call-of-duty-blackops3-3840-2160.jpg);
   background-repeat:no-repeat;
   background-size: 100%;
-
-   color:white;
+   color:#1A1A1A;
 }
 #fila{
     border: 1px solid white;
@@ -54,7 +52,69 @@ a.disabled {
     width:100%;
     height: 5%;
 }  
-
+#botojocs{
+    display:inline-block;
+}
+#botoamics{
+    display:inline-block;
+}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 100; /* Sit on top */
+    left: 0;
+    top: 0;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  #fotousuaris{
+    width: 30px;
+    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    display:inline-block;
+    border-radius: 50%;
+    background: no-repeat center;
+    background-size: cover;
+    margin-right: 3px;
+  }
+  #fotojocs{
+    width: 30px;
+    height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    display:inline-block;
+    background: no-repeat center;
+    background-size: cover;
+    margin-right: 3px;
+  }
+  
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  } 
 /* 
 // Listrap v1.0, by Gustavo Gondim (http://github.com/ggondim)
 // Licenced under MIT License
