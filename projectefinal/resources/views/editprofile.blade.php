@@ -1,4 +1,5 @@
 @extends("layouts.plantilla")
+
 @push('styles')
     <link href="{{ asset('css/perfiledit.css') }}" rel="stylesheet">
 @endpush
@@ -84,22 +85,6 @@
         </div>
     </div>
     
-    <div class="form-group col-sm">
-
-        <div class="row">
-            <div class="col">
-                <p>Privat</p>
-            </div>
-
-            <div class="col">
-                <label class="switch control-label">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-        </div>
-
-    </div>
     
     <div class="form-group">
         <div class="col-sm-11 col-sm-offset-2">

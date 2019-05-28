@@ -13,8 +13,8 @@
     <div class="row">
 
         @forelse($biblioteca as $joc)
-        <div class="col">
-        <div class="card" id="fila" style="width: 18rem;">
+        <div class="col-md-4">
+        <div class="card" id="fila" style="width: ;">
   <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img class="card-img-top" src="{{$joc->img}}"></a>
   <div class="card-body">
     <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><h5 class="card-title text-light">{{$joc->nom}}</h5></a>

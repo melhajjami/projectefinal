@@ -1,9 +1,25 @@
 /* The switch - the box around the slider */
+
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
+}
+
+input[type='text'], input[type='text']:focus {
+  background-color: #2e353d; 
+  border: 0; 
+  border-bottom: 1px solid #d19b3d;
+  color: white;
+}
+
+
+input[type='password'], input[type='password']:focus {
+  background-color: #2e353d; 
+  border: 0; 
+  border-bottom: 1px solid #d19b3d;
+  color:white;
 }
 
 /* Hide default HTML checkbox */
