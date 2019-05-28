@@ -21,8 +21,8 @@
     <p class="card-text text-light">{{$joc->descripcio}}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item text-dark">Temps jugat: {{$joc->tempsjugat}}</li>
-    <li class="list-group-item text-dark">Puntuació: {{$joc->puntuacio}} minuts</li>
+    <li class="list-group-item text-dark">Temps jugat: {{$joc->tempsjugat}} minuts</li>
+    <li class="list-group-item text-dark">Puntuació: {{$joc->puntuacio}}</li>
     <li class="list-group-item text-dark">
     @foreach($bibliotecaamics as $bib)
                     @foreach($bib as $bib)

@@ -8,11 +8,17 @@
 <h1>BOTIGA</h1>
 <hr>
 
-<div class="row">
+<div class="row no-gutters">
+
 
 @foreach($jocs as $joc)
 
-<div class="col-md-4" >
+
+  
+  
+
+
+<div class="col-12 col-sm-6 col-md-8 position-relative" >
 	<figure class="card card-product" id="fila">
 		<div class="img-wrap"><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img src="{{ asset($joc->img) }}"></a></div>
 		<figcaption class="info-wrap" style="border-top:none">
@@ -33,7 +39,7 @@
 
 
 @endforeach
-
+<div class="col-auto text-light position-fixed" style="right:10%"><div class="card card-product text-dark">RANKING MY FRUEND</div></div>
 </div> <!-- row.// -->
 
 
