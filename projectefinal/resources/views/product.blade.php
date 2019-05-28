@@ -38,7 +38,6 @@
             <p class="product-description">{{$joc->descripcio}}
             </p>
             <h4>PUNTUACIO:</h4>
-              <p>{{ceil($joc->puntuacio*2)/2}}</p>
               @switch($joc->puntuacio)
                 @case(1)
                 <i class="fa fa-star"></i>
@@ -89,21 +88,23 @@
 			</div>
     </div>
     <div class="card">
-      <h3>Puntua:</h3>
+      @if($biblio->puntuacio != 0 || $biblio->puntuacio != null)
+      <h3>Puntua: <h5>La teva puntuacio actual:</h5>{{$biblio->puntuacio}}</h3>
+      @endif
       <form method="post" action="{{route('comentaris.puntuar', $joc->id)}}">
       @csrf
-      <div class="form-group">
         <label for="sel1">Nota:</label>
-        <select class="form-control" name="puntuacio">
+        <select class="form-control col-md-4" name="puntuacio">
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option selected="selected">5</option>
         </select>
+        <br>
         <input type="hidden" name="joc_id" value="{{$joc->id}}">
         <input class="btn btn-primary" type="submit" value="Publica">
-      </div>
+
       </form>
     </div>
     <div class="card">

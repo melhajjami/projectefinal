@@ -56,10 +56,12 @@ class jocsController extends Controller
      */
     public function show($id)
     {
-        $usuarilogin = Auth::user();
+        
 
         //DONADA ID JOC, RETORNAR VISTA AMB EL JOC PER COMPRAR
         $id = Crypt::decrypt($id);
+        $usuarilogin = Auth::user();
+        $biblio = biblioteca::where('id_usuari', $usuarilogin->id)->where('id_joc', $id)->first();
         $joc = joc::where('id', $id)->firstOrFail();
         //GET TOTS ELS COMENTARIS + USUARI DONADA ID DE JOC 
         $comentaris = comentari::where('joc_id', $id)->with('user')->get();
@@ -71,7 +73,7 @@ class jocsController extends Controller
                 $tejoc = $jocbib;
             }
         }
-        return view('product',['joc'=> $joc,'comentaris'=>$comentaris,'tejoc'=>$tejoc]);
+        return view('product',['joc'=> $joc,'comentaris'=>$comentaris,'tejoc'=>$tejoc, 'biblio'=>$biblio]);
     }
 
     /**

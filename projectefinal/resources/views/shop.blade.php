@@ -14,10 +14,6 @@
 @foreach($jocs as $joc)
 
 
-  
-  
-
-
 <div class="col-12 col-sm-6 col-md-8 position-relative" >
 	<figure class="card card-product" id="fila">
 		<div class="img-wrap"><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img src="{{ asset($joc->img) }}"></a></div>

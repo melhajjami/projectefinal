@@ -63,7 +63,7 @@ class comentarisController extends Controller
 
         $joc->save();
 
-        return redirect()->route('jocs.index');
+        return back();
         
     }
 }
