@@ -23,40 +23,43 @@
 
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="tancar">&times;</span>
         <div class="row">
           <div class="col">Jocs
-            <ul class="list-group text-dark">
+            <div class="list-group text-dark">
               @forelse($jocs as $joc)
               @foreach($joc as $joc)
-              <li class="list-group-item"><a style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">
-                  <div id="fotojocs" style="background-image: url({{$joc->img}})">&nbsp</div>
-                </a> {{$joc->nom}}</li>
+              <a class="list-group-item list-group-item-action linknegre" style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">
+                <div id="fotojocs" style="background-image: url({{$joc->img}})">&nbsp</div>
+                {{$joc->nom}}
+              </a>
               @endforeach
               @empty
               <p>Aquest usuari enara no té cap joc </p>
               @endforelse
 
 
-            </ul>
+            </div>
           </div>
 
           <div class="col">Amics
-            <ul class="list-group">
+            <div class="list-group text-dark">
               @forelse($amics as $amic)
               @if($amic->user1_id!=session()->get('usuarilogin')->id)
-              <li class="list-group-item"><a style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user1_id)->id))}}">
-                  <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($amic->user1_id)->fotoperfil}})">&nbsp</div>
-                </a>{{App\Http\Controllers\userController::show($amic->user1_id)->nickname}}</li>
+              <a class="list-group-item list-group-item-action linknegre" style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user1_id)->id))}}">
+                <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($amic->user1_id)->fotoperfil}})">&nbsp</div>
+                {{App\Http\Controllers\userController::show($amic->user1_id)->nickname}}
+              </a>
               @elseif($amic->user2_id!=session()->get('usuarilogin')->id)
-              <li class="list-group-item"><a style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user2_id)->id))}}">
-                  <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($amic->user2_id)->fotoperfil}})">&nbsp</div>
-                </a>{{App\Http\Controllers\userController::show($amic->user2_id)->nickname}}</li>
+              <a class="list-group-item list-group-item-action linknegre" style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user2_id)->id))}}">
+                <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($amic->user2_id)->fotoperfil}})">&nbsp</div>
+                {{App\Http\Controllers\userController::show($amic->user2_id)->nickname}}
+              </a>
               @endif
               @empty
               <p>Aquest usuari no té amics</p>
               @endforelse
-            </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -74,11 +77,11 @@
           <a href="#" id="botopopup">
             <div class="social-description">
               <h2>{{count($biblioteca)}}</h2>
-              <p>Jocs</p>
+              <p class="text-light">Jocs</p>
             </div>
             <div class="social-description">
               <h2>{{count($amics)}}</h2>
-              <p>Amics</p>
+              <p class="text-light">Amics</p>
             </div>
           </a>
         </div>
