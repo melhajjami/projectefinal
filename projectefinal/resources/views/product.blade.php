@@ -39,43 +39,43 @@
             </p>
             <h4>PUNTUACIO:</h4>
               <p>{{ceil($joc->puntuacio*2)/2}}</p>
-              @if($joc->puntuacio == 1)
+              @switch($joc->puntuacio)
+                @case(1)
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>
-              @elseif($joc->puntuacio == 2)
+                @break
+                @case(2)
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>
-              @elseif($joc->puntuacio == 2)
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-              @elseif($joc->puntuacio == 3)
+                @break
+                @case(3)
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>
-              @elseif($joc->puntuacio == 4)
+                @break
+                @case(4)
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
-              @else
+                @break
+                @case(5)
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
-              @endif
+                @break
+              @endswitch
             <h4 class="price">PREU: <span>{{$joc->preu}}€</span></h4>
 						<div id="posicioboto" class="action">
               @if($tejoc == null)
