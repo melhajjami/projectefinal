@@ -22,7 +22,9 @@ class jocsController extends Controller
     {
         //RETORNAR TOTS ELS JOCS AMB LA VISTA DE LA TENDA
         $jocs = joc::all();
-        return view('shop')->with('jocs',$jocs);
+        $ranking = $this->getRank();
+
+        return view('shop',array('jocs'=>$jocs,'ranking'=>$ranking));
     }
 
     /**
@@ -104,5 +106,12 @@ class jocsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getRank()
+    {
+        $taula = joc::orderBy('puntuacio', 'DESC')->get();
+
+        return $taula;
     }
 }

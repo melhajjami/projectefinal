@@ -128,18 +128,15 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
           <li><a href="{{route('users.edit', session()->get('usuarilogin')->id)}}"> <i class="fa fa-edit"></i> Editar perfil</a></li>
           <li><a href="{{ url('/logout') }}"> <i class="fa fa-power-off"></i> Tanca la sessió </a></li>
         </ul>
-<p id="saldo">Monedes: {{session()->get('usuarilogin')->saldo}}</p>
+  <p id="saldo">&ensp;Monedes: {{session()->get('usuarilogin')->saldo}}</p>
 
       </ul>
       <li id="buscar">
           <form action="/search" method="POST" role="search">
             {{ csrf_field() }}
             <div class="input-group">
-              <input type="text" class="form-control" name="q" placeholder="nickname o joc..."> <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">
-                  <span class="glyphicon glyphicon-search"></span>
-                </button>
-              </span>
+              <input type="text" class="form-control" style="background-color: #2e353d; border: 0; border-bottom: 1px solid #d19b3d;" name="q" placeholder="Cercar usuaris/jocs">
+              <span class="input-group-btn"></span>
             </div>
           </form>
         </li>
