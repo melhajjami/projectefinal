@@ -23,7 +23,7 @@
 
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="tancar">&times;</span>
         <div class="row">
           <div class="col">Jocs
             <div class="list-group text-dark">
