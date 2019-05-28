@@ -25,7 +25,7 @@
       <div class="modal-content">
         <span class="tancar">&times;</span>
         <div class="row">
-          <div class="col">Jocs
+          <div class="col" style="color: #d19b3d">Jocs
             <div class="list-group text-dark">
               @forelse($jocs as $joc)
               @foreach($joc as $joc)
@@ -35,14 +35,14 @@
               </a>
               @endforeach
               @empty
-              <p>Aquest usuari enara no té cap joc </p>
+              <p style="color: white;">Aquest usuari enara no té cap joc </p>
               @endforelse
 
 
             </div>
           </div>
 
-          <div class="col">Amics
+          <div class="col" style="color: #d19b3d;">Amics
             <div class="list-group text-dark">
               @forelse($amics as $amic)
               @if($amic->user1_id!=session()->get('usuarilogin')->id)
@@ -57,7 +57,7 @@
               </a>
               @endif
               @empty
-              <p>Aquest usuari no té amics</p>
+              <p style="color:white">Aquest usuari no té amics</p>
               @endforelse
             </div>
           </div>

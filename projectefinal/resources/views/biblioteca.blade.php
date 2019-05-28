@@ -78,15 +78,15 @@
     </li>
     <li class="list-group-item text-dark">
     @foreach($bibliotecaamics as $bib)
-                    @foreach($bib as $bib)
-                    @if($bib->id_joc == $joc->id)
-                    <a class="amicslink" href="{{route('perfil.show',Crypt::encrypt(App\Http\Controllers\userController::show($bib->id_usuari)->id))}}">
-                        <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($bib->id_usuari)->fotoperfil}})">&nbsp</div>
-                    </a>
-                    <p class="amics">{{App\Http\Controllers\userController::show($bib->id_usuari)->nickname}}</p>
-                    @endif
-                    @endforeach
-                    @endforeach
+            @foreach($bib as $bib)
+            @if($bib->id_joc == $joc->id)
+            <a class="amicslink" href="{{route('perfil.show',Crypt::encrypt(App\Http\Controllers\userController::show($bib->id_usuari)->id))}}">
+                <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($bib->id_usuari)->fotoperfil}})">&nbsp</div>
+            </a>
+            <p class="amics">{{App\Http\Controllers\userController::show($bib->id_usuari)->nickname}}</p>
+            @endif
+            @endforeach
+            @endforeach
     </li>
   </ul>
   <div class="card-body">
@@ -95,9 +95,13 @@
 </div>
 
 </div>
-
         @empty
-        <h1>Encara no tens cap joc, compra el primer <a id="tenda" href="{{route('jocs.index')}}">aqui!</a></h1>
+        <div class="container">
+        <div class="jumbotron" style="color:black">
+        <h1>Oops!</h1>      
+        <p>Encara no tens cap joc, compra el primer <a id="tenda" href="{{route('jocs.index')}}">aqui!</p>
+        </div>
+        </div>
         @endforelse
     </div>
 </div> 
