@@ -1,15 +1,13 @@
 
-@font-face{
-  font-family: titol;
-  src: url('{{ public_path("fonts/Aleo.tff") }}');
-}
-
 html, body{
   display: flex;
-  font-family: titol;
   width: 100vw;
+  font-family: 'Montserrat';
 }
 
+.titol{
+  font-family: 'Courgette';
+}
 
 #cercar{
   background-color: #2e353d; border: 0; border-bottom: 1px solid #d19b3d; color:white;
@@ -17,6 +15,7 @@ html, body{
 #buscar{
   position: fixed;
   bottom:0;
+  width: 250px;
 }
 *{
  box-sizing: border-box;
@@ -86,6 +85,8 @@ li{
   position: relative;                                 
 }
 .nav-side-menu {
+    font-family: 'Karla'!important;
+    font-size: 15px!important;
     overflow: auto;
     font-family: verdana;
     font-size: 12px;

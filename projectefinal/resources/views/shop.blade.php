@@ -5,7 +5,7 @@
 
 @section("contingut")
 <div class="container">
-<h1>BOTIGA</h1>
+<h1>Botiga</h1>
 <hr>
 
 <div class="row no-gutters">
@@ -38,7 +38,7 @@
 
 <div class="col-auto text-light position-fixed" style="right:5%">
 
-<div class="list-group">
+<div class="list-group" id="ranquing">
 	<div class="card-header ranking">RANKING JOCS</div>
 @foreach($ranking as $rank)
   	<a href="{{route('jocs.show',Crypt::encrypt($rank->id))}}" class="ranking2 list-group-item list-group-item-action">

@@ -18,6 +18,7 @@
 <!-- a -->
 <div class="container" id="app">
     <h1>Biblioteca</h1>
+    <br>
     <div class="row">
 
         @forelse($biblioteca as $joc)
