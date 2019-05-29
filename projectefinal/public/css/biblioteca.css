@@ -9,7 +9,9 @@
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-
+.disabled{
+    pointer-events: none;
+}
   /* Modal Content/Box */
   .modal-content {
     border: solid 1px #d19b3d;

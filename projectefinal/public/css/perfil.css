@@ -71,8 +71,10 @@ a.disabled {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   .linknegre:link{
-      color:black!important;
+      color:white!important;
+      background-color:#1A1A1A;
   }
+
   /* Modal Content/Box */
   .modal-content {
     border: solid 1px #d19b3d;
@@ -112,7 +114,7 @@ a.disabled {
     background-size: cover;
     margin-right: 3px;
   }
-  
+ 
   
   .tancar:hover,
   .tancar:focus {

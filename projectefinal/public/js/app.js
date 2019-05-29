@@ -49251,6 +49251,8 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49343,27 +49345,23 @@ var app = new Vue({
         });
       }
     },
-    // secondsToTime(secs){
-    //     var hours = Math.floor(secs / (60 * 60));
-    //     var divisor_for_minutes = secs % (60 * 60);
-    //     var minutes = Math.floor(divisor_for_minutes / 60);
-    //     var divisor_for_seconds = divisor_for_minutes % 60;
-    //     var seconds = Math.ceil(divisor_for_seconds);
-    //     var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
-    //     return string;
-    // },
     obrirjoc: function obrirjoc(idjoc, idusuari) {
       this.jugant = true;
       console.log(this.jugant);
       var contador = 0;
       console.log(contador);
-      var url = "http://localhost:8000/jocs/" + idjoc + "/index.html";
-      var child = window.open(url);
+      var url = "http://localhost:8000/jocs/" + idjoc + "/index.html"; // var child = window.open(url);
+
+      var pestanya = window.open(url);
+      localStorage.setItem('child', pestanya);
+      var hola = localStorage.getItem('child');
+      console.log(hola);
+      console.log(_typeof(pestanya));
       var timer = setInterval(checkChild, 1000, idjoc, idusuari);
       vm = this;
 
       function checkChild(idjoc, idusuari) {
-        if (child.closed) {
+        if (localStorage.getItem('child').closed) {
           vm.jugant = false; // alert("Joc tencat");  
 
           clearInterval(timer); // canviartemps(idjoc, idusuari, contador);

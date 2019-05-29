@@ -90,7 +90,7 @@
     </li>
   </ul>
   <div class="card-body">
-    <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}})">Jugar</button>
+    <button class="btn btn-dark" v-bind:class="{ disabled: jugant }" v-on:click="obrirjoc({{$joc->id}})">Jugar</button>
   </div>
 </div>
 

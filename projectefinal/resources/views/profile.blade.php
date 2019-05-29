@@ -45,13 +45,13 @@
           <div class="col" style="color: #d19b3d;">Amics
             <div class="list-group text-dark">
               @forelse($amics as $amic)
-              @if($amic->user1_id!=session()->get('usuarilogin')->id)
-              <a class="list-group-item list-group-item-action linknegre" style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user1_id)->id))}}">
+              @if($amic->user1_id!=$user->id)
+              <a class="list-group-item list-group-item-action linknegre" style="display:inline-block" href="{{route('perfil.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user1_id)->id))}}">
                 <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($amic->user1_id)->fotoperfil}})">&nbsp</div>
                 {{App\Http\Controllers\userController::show($amic->user1_id)->nickname}}
               </a>
-              @elseif($amic->user2_id!=session()->get('usuarilogin')->id)
-              <a class="list-group-item list-group-item-action linknegre" style="display:inline-block" href="{{route('jocs.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user2_id)->id))}}">
+              @elseif($amic->user2_id!=$user->id)
+              <a class="list-group-item list-group-item-action linknegre" style="display:inline-block" href="{{route('perfil.show',Crypt::encrypt(App\Http\Controllers\userController::show($amic->user2_id)->id))}}">
                 <div id="fotousuaris" style="background-image: url({{App\Http\Controllers\userController::show($amic->user2_id)->fotoperfil}})">&nbsp</div>
                 {{App\Http\Controllers\userController::show($amic->user2_id)->nickname}}
               </a>

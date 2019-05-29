@@ -94,32 +94,26 @@ const app = new Vue({
                 });
             }
         },
-        // secondsToTime(secs){
-        //     var hours = Math.floor(secs / (60 * 60));
-
-        //     var divisor_for_minutes = secs % (60 * 60);
-        //     var minutes = Math.floor(divisor_for_minutes / 60);
-
-        //     var divisor_for_seconds = divisor_for_minutes % 60;
-        //     var seconds = Math.ceil(divisor_for_seconds);
-
-        //     var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
-
-        //     return string;
-        // },
         obrirjoc(idjoc, idusuari) {
             this.jugant = true;
             console.log(this.jugant);
             var contador = 0;
             console.log(contador)
             var url = "http://localhost:8000/jocs/" + idjoc + "/index.html"
-            var child = window.open(url);
+            // var child = window.open(url);
+            var pestanya = window.open(url);
+            localStorage.setItem('child', pestanya);
+            var hola = localStorage.getItem('child');
+            console.log(hola);
+            
+            console.log(typeof pestanya);
+            
             var timer = setInterval(checkChild, 1000, idjoc, idusuari);
             vm = this;
 
             function checkChild(idjoc, idusuari) {
 
-                if (child.closed) {
+                if (localStorage.getItem('child').closed) {
                     vm.jugant = false;
                     // alert("Joc tencat");  
                     clearInterval(timer);

@@ -32,29 +32,29 @@ class bibliotecaController extends Controller
             'bibliotecas.tempsjugat',
             'bibliotecas.puntuacio'
         )->join('jocs', 'jocs.id', '=', 'bibliotecas.id_joc')
-        ->where('bibliotecas.id_usuari',$user->id)
-        ->get();
+            ->where('bibliotecas.id_usuari', $user->id)
+            ->get();
         $amics = app('App\Http\Controllers\friendshipController')->show($user->id);
 
-        $usuarisamics=[];
+        $usuarisamics = [];
 
-        foreach($amics as $amic){
-            if($amic->user1_id == $user->id){
-                array_push($usuarisamics,User::where('id',$amic->user2_id)->with('biblioteca')->first());
-            } elseif($amic->user2_id == $user->id){
-                array_push($usuarisamics,User::where('id',$amic->user1_id)->with('biblioteca')->first());
+        foreach ($amics as $amic) {
+            if ($amic->user1_id == $user->id) {
+                array_push($usuarisamics, User::where('id', $amic->user2_id)->with('biblioteca')->first());
+            } elseif ($amic->user2_id == $user->id) {
+                array_push($usuarisamics, User::where('id', $amic->user1_id)->with('biblioteca')->first());
             }
         }
         $bibliotecaamics = [];
 
-        foreach($usuarisamics as $amic){
+        foreach ($usuarisamics as $amic) {
             $bibliotecaamic = $this->show($amic->id);
-            array_push($bibliotecaamics,$bibliotecaamic);
+            array_push($bibliotecaamics, $bibliotecaamic);
         }
 
-        return view('biblioteca',array('biblioteca'=>$biblioteca,'bibliotecaamics'=>$bibliotecaamics));
+        return view('biblioteca', array('biblioteca' => $biblioteca, 'bibliotecaamics' => $bibliotecaamics));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -77,15 +77,23 @@ class bibliotecaController extends Controller
         //COMPRAR JOCS
 
         //obtenim id usuari login
-        $usuarilogin = User::where('id',$request->usuari)->first();
+        $usuarilogin = User::where('id', $request->usuari)->first();
 
         //obtenim id del joc que vol comprar
-        $joc = joc::where('id',$request->joc)->first();
+        $joc = joc::where('id', $request->joc)->first();
         //comprovem si te suficient saldo, sino retorna boolea error
-        if($usuarilogin->saldo < $joc->preu){
+        if ($usuarilogin->saldo < $joc->preu) {
             return -1;
         } else {
+            //posem el joc a la biblioteca
+            $biblioteca = new biblioteca;
+            $biblioteca->id_usuari = $usuarilogin->id;
+            $biblioteca->id_joc = $joc->id;
+            $biblioteca->save();
+            //restem saldo de l'usuari i el guardem a la BBDD
             $usuarilogin->saldo = $usuarilogin->saldo - $joc->preu;
+            $usuarilogin->save();
+            //retornem el saldo per que el vue el posi canvii en pantalla 
             return $usuarilogin->saldo;
         }
     }
@@ -98,8 +106,8 @@ class bibliotecaController extends Controller
      */
     public function show($id)
     {
-        $biblioteca = biblioteca::where('id_usuari',$id)->get();
-    
+        $biblioteca = biblioteca::where('id_usuari', $id)->get();
+
         return $biblioteca;
     }
 
