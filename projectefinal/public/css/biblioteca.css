@@ -1,4 +1,8 @@
  /* The Modal (background) */
+.gris {
+    background-color: #2e353d;
+    color: white!important;
+}
 .modal {
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */

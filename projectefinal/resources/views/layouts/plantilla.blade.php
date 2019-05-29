@@ -135,7 +135,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
           <form action="/search" method="POST" role="search">
             {{ csrf_field() }}
             <div class="input-group">
-              <input type="text" class="form-control" style="background-color: #2e353d; border: 0; border-bottom: 1px solid #d19b3d;" name="q" placeholder="Cercar usuaris/jocs">
+              <input type="text" class="form-control" id="cercar" name="q" placeholder="Cercar usuaris/jocs">
               <span class="input-group-btn"></span>
             </div>
           </form>
