@@ -1,6 +1,18 @@
+
+@font-face{
+  font-family: titol;
+  src: url('{{ public_path("fonts/Aleo.tff") }}');
+}
+
 html, body{
   display: flex;
+  font-family: titol;
   width: 100vw;
+}
+
+
+#cercar{
+  background-color: #2e353d; border: 0; border-bottom: 1px solid #d19b3d; color:white;
 }
 #buscar{
   position: fixed;

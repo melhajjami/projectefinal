@@ -29,8 +29,8 @@
     <p class="card-text text-light">{{$joc->descripcio}}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item text-dark">Temps jugat: {{$joc->tempsjugat}} minuts</li>
-    <li class="list-group-item text-dark">Puntuació: 
+    <li class="list-group-item gris">Temps jugat: {{$joc->tempsjugat}} minuts</li>
+    <li class="list-group-item gris">Puntuació: 
     @switch($joc->puntuacio)
                 @case(0)
                 <i class="fa fa-star-o"></i>
@@ -76,7 +76,7 @@
                 @break
               @endswitch
     </li>
-    <li class="list-group-item text-dark">
+    <li class="list-group-item text-dark gris">
     @foreach($bibliotecaamics as $bib)
             @foreach($bib as $bib)
             @if($bib->id_joc == $joc->id)

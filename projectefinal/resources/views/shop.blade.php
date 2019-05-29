@@ -39,9 +39,9 @@
 <div class="col-auto text-light position-fixed" style="right:5%">
 
 <div class="list-group">
-	RANKING JOCS
+	<div class="card-header ranking">RANKING JOCS</div>
 @foreach($ranking as $rank)
-  	<a href="{{route('jocs.show',Crypt::encrypt($rank->id))}}" class="list-group-item list-group-item-action">
+  	<a href="{{route('jocs.show',Crypt::encrypt($rank->id))}}" class="ranking2 list-group-item list-group-item-action">
 		{{$loop->iteration}} &ensp;<img src="{{$rank->img}}" width="30px" height="30px" >&ensp;{{$rank->nom}}
 		&ensp;&ensp;{{$rank->puntuacio}} <i class="fa fa-star"></i>
 		@if($loop->iteration == 1)
