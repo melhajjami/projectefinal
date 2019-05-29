@@ -29,6 +29,10 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
+  <!-- FONTS DE GOOGLEAPIS -->
+  <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
   <!-- CSS DEL SIDEBAR -->
   <link href="{{asset('css/plantilla.css')}}" rel="stylesheet" />
   @stack('styles')
@@ -40,7 +44,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
 
     <!-- TITOL -->
     <div class="brand">
-      <h3>hehehe</h3>
+      <h3 class="titol">AM Platform!</h3>
     </div>
 
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
