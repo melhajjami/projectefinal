@@ -21,8 +21,8 @@
 				<a class="title text-light" href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">{{$joc->nom}}</a>
 				<p class="desc">{{$joc->descripcio}}</p>
 				<div class="rating-wrap">
-					<div class="label-rating text-light">POSAR COMENTARIS </div>
-					<div class="label-rating text-light">POSAR PUNTUACIO</div>
+					<div class="label-rating text-light"><p>Comentaris: {{$joc->comentari_count}}</p></div>
+					<div class="label-rating text-light"><p>Puntuacio: {{$joc->puntuacio}}</p></div>
 				</div> <!-- rating-wrap.// -->
 		</figcaption>
 		<div class="bottom-wrap" style="border-top:1px solid #d19b3d;">	

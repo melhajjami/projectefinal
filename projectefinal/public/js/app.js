@@ -49251,8 +49251,6 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -49350,18 +49348,13 @@ var app = new Vue({
       console.log(this.jugant);
       var contador = 0;
       console.log(contador);
-      var url = "http://localhost:8000/jocs/" + idjoc + "/index.html"; // var child = window.open(url);
-
-      var pestanya = window.open(url);
-      localStorage.setItem('child', pestanya);
-      var hola = localStorage.getItem('child');
-      console.log(hola);
-      console.log(_typeof(pestanya));
+      var url = "http://localhost:8000/jocs/" + idjoc + "/index.html";
+      var child = window.open(url);
       var timer = setInterval(checkChild, 1000, idjoc, idusuari);
       vm = this;
 
       function checkChild(idjoc, idusuari) {
-        if (localStorage.getItem('child').closed) {
+        if (child.closed) {
           vm.jugant = false; // alert("Joc tencat");  
 
           clearInterval(timer); // canviartemps(idjoc, idusuari, contador);
@@ -49621,8 +49614,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Bosc\Documents\projectefinal\projectefinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Bosc\Documents\projectefinal\projectefinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Pc\Documents\projectefinal\projectefinal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Pc\Documents\projectefinal\projectefinal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

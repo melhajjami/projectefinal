@@ -21,8 +21,9 @@ class jocsController extends Controller
     public function index()
     {
         //RETORNAR TOTS ELS JOCS AMB LA VISTA DE LA TENDA
-        $jocs = joc::all();
+        $jocs = joc::withCount('comentari')->get();
         $ranking = $this->getRank();
+        $numerocomentaris = 0;
 
         return view('shop',array('jocs'=>$jocs,'ranking'=>$ranking));
     }

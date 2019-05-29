@@ -100,20 +100,13 @@ const app = new Vue({
             var contador = 0;
             console.log(contador)
             var url = "http://localhost:8000/jocs/" + idjoc + "/index.html"
-            // var child = window.open(url);
-            var pestanya = window.open(url);
-            localStorage.setItem('child', pestanya);
-            var hola = localStorage.getItem('child');
-            console.log(hola);
-            
-            console.log(typeof pestanya);
-            
+            var child = window.open(url);
             var timer = setInterval(checkChild, 1000, idjoc, idusuari);
             vm = this;
 
             function checkChild(idjoc, idusuari) {
 
-                if (localStorage.getItem('child').closed) {
+                if (child.closed) {
                     vm.jugant = false;
                     // alert("Joc tencat");  
                     clearInterval(timer);
