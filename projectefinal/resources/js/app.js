@@ -34,10 +34,24 @@ const app = new Vue({
         message: 'asdasdasdasdd',
         contador: 0,
         jugant: false,
-        obert: false
+        obert: false,
+        contadortext: 0,
     },
 
     methods: {
+        next(){
+            var textos = ["La barra de navegació serà la teva millor amiga. <br>Accedeix a la <i class='fa fa-list-alt fa-lg'></i> Biblioteca per veure els teus jocs i jugar-los.",
+             "Accedint a la <i class='fa fa-shopping-cart fa-lg'></i> Botiga podras comprar jocs. <br>També hi ha un rànking dels jocs més ben puntuats!",
+            "A <i class='fa fa-bell fa-lg'></i> Invitacions d'amistat trobaràs totes les peticions d'amistat, i a <i class='fa fa-users'></i> Amics trobaràs tots els amics que tens. <br>Comença a fer amics!",
+            "Finalment, tens un apartat amb la teva conta, on podras modificar-la, les monedes restants i una barra per cercar jocs i usuaris."];
+            document.getElementById("textBenvinguda").innerHTML = textos[this.contadortext];
+            if(this.contadortext == 3){
+                document.getElementById('botonext').style.visibility = 'hidden';
+            }
+            else{
+                this.contadortext++;
+            }
+        },
         enviarsolicitud(receptor, sender) {
             var parametres = {
                 sender: sender,
@@ -206,7 +220,7 @@ const app = new Vue({
 
                 }
             }
-
+            
 
 
         },

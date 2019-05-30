@@ -129,8 +129,11 @@ img {
           flex-grow: 1; }
 
 .product-title, .price, .sizes, .colors {
-  text-transform: UPPERCASE;
   font-weight: bold; }
+
+.product-title{
+  text-transform: UPPERCASE;
+}
 
 .checked, .price span {
   color: #ff9f1a; }
@@ -230,5 +233,32 @@ img {
 }
 .dades:link{
   text-decoration:none!important;
-  color:white!important;
+  color: #d19b3d!important;
+}
+
+select{
+  background-color: #2e353d!important;
+  color: white!important;
+}
+
+select option {
+  margin: 40px;
+  background: #2e353d;
+  color: #fff;
+}
+
+select option[value="1"] {
+  background: #2e353d;
+}
+
+select option[value="2"] {
+  background: #2e353d;
+}
+
+select option[value="3"] {
+  background: #2e353d;
+}
+
+select option[value="4"] {
+  background: #2e353d;
 }

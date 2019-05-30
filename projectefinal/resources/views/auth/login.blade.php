@@ -1,5 +1,32 @@
 @extends('layouts.app')
+<style>
+    body{
+        background-color: #1A1A1A!important;
+    }
 
+    .card-header{
+        background-color: #2e353d!important;
+        color: white;
+    }
+    .card-body{
+        background-color: #2e353d!important;
+        color: white;
+    }
+    input[type='email'], input[type='email']:focus {
+    background-color: #2e353d; 
+    border: 0; 
+    border-bottom: 1px solid #d19b3d;
+    color: white;
+    }
+
+
+    input[type='password'], input[type='password']:focus {
+    background-color: #2e353d; 
+    border: 0; 
+    border-bottom: 1px solid #d19b3d;
+    color:white;
+    }
+</style>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -53,7 +80,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-light">
                                     {{ __('Login') }}
                                 </button>
 

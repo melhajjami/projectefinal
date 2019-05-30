@@ -35,10 +35,10 @@
           <h3 class="product-title">{{$joc->nom}}</h3>
           <h4 class="price">Descripció: </h4>
           <!-- <p class="product-description">{{$joc->descripcio}}</p> -->
-          <p class="product-description">{{$joc->descripcio}}
-          </p>
-          <h4>PUNTUACIO:</h4>
-          @switch($joc->puntuacio)
+          <p class="product-description">{{$joc->descripcio}}</p>
+          <div class="form-inline">
+            <div class="form-group">
+          <h4>Puntuació: @switch($joc->puntuacio)
           @case(1)
           <i class="fa fa-star"></i>
           <i class="fa fa-star-o"></i>
@@ -75,6 +75,9 @@
           <i class="fa fa-star"></i>
           @break
           @endswitch
+          </h4>
+          </div>
+          </div>
           <h4 class="price">PREU: <span>{{$joc->preu}}€</span></h4>
           <div id="posicioboto" class="action">
             @if($tejoc == null)
@@ -90,12 +93,18 @@
   <div class="card" style="background-color: #1A1A1A; border-bottom: 1px solid #d19b3d; border-left: 1px solid #d19b3d; color:white;">
     @if($biblio!=null)
     @if($biblio->puntuacio != 0 || $biblio->puntuacio != null)
-    <h3>Puntua: <h5>La teva puntuacio actual:</h5>{{$biblio->puntuacio}}</h3>
+    <h3>Puntua'l!</h3>
+    <div class="form-inline">
+      <div class="form-group">
+      <h5>La teva puntuacio actual: {{$biblio->puntuacio}}/5</h5>
+      </div>
+    </div>
     @endif
     @endif
-    <form method="post" action="{{route('comentaris.puntuar', $joc->id)}}">
+    <form class="inline-form" method="post" action="{{route('comentaris.puntuar', $joc->id)}}">
       @csrf
       <label for="sel1">Nota:</label>
+      
       <select class="form-control col-md-4" name="puntuacio">
         <option>1</option>
         <option>2</option>

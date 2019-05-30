@@ -3,6 +3,7 @@
     background-color: #2e353d;
     color: white!important;
 }
+
 .frames{
     display:none;
 }
@@ -86,18 +87,13 @@
   img {
       margin-top: 10px;
   }
-
-  a:link {
-      text-decoration: none !important;
-      color: white !important;
-  }
-
-  a {
-      color: white !important;
-  }
+  
 
   #tenda {
       display: inline;
+  }
+  #tenda:link{
+    color: blue!important;
   }
   .amics{
       display: none;

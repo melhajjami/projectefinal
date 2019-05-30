@@ -6,6 +6,7 @@
 
 <!-- a -->
 <div class="wrapper" id="app">
+<<<<<<< HEAD
   <!-- al registrar.. mirar RegistersUsers.php -->
   @if ($message = Session::get('success'))
   <!-- The Modal -->
@@ -15,6 +16,22 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <p>TENS 10 MONEDES ETC ETC </p>
+=======
+@if ($message = Session::get('success'))
+  <!-- al registrar.. mirar RegistersUsers.php -->
+  <!-- The Modal -->
+  <div id="registre" class="modal">
+    
+    <!-- Modal content -->
+    <div class="modal-content d-flex justify-content-between">
+      <span class="close">&times;</span>
+      <p id="textBenvinguda">Benvingut a AM Platform, la plataforma líder en els jocs Arcade <i class="fa fa-gamepad"></i>
+        <br>Per començar, et regalem 10 monedes <i class="fa fa-money"></i> perquè puguis comprar els jocs que més t'agraden!
+
+        <br>Abans de començar a jugar, et guiarem amb el menú...
+      </p>
+      <button type="submit" id="botonext" class="btn btn-dark" v-on:click="next()">Seguent</button>
+>>>>>>> 654fa0dee70c54b061229b99086d75cc26d9a6b5
     </div>
   </div>
   @endif
@@ -105,12 +122,13 @@
       @empty
       <div class="container">
         <div class="jumbotron" style="color:black">
-          <h1>Oops!</h1>
-          <p>Encara no tens cap joc, compra el primer <a id="tenda" href="{{route('jocs.index')}}">aqui!</p>
+          <h1>No tens cap joc!</h1>
+          <p>No pateixis, pots comprar el primer <a id="tenda" href="{{route('jocs.index')}}">aqui!</p>
         </div>
       </div>
       @endforelse
     </div>
   </div>
 </div>
+
 @endsection
