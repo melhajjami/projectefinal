@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class joc extends Model
 {
     protected $fillable = [
-        'nom','img','descripcio','preu','puntuacio'
+        'identificador','nom','img','descripcio','preu','puntuacio'
     ];
     public function biblioteca()
     {
