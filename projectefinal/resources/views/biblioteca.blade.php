@@ -7,17 +7,17 @@
 <!-- a -->
 <div class="wrapper" id="app">
   <!-- al registrar.. mirar RegistersUsers.php -->
-@if ($message = Session::get('success'))
-<!-- The Modal -->
-<div id="registre" class="modal">
+  @if ($message = Session::get('success'))
+  <!-- The Modal -->
+  <div id="registre" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>TENS 10 MONEDES ETC ETC </p>
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>TENS 10 MONEDES ETC ETC </p>
+    </div>
   </div>
-</div>
-@endif
+  @endif
   <div id="frame" class="container frames">
 
   </div>
@@ -37,7 +37,7 @@
             <p class="card-text text-light">{{$joc->descripcio}}</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item gris">Temps jugat: {{$joc->tempsjugat}} minuts</li>
+            <li class="list-group-item gris">Temps jugat: <span id="{{$joc->id}}">{{$joc->tempsjugat}}</span> segons</li>
             <li class="list-group-item gris">Puntuació:
               @switch($joc->puntuacio)
               @case(0)
@@ -98,7 +98,7 @@
             </li>
           </ul>
           <div class="card-body">
-            <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}},'{{$joc->identificador}}')">Jugar</button>
+            <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}},'{{$joc->identificador}}',{{session()->get('usuarilogin')->id}})">Jugar</button>
           </div>
         </div>
       </div>

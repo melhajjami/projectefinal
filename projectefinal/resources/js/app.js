@@ -95,7 +95,7 @@ const app = new Vue({
                 });
             }
         },
-        obrirjoc(idjoc, identificadorjoc) {
+        obrirjoc(idjoc, identificadorjoc, idusuari) {
             // this.jugant = true;
             // console.log(this.jugant);
             // var contador = 0;
@@ -150,6 +150,7 @@ const app = new Vue({
             var frame = document.getElementById("frame");
             // var tornar = document.getElementById("tornar");
             //al obrir joc es crea frame si no esta creat, sino modifica la url
+            console.log(this.contador);
             if (this.obert == false) {
                 var ifrm = document.createElement("iframe");
                 ifrm.classList.add("iframe");
@@ -167,19 +168,21 @@ const app = new Vue({
                 contingut.style.display = "none";
                 frame.style.display = "block";
                 //es posa contador per saber el temps
-                var timer = setInterval(checkChild, 1000);
+                var timer = setInterval(checkChild, 1000, idjoc, idusuari);
                 this.jugant = true;
             } else {
-                var iframe=document.getElementsByClassName("iframe")[0];
+                var iframe = document.getElementsByClassName("iframe")[0];
                 iframe.removeAttribute("src");
                 iframe.setAttribute("src", "http://localhost:8000/jocs/" + identificadorjoc + "/index.html");
+                var tornar = document.getElementById("tornar");
                 contingut.style.display = "none";
                 frame.style.display = "block";
+                var timer = setInterval(checkChild, 1000, idjoc, idusuari);
+                this.jugant = true;
             };
 
-            function checkChild() {
+            function checkChild(idjoc, idusuari) {
                 contador = contador + 1;
-                console.log(contador);
                 tornar.onclick = function () {
                     //si es torna enrera es para el contador i es torna a ensenyar pagina normal
                     vm.jugant = false;
@@ -187,6 +190,20 @@ const app = new Vue({
                     clearInterval(timer);
                     contingut.style.display = "block";
                     frame.style.display = "none";
+
+                    var parametres = {
+                        idusuari: idusuari,
+                        tempsjugat: contador
+                    }
+                    axios.put('http://localhost:8000/api/biblioteca/' + idjoc, parametres).then(function (response) {
+                        var tempsjugat = parseInt(document.getElementById(idjoc).innerText);
+                        document.getElementById(idjoc).innerText = tempsjugat + vm.contador;
+
+                    }).catch(function (error) {
+                        console.log(error.response);
+                    });
+
+
                 }
             }
 

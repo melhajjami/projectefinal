@@ -133,9 +133,9 @@ class bibliotecaController extends Controller
     public function update(Request $request, $id)
     {
         // MODIFICAR TEMPS JUGAT BIBLIOTECA
-        $biblioteca = biblioteca::where('id_usuari', $request->idusuari)->where('id_joc', $request->idjoc)->first();
+        $biblioteca = biblioteca::where('id_usuari', $request->idusuari)->where('id_joc', $id)->first();
 
-        $biblioteca->tempsjugat = $request->tempsjugat;
+        $biblioteca->tempsjugat = $biblioteca->tempsjugat + $request->tempsjugat;
 
         $biblioteca->save();
     }
