@@ -21,8 +21,53 @@
 				<a class="title text-light" href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">{{$joc->nom}}</a>
 				<p class="desc">{{$joc->descripcio}}</p>
 				<div class="rating-wrap">
-					<div class="label-rating text-light"><p>Comentaris: {{$joc->comentari_count}}</p></div>
-					<div class="label-rating text-light"><p>Puntuacio: {{$joc->puntuacio}}</p></div>
+					<div class="label-rating text-light"><p>Comentaris: {{$joc->comentari_count}} |</p></div>
+					<div class="label-rating text-light"><p>Puntuacio: 
+					@switch($joc->puntuacio)
+                @case(0)
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(1)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(2)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(3)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(4)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(5)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                @break
+              @endswitch
+					</p></div>
 				</div> <!-- rating-wrap.// -->
 		</figcaption>
 		<div class="bottom-wrap" style="border-top:1px solid #d19b3d;">	

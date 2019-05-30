@@ -11,7 +11,12 @@
 <!-- Modal content -->
 <div class="modal-content">
 <span class="close">&times;</span>
-  <p>TENS 10 MONEDES ETC ETC </p>
+  <p id="textBenvinguda">Benvingut a AM Platform, la plataforma líder en els jocs Arcade <i class="fa fa-gamepad"></i>
+  Per començar, et regalem 10 monedes <i class="fa fa-money"></i> perquè puguis comprar els jocs que més t'agraden!
+
+  Abans de començar a jugar, et guiarem amb el menú...
+  </p>
+  <button type="submit" id="botonext" class="btn btn-dark">Seguent</button>
 </div>
 </div>
 @endif
@@ -27,7 +32,7 @@
   <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img class="card-img-top" src="{{$joc->img}}"></a>
   <div class="card-body">
     <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><h5 class="card-title text-light">{{$joc->nom}}</h5></a>
-    <p class="card-text text-light">{{$joc->descripcio}}</p>
+    <p class="card-text text-light">{{str_limit($joc->descripcio, 60)}}</p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item gris">Temps jugat: {{$joc->tempsjugat}} minuts</li>

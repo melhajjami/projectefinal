@@ -17,7 +17,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SteamWeb</title>
+  <title>Steam2</title>
 
   <!-- ICONES -->
   <!-- <link href="{{asset('icones/fontawesome-free/css/all.min.css')}}" rel="stylesheet"/> NO FUNCIONA-->
