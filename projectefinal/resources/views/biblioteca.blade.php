@@ -6,23 +6,23 @@
 
 <!-- a -->
 <div class="wrapper" id="app">
-  <!-- al registrar.. mirar RegistersUsers.php -->
 @if ($message = Session::get('success'))
-<!-- The Modal -->
-<div id="registre" class="modal">
+  <!-- al registrar.. mirar RegistersUsers.php -->
+  <!-- The Modal -->
+  <div id="registre" class="modal">
+    
+    <!-- Modal content -->
+    <div class="modal-content d-flex justify-content-between">
+      <span class="close">&times;</span>
+      <p id="textBenvinguda">Benvingut a AM Platform, la plataforma líder en els jocs Arcade <i class="fa fa-gamepad"></i>
+        <br>Per començar, et regalem 10 monedes <i class="fa fa-money"></i> perquè puguis comprar els jocs que més t'agraden!
 
-<!-- Modal content -->
-<div class="modal-content">
-<span class="close">&times;</span>
-  <p id="textBenvinguda">Benvingut a AM Platform, la plataforma líder en els jocs Arcade <i class="fa fa-gamepad"></i>
-  Per començar, et regalem 10 monedes <i class="fa fa-money"></i> perquè puguis comprar els jocs que més t'agraden!
-
-  Abans de començar a jugar, et guiarem amb el menú...
-  </p>
-  <button type="submit" id="botonext" class="btn btn-dark">Seguent</button>
-</div>
-</div>
-@endif
+        <br>Abans de començar a jugar, et guiarem amb el menú...
+      </p>
+      <button type="submit" id="botonext" class="btn btn-dark" v-on:click="next()">Seguent</button>
+    </div>
+  </div>
+  @endif
   <div id="frame" class="container frames">
 
   </div>
@@ -34,59 +34,6 @@
       @forelse($biblioteca as $joc)
       <div class="col-md-4">
         <div class="card" id="fila" style="width: ;">
-<<<<<<< HEAD
-  <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img class="card-img-top" src="{{$joc->img}}"></a>
-  <div class="card-body">
-    <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><h5 class="card-title text-light">{{$joc->nom}}</h5></a>
-    <p class="card-text text-light">{{str_limit($joc->descripcio, 60)}}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item gris">Temps jugat: {{$joc->tempsjugat}} minuts</li>
-    <li class="list-group-item gris">Puntuació: 
-    @switch($joc->puntuacio)
-                @case(0)
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                @break
-                @case(1)
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                @break
-                @case(2)
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                @break
-                @case(3)
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-                @break
-                @case(4)
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-                @break
-                @case(5)
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                @break
-=======
           <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img class="card-img-top" src="{{$joc->img}}"></a>
           <div class="card-body">
             <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">
@@ -140,7 +87,6 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
               @break
->>>>>>> 03d7ecdd78cde64066f9740ca38e9ff3b3d8dd8e
               @endswitch
             </li>
             <li class="list-group-item text-dark gris">
@@ -164,12 +110,13 @@
       @empty
       <div class="container">
         <div class="jumbotron" style="color:black">
-          <h1>Oops!</h1>
-          <p>Encara no tens cap joc, compra el primer <a id="tenda" href="{{route('jocs.index')}}">aqui!</p>
+          <h1>No tens cap joc!</h1>
+          <p>No pateixis, pots comprar el primer <a id="tenda" href="{{route('jocs.index')}}">aqui!</p>
         </div>
       </div>
       @endforelse
     </div>
   </div>
 </div>
+
 @endsection
