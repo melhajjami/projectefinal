@@ -3,6 +3,9 @@
     background-color: #2e353d;
     color: white!important;
 }
+.frames{
+    display:none;
+}
 .modal {
     display: block; /* Hidden by default */
     position: fixed; /* Stay in place */

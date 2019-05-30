@@ -77,18 +77,18 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
         </li>
 
         <ul class="collapse" id="config">
-            @forelse(session()->get('pendingfriendships') as $usuari)
-            <li><a class="user" href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">
-                <div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}})">&nbsp</div>{{$usuari->user->nickname}}
-                <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
-                <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
-              </a>
-            </li>
-            @empty
-            <li>
+          @forelse(session()->get('pendingfriendships') as $usuari)
+          <li><a class="user" href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">
+              <div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}})">&nbsp</div>{{$usuari->user->nickname}}
+              <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
+              <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
+            </a>
+          </li>
+          @empty
+          <li>
             <p class="empty">No tens cap sol·licitud d'amistat</p>
-            </li>
-            @endforelse
+          </li>
+          @endforelse
         </ul>
 
         <!-- Amics -->
@@ -98,24 +98,24 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
 
         <ul class="collapse" id="amics">
           @forelse($amics as $amic)
-            @if($amic->user1_id!=session()->get('usuarilogin')->id) 
-              @php 
-                $user = usercontroller::show($amic->user1_id) 
-              @endphp 
-            @elseif($amic->user2_id!=session()->get('usuarilogin')->id) 
-              @php 
-                $user = userController::show($amic->user2_id) 
-              @endphp 
-            @endif
-            <li>
-              <a class="user" href="{{route('perfil.show',Crypt::encrypt($user->id))}}">
-                <div id="fotousuaris" style="background-image:url({{$user->fotoperfil}})">&nbsp</div>{{$user->nickname}}
-              </a>
-            </li>
+          @if($amic->user1_id!=session()->get('usuarilogin')->id)
+          @php
+          $user = usercontroller::show($amic->user1_id)
+          @endphp
+          @elseif($amic->user2_id!=session()->get('usuarilogin')->id)
+          @php
+          $user = userController::show($amic->user2_id)
+          @endphp
+          @endif
+          <li>
+            <a class="user" href="{{route('perfil.show',Crypt::encrypt($user->id))}}">
+              <div id="fotousuaris" style="background-image:url({{$user->fotoperfil}})">&nbsp</div>{{$user->nickname}}
+            </a>
+          </li>
           @empty
-            <li>
+          <li>
             <p class="empty">No tens cap amic :(</p>
-            </li>
+          </li>
           @endforelse
         </ul>
 
@@ -132,18 +132,18 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
           <li><a href="{{route('users.edit', session()->get('usuarilogin')->id)}}"> <i class="fa fa-edit"></i> Editar perfil</a></li>
           <li><a href="{{ url('/logout') }}"> <i class="fa fa-power-off"></i> Tanca la sessió </a></li>
         </ul>
-  <p id="saldo">&ensp;Monedes: {{session()->get('usuarilogin')->saldo}}</p>
+        <p id="saldo">&ensp;Monedes: {{session()->get('usuarilogin')->saldo}}</p>
 
       </ul>
       <li id="buscar">
-          <form action="/search" method="POST" role="search">
-            {{ csrf_field() }}
-            <div class="input-group">
-              <input type="text" class="form-control" id="cercar" name="q" placeholder="Cercar usuaris/jocs">
-              <span class="input-group-btn"></span>
-            </div>
-          </form>
-        </li>
+        <form action="/search" method="POST" role="search">
+          {{ csrf_field() }}
+          <div class="input-group">
+            <input type="text" class="form-control" id="cercar" name="q" placeholder="Cercar usuaris/jocs">
+            <span class="input-group-btn"></span>
+          </div>
+        </form>
+      </li>
     </div>
 
   </div>
@@ -152,7 +152,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
   <div id="contingut">
     @yield("contingut")
   </div>
-</div>
+  </div>
   <!-- Bootstrap core JavaScript-->
   <!-- <script src="{{asset('js/jquery-3.4.0.min.js')}}"></script> NO FUNCIONA -->
   <!-- <script src="{{asset('js/bootstrap.js')}}"></script> NO FUNCIONA -->

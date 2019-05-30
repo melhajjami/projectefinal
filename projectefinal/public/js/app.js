@@ -49281,7 +49281,8 @@ var app = new Vue({
   data: {
     message: 'asdasdasdasdd',
     contador: 0,
-    jugant: false
+    jugant: false,
+    obert: false
   },
   methods: {
     enviarsolicitud: function enviarsolicitud(receptor, sender) {
@@ -49343,47 +49344,93 @@ var app = new Vue({
         });
       }
     },
-    obrirjoc: function obrirjoc(idjoc, idusuari) {
-      this.jugant = true;
-      console.log(this.jugant);
-      var contador = 0;
-      console.log(contador);
-      var url = "http://localhost:8000/jocs/" + idjoc + "/index.html";
-      var child = window.open(url);
-      var timer = setInterval(checkChild, 1000, idjoc, idusuari);
+    obrirjoc: function obrirjoc(idjoc, identificadorjoc) {
+      // this.jugant = true;
+      // console.log(this.jugant);
+      // var contador = 0;
+      // console.log(contador)
+      // var url = "http://localhost:8000/jocs/" + idjoc + "/index.html"
+      // var child = window.open(url);
+      // var timer = setInterval(checkChild, 1000, idjoc, idusuari);
+      // function checkChild(idjoc, idusuari) {
+      //     if (child.closed) {
+      //         vm.jugant = false;
+      //         // alert("Joc tencat");  
+      //         clearInterval(timer);
+      //         // canviartemps(idjoc, idusuari, contador);
+      //         var parametres = {
+      //             idusuari: idusuari,
+      //             idjoc: idjoc,
+      //             tempsjugat: contador
+      //         }
+      //         axios.post('http://localhost:8000/api/biblioteca', parametres).then(function (response) {
+      //             document.getElementById("mostrartempsjoc" + idjoc).innerHTML = "TEMPS JUGAT: " + secondsToTime(contador);;
+      //         }).catch(function (error) {
+      //             console.log(error.response);
+      //         });
+      //     }
+      //     else {
+      //         contador = contador + 1;
+      //         console.log(contador);
+      //     }
+      // }
+      // function secondsToTime(secs) {
+      //     var hours = Math.floor(secs / (60 * 60));
+      //     var divisor_for_minutes = secs % (60 * 60);
+      //     var minutes = Math.floor(divisor_for_minutes / 60);
+      //     var divisor_for_seconds = divisor_for_minutes % 60;
+      //     var seconds = Math.ceil(divisor_for_seconds);
+      //     var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
+      //     return string;
+      // }
       vm = this;
+      var contador = 0; //agafem els elements de frame, pagina normal i el boto de tancar frame
 
-      function checkChild(idjoc, idusuari) {
-        if (child.closed) {
-          vm.jugant = false; // alert("Joc tencat");  
+      var contingut = document.getElementById("biblioteca");
+      var frame = document.getElementById("frame"); // var tornar = document.getElementById("tornar");
+      //al obrir joc es crea frame si no esta creat, sino modifica la url
 
-          clearInterval(timer); // canviartemps(idjoc, idusuari, contador);
+      if (this.obert == false) {
+        var ifrm = document.createElement("iframe");
+        ifrm.classList.add("iframe");
+        ifrm.setAttribute("src", "http://localhost:8000/jocs/" + identificadorjoc + "/index.html");
+        ifrm.style.width = "640px";
+        ifrm.style.height = "480px";
+        document.getElementById("frame").appendChild(ifrm); //creem el boto per tornar enrera
 
-          var parametres = {
-            idusuari: idusuari,
-            idjoc: idjoc,
-            tempsjugat: contador
-          };
-          axios.post('http://localhost:8000/api/biblioteca', parametres).then(function (response) {
-            document.getElementById("mostrartempsjoc" + idjoc).innerHTML = "TEMPS JUGAT: " + secondsToTime(contador);
-            ;
-          })["catch"](function (error) {
-            console.log(error.response);
-          });
-        } else {
-          contador = contador + 1;
-          console.log(contador);
-        }
+        var tornar = document.createElement("button");
+        tornar.id = "tornar";
+        tornar.classList.add("btn", "btn-primary");
+        tornar.innerText = "Tornar enrera";
+        document.getElementById("frame").appendChild(tornar);
+        this.obert = true;
+        contingut.style.display = "none";
+        frame.style.display = "block"; //es posa contador per saber el temps
+
+        var timer = setInterval(checkChild, 1000);
+        this.jugant = true;
+      } else {
+        var iframe = document.getElementsByClassName("iframe")[0];
+        iframe.removeAttribute("src");
+        iframe.setAttribute("src", "http://localhost:8000/jocs/" + identificadorjoc + "/index.html");
+        contingut.style.display = "none";
+        frame.style.display = "block";
       }
 
-      function secondsToTime(secs) {
-        var hours = Math.floor(secs / (60 * 60));
-        var divisor_for_minutes = secs % (60 * 60);
-        var minutes = Math.floor(divisor_for_minutes / 60);
-        var divisor_for_seconds = divisor_for_minutes % 60;
-        var seconds = Math.ceil(divisor_for_seconds);
-        var string = "h: " + hours + " m: " + minutes + " s: " + seconds;
-        return string;
+      ;
+
+      function checkChild() {
+        contador = contador + 1;
+        console.log(contador);
+
+        tornar.onclick = function () {
+          //si es torna enrera es para el contador i es torna a ensenyar pagina normal
+          vm.jugant = false;
+          vm.contador = contador;
+          clearInterval(timer);
+          contingut.style.display = "block";
+          frame.style.display = "none";
+        };
       }
     }
   }

@@ -25,6 +25,7 @@ class bibliotecaController extends Controller
         $biblioteca = biblioteca::where('id_usuari', $user->id)->get();
         $biblioteca = DB::table('bibliotecas')->select(
             'jocs.id',
+            'jocs.identificador',
             'jocs.nom',
             'jocs.img',
             'jocs.descripcio',

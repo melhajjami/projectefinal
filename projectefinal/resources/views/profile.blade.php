@@ -10,9 +10,10 @@
     background-image:url({{$user->background}});
   }
 </style>
-@endpush
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
 <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+@endpush
+
 
 <body class="profile-page sidebar-collapse">
   @section("contingut")
