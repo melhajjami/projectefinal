@@ -82,8 +82,8 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
           @forelse(session()->get('pendingfriendships') as $usuari)
           <li><a class="user" href="{{route('perfil.show',Crypt::encrypt($usuari->user1_id))}}">
               <div id="fotousuaris" style="background-image: url({{$usuari->user->fotoperfil}})">&nbsp</div>{{$usuari->user->nickname}}
-              <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
-              <a class="boto" id="{{$usuari->user->id}}" href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
+              <a class="botoacceptar" id="{{$usuari->user->id}}" href="#button" v-on:click="acceptarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
+              <a class="botodeclinar" id="{{$usuari->user->id}}" href="#button" v-on:click="declinarsolicitud({{$usuari->user->id}},{{session()->get('usuarilogin')->id}})">&nbsp</a>
             </a>
           </li>
           @empty
@@ -141,7 +141,7 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
         <form action="/search" method="POST" role="search">
           {{ csrf_field() }}
           <div class="input-group">
-            <input type="text" class="form-control" id="cercar" name="q" placeholder="Cercar usuaris/jocs">
+            <input pattern="{.1}" required type="text" class="form-control" id="cercar" name="q" placeholder="Cercar usuaris/jocs">
             <span class="input-group-btn"></span>
           </div>
         </form>

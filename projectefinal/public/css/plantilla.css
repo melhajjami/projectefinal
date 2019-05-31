@@ -63,6 +63,33 @@ html, body{
   right:0;
   background-size: cover;
 }
+.botoacceptar{
+  border-radius:50%;
+  display:inline-block;
+  background-color: #2ecc71;
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  text-align:center;
+  position: relative;
+  right:0;
+  background-size: cover;
+}
+
+.botodeclinar{
+  border-radius:50%;
+  display:inline-block;
+  background-color: #e74c3c;
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  text-align:center;
+  position: relative;
+  right:0;
+  background-size: cover;
+}
 .empty{
   display: inline;
   font-size: 10px;

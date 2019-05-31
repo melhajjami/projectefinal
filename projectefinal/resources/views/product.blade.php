@@ -97,10 +97,13 @@
       </div>
     </div>
   </div>
+  
+  @if($biblio!=null)
   <div class="card" style="background-color: #1A1A1A; border-bottom: 1px solid #d19b3d; border-left: 1px solid #d19b3d; color:white;">
+  <h3>Puntua:</h3>
     @if($biblio!=null)
     @if($biblio->puntuacio != 0 || $biblio->puntuacio != null)
-    <h3>Puntua'l!</h3>
+    
     <div class="form-inline">
       <div class="form-group">
         <h5>La teva puntuacio actual: {{$biblio->puntuacio}}/5</h5>
@@ -108,6 +111,7 @@
     </div>
     @endif
     @endif
+    
     <form class="inline-form" method="post" action="{{route('comentaris.puntuar', $joc->id)}}">
       @csrf
       <label for="sel1">Nota:</label>
@@ -122,7 +126,7 @@
       <br>
       <input type="hidden" name="joc_id" value="{{$joc->id}}">
 
-      @if($biblio!=null)
+      @if($biblio->puntuacio != 0 || $biblio->puntuacio != null)
       <input class="btn btn-dark" type="submit" value="Actualitzar la puntuacio">
       @else
       <input class="btn btn-dark" type="submit" value="Puntuar aquest joc">
@@ -130,6 +134,8 @@
 
     </form>
   </div>
+    @endif
+  
   <div class="card" style="background-color: #1A1A1A; border-bottom: 1px solid #d19b3d; border-left: 1px solid #d19b3d; color:white;">
     <h3>Comenta:</h3>
     <form method="post" action="{{route('comentaris.store', $joc->id)}}">
