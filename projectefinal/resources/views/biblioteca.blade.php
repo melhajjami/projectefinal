@@ -43,7 +43,7 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item gris">Temps jugat: {{$joc->tempsjugat}} minuts</li>
-            <li class="list-group-item gris">Puntuació:
+            <li class="list-group-item gris">La meva puntuació:
               @switch($joc->puntuacio)
               @case(0)
               <i class="fa fa-star-o"></i>
