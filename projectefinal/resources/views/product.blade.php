@@ -38,45 +38,52 @@
           <p class="product-description">{{$joc->descripcio}}</p>
           <div class="form-inline">
             <div class="form-group">
-          <h4>Puntuació: @switch($joc->puntuacio)
-          @case(1)
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          @break
-          @case(2)
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          @break
-          @case(3)
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-o"></i>
-          <i class="fa fa-star-o"></i>
-          @break
-          @case(4)
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-o"></i>
-          @break
-          @case(5)
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          @break
-          @endswitch
-          </h4>
-          </div>
+              <h4>Puntuació: @switch($joc->puntuacio)
+                @case(0)
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(1)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(2)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(3)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(4)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                @break
+                @case(5)
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                @break
+                @endswitch
+              </h4>
+            </div>
           </div>
           <h4 class="price">PREU: <span>{{$joc->preu}}€</span></h4>
           <div id="posicioboto" class="action">
@@ -96,7 +103,7 @@
     <h3>Puntua'l!</h3>
     <div class="form-inline">
       <div class="form-group">
-      <h5>La teva puntuacio actual: {{$biblio->puntuacio}}/5</h5>
+        <h5>La teva puntuacio actual: {{$biblio->puntuacio}}/5</h5>
       </div>
     </div>
     @endif
@@ -104,7 +111,7 @@
     <form class="inline-form" method="post" action="{{route('comentaris.puntuar', $joc->id)}}">
       @csrf
       <label for="sel1">Nota:</label>
-      
+
       <select class="form-control col-md-4" name="puntuacio">
         <option>1</option>
         <option>2</option>
@@ -114,7 +121,7 @@
       </select>
       <br>
       <input type="hidden" name="joc_id" value="{{$joc->id}}">
-      
+
       @if($biblio!=null)
       <input class="btn btn-dark" type="submit" value="Actualitzar la puntuacio">
       @else

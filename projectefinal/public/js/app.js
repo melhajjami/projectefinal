@@ -49403,7 +49403,7 @@ var app = new Vue({
         var tornar = document.createElement("button");
         tornar.id = "tornar";
         tornar.classList.add("btn", "btn-dark");
-        tornar.innerText = "Tornar enrera";
+        tornar.innerText = "Tornar enrere";
         document.getElementById("frame").appendChild(tornar);
         this.obert = true;
         contingut.style.display = "none";
