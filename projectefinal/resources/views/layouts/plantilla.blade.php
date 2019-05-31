@@ -43,9 +43,11 @@ $amics = friendshipController::show(session()->get('usuarilogin')->id);
   <div class="nav-side-menu" id="plantilla">
 
     <!-- TITOL -->
-    <div class="brand">
-      <h3 class="titol">AM Platform!</h3>
-    </div>
+    <a class="titol" href="{{route('biblioteca.index')}}">
+      <div class="brand">
+        <h3 class="titol">AM Platform!</h3>
+      </div>
+    </a>
 
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 

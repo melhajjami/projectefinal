@@ -6,17 +6,6 @@
 
 <!-- a -->
 <div class="wrapper" id="app">
-<<<<<<< HEAD
-  <!-- al registrar.. mirar RegistersUsers.php -->
-  @if ($message = Session::get('success'))
-  <!-- The Modal -->
-  <div id="registre" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>TENS 10 MONEDES ETC ETC </p>
-=======
 @if ($message = Session::get('success'))
   <!-- al registrar.. mirar RegistersUsers.php -->
   <!-- The Modal -->
@@ -31,7 +20,6 @@
         <br>Abans de començar a jugar, et guiarem amb el menú...
       </p>
       <button type="submit" id="botonext" class="btn btn-dark" v-on:click="next()">Seguent</button>
->>>>>>> 654fa0dee70c54b061229b99086d75cc26d9a6b5
     </div>
   </div>
   @endif
