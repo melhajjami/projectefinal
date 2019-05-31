@@ -6,6 +6,14 @@
 
 .frames{
     display:none;
+    height: 100vh;
+    position:relative;
+}
+#tornar{
+    position:absolute;
+    float:right;
+    top:20px;
+    right:20px;
 }
 .modal {
     display: block; /* Hidden by default */
