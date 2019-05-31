@@ -39,7 +39,7 @@
             <a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">
               <h5 class="card-title text-light">{{$joc->nom}}</h5>
             </a>
-            <p class="card-text text-light">{{$joc->descripcio}}</p>
+            <p class="card-text text-light">{{str_limit($joc->descripcio,100)}}</p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item gris">Temps jugat: <span id="{{$joc->id}}">{{$joc->tempsjugat}}</span> segons</li>

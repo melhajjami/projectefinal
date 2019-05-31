@@ -19,7 +19,7 @@
 		<div class="img-wrap"><a href="{{route('jocs.show',Crypt::encrypt($joc->id))}}"><img src="{{ asset($joc->img) }}"></a></div>
 		<figcaption class="info-wrap" style="border-top:none">
 				<a class="title text-light" href="{{route('jocs.show',Crypt::encrypt($joc->id))}}">{{$joc->nom}}</a>
-				<p class="desc">{{$joc->descripcio}}</p>
+				<p class="desc">{{str_limit($joc->descripcio,100)}}</p>
 				<div class="rating-wrap">
 					<div class="label-rating text-light"><p>Comentaris: {{$joc->comentari_count}} |</p></div>
 					<div class="label-rating text-light"><p>Puntuacio: 
