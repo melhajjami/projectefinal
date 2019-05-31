@@ -81,21 +81,34 @@
 
 @endforeach
 
-<div class="col-auto text-light position-fixed" style="right:5%">
+<div class="col-md-3 text-light position-fixed" id="jdr" style="right:0.5%">
 
 <div class="list-group" id="ranquing">
 	<div class="card-header ranking">RANKING JOCS</div>
 @foreach($ranking as $rank)
   	<a href="{{route('jocs.show',Crypt::encrypt($rank->id))}}" class="ranking2 list-group-item list-group-item-action">
-		{{$loop->iteration}} &ensp;<img src="{{$rank->img}}" width="30px" height="30px" >&ensp;{{$rank->nom}}
-		&ensp;&ensp;{{$rank->puntuacio}} <i class="fa fa-star"></i>
-		@if($loop->iteration == 1)
-		<i class="fa fa-trophy"></i>
-		@elseif($loop->iteration == 2)
-		<i class="fa fa-bookmark"></i>
-		@elseif($loop->iteration == 3)
-		<i class="fa fa-bookmark-o"></i>
-		@endif
+    <div class="row d-flex justify-content-between">
+      <div class="row col-md-8 d-flex justify-content-start">
+      <p>{{$loop->iteration}}&emsp;</p>
+      <img src="{{$rank->img}}" width="30px" height="30px">
+      &emsp;
+      <p>{{$rank->nom}}</p>
+      
+      </div>
+
+      <div class="row col-md-4 d-flex justify-content-end">
+      <p>{{$rank->puntuacio}} <i class="fa fa-star"></i>
+      @if($loop->iteration == 1)
+      <i class="fa fa-trophy"></i>
+      @elseif($loop->iteration == 2)
+      <i class="fa fa-bookmark"></i>
+      @elseif($loop->iteration == 3)
+      <i class="fa fa-bookmark-o"></i>
+      </p>
+      @endif
+      </div>
+    </div>
+		
 	</a>
 @endforeach
 

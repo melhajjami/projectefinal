@@ -205,6 +205,13 @@ li{
     #yo{
       display:none;
     }
+    #jdr{
+      position: relative!important;
+    }
+    #cercar{
+      position: relative!important;
+      width: 100%!important;
+    }
     body{
       flex-direction: column;
       
@@ -239,6 +246,7 @@ li{
     .nav-side-menu .menu-list .menu-content {
       display: block;
     }
+    
   }
   body {
     margin: 0px;
