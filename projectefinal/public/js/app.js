@@ -49282,20 +49282,9 @@ var app = new Vue({
     message: 'asdasdasdasdd',
     contador: 0,
     jugant: false,
-    obert: false,
-    contadortext: 0
+    obert: false
   },
   methods: {
-    next: function next() {
-      var textos = ["La barra de navegació serà la teva millor amiga. <br>Accedeix a la <i class='fa fa-list-alt fa-lg'></i> Biblioteca per veure els teus jocs i jugar-los.", "Accedint a la <i class='fa fa-shopping-cart fa-lg'></i> Botiga podras comprar jocs. <br>També hi ha un rànking dels jocs més ben puntuats!", "A <i class='fa fa-bell fa-lg'></i> Invitacions d'amistat trobaràs totes les peticions d'amistat, i a <i class='fa fa-users'></i> Amics trobaràs tots els amics que tens. <br>Comença a fer amics!", "Finalment, tens un apartat amb la teva conta, on podras modificar-la, les monedes restants i una barra per cercar jocs i usuaris."];
-      document.getElementById("textBenvinguda").innerHTML = textos[this.contadortext];
-
-      if (this.contadortext == 3) {
-        document.getElementById('botonext').style.visibility = 'hidden';
-      } else {
-        this.contadortext++;
-      }
-    },
     enviarsolicitud: function enviarsolicitud(receptor, sender) {
       var parametres = {
         sender: sender,
@@ -49355,7 +49344,7 @@ var app = new Vue({
         });
       }
     },
-    obrirjoc: function obrirjoc(idjoc, identificadorjoc) {
+    obrirjoc: function obrirjoc(idjoc, identificadorjoc, idusuari) {
       // this.jugant = true;
       // console.log(this.jugant);
       // var contador = 0;
@@ -49401,38 +49390,51 @@ var app = new Vue({
       var frame = document.getElementById("frame"); // var tornar = document.getElementById("tornar");
       //al obrir joc es crea frame si no esta creat, sino modifica la url
 
+      console.log(this.contador);
+
       if (this.obert == false) {
         var ifrm = document.createElement("iframe");
         ifrm.classList.add("iframe");
         ifrm.setAttribute("src", "http://localhost:8000/jocs/" + identificadorjoc + "/index.html");
-        ifrm.style.width = "640px";
-        ifrm.style.height = "480px";
+        ifrm.style.width = "100%";
+        ifrm.style.height = "100%";
         document.getElementById("frame").appendChild(ifrm); //creem el boto per tornar enrera
 
         var tornar = document.createElement("button");
         tornar.id = "tornar";
-        tornar.classList.add("btn", "btn-primary");
+        tornar.classList.add("btn", "btn-dark");
         tornar.innerText = "Tornar enrera";
         document.getElementById("frame").appendChild(tornar);
         this.obert = true;
         contingut.style.display = "none";
         frame.style.display = "block"; //es posa contador per saber el temps
 
-        var timer = setInterval(checkChild, 1000);
+        var timer = setInterval(checkChild, 1000, idjoc, idusuari);
         this.jugant = true;
       } else {
         var iframe = document.getElementsByClassName("iframe")[0];
         iframe.removeAttribute("src");
         iframe.setAttribute("src", "http://localhost:8000/jocs/" + identificadorjoc + "/index.html");
+        var tornar = document.getElementById("tornar");
         contingut.style.display = "none";
         frame.style.display = "block";
+        var timer = setInterval(checkChild, 1000, idjoc, idusuari);
+        this.jugant = true;
       }
 
       ;
 
-      function checkChild() {
-        contador = contador + 1;
-        console.log(contador);
+      function checkChild(idjoc, idusuari) {
+        contador = contador + 1; //actualitzem la base de dades cada 1 segon, per si de cas usuari tanca pagina o reinicia
+
+        var parametres = {
+          idusuari: idusuari,
+          tempsjugat: 1
+        };
+        axios.put('http://localhost:8000/api/biblioteca/' + idjoc, parametres).then(function (response) {//No fem res, cada 5 segons es sumara a la base de dades 5 segons, per si de cas es tanca o refresh la pagina
+        })["catch"](function (error) {
+          console.log(error.response);
+        });
 
         tornar.onclick = function () {
           //si es torna enrera es para el contador i es torna a ensenyar pagina normal
@@ -49441,6 +49443,8 @@ var app = new Vue({
           clearInterval(timer);
           contingut.style.display = "block";
           frame.style.display = "none";
+          var tempsjugat = parseInt(document.getElementById(idjoc).innerText);
+          document.getElementById(idjoc).innerText = tempsjugat + vm.contador;
         };
       }
     }
@@ -49672,8 +49676,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Bosc\Documents\projectefinal\projectefinal\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Bosc\Documents\projectefinal\projectefinal\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Pc\Documents\projectefinal\projectefinal\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Pc\Documents\projectefinal\projectefinal\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

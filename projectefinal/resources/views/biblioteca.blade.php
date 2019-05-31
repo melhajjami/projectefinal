@@ -42,8 +42,13 @@
             <p class="card-text text-light">{{$joc->descripcio}}</p>
           </div>
           <ul class="list-group list-group-flush">
+<<<<<<< HEAD
             <li class="list-group-item gris">Temps jugat: {{$joc->tempsjugat}} minuts</li>
             <li class="list-group-item gris">La meva puntuació:
+=======
+            <li class="list-group-item gris">Temps jugat: <span id="{{$joc->id}}">{{$joc->tempsjugat}}</span> segons</li>
+            <li class="list-group-item gris">Puntuació:
+>>>>>>> a63bca371fd13d9701d8bbe5b684010f0b76ffee
               @switch($joc->puntuacio)
               @case(0)
               <i class="fa fa-star-o"></i>
@@ -103,7 +108,7 @@
             </li>
           </ul>
           <div class="card-body">
-            <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}},'{{$joc->identificador}}')">Jugar</button>
+            <button class="btn btn-dark" v-on:click="obrirjoc({{$joc->id}},'{{$joc->identificador}}',{{session()->get('usuarilogin')->id}})">Jugar</button>
           </div>
         </div>
       </div>

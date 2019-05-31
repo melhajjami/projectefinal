@@ -7,6 +7,15 @@ html, body{
 
 .titol{
   font-family: 'Courgette';
+  color:white;
+}
+.titol:link{
+  text-decoration:none;
+  color:white;
+}
+.titol:hover{
+  text-decoration:none;
+  color:white;
 }
 
 #cercar{

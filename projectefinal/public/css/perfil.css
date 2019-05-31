@@ -38,6 +38,7 @@ a.disabled {
   background-repeat:no-repeat;
   background-size: 100%;
    color:#1A1A1A;
+   background-color:#1A1A1A;
 }
 #fila{
     border: 1px solid white;
